@@ -3,7 +3,6 @@ import { useCharacters, profBonus, mod } from "./hooks/useCharacters";
 import { CLASSES } from "./data/classes";
 import TopBar from "./components/TopBar";
 import CharacterHeader from "./components/CharacterHeader";
-import StatsPanel from "./components/panels/StatsPanel";
 import CombatPanel from "./components/panels/CombatPanel";
 import SkillsPanel from "./components/panels/SkillsPanel";
 import SpellsPanel from "./components/panels/SpellsPanel";
@@ -11,7 +10,6 @@ import InventoryPanel from "./components/panels/InventoryPanel";
 import FeatsPanel from "./components/panels/FeatsPanel";
 import SummonsPanel from "./components/panels/SummonsPanel";
 import NotesPanel from "./components/panels/NotesPanel";
-import PartyPanel from "./components/panels/PartyPanel";
 import ModalRouter from "./components/modals/ModalRouter";
 import CharacterWizard from "./components/wizard/CharacterWizard";
 
@@ -27,6 +25,7 @@ export default function App() {
 
   const [showWizard, setShowWizard] = useState(false);
   const [modal, setModal] = useState(null);
+  const [summonsExpanded, setSummonsExpanded] = useState(false);
 
   useEffect(() => {
     if (!activeChar && characters.length === 0) setShowWizard(true);
@@ -48,7 +47,13 @@ export default function App() {
   return (
     <div className="app-root">
       {/* TOP BAR */}
-      <TopBar setShowWizard={setShowWizard} setModal={setModal} />
+      <TopBar
+        setShowWizard={setShowWizard}
+        setModal={setModal}
+        characters={characters}
+        activeCharId={activeCharId}
+        setActiveCharId={setActiveCharId}
+      />
 
       <div className="hud-layout">
         {/* CHARACTER HEADER */}
@@ -60,30 +65,8 @@ export default function App() {
           />
         )}
 
-        {/* LEFT COLUMN */}
+        {/* LEFT COLUMN — Spells (full height) */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
-          <StatsPanel
-            activeChar={activeChar}
-            updateChar={updateChar}
-            updateCharDeep={updateCharDeep}
-            setModal={setModal}
-          />
-          <PartyPanel
-            characters={characters}
-            activeCharId={activeCharId}
-            setActiveCharId={setActiveCharId}
-            setShowWizard={setShowWizard}
-          />
-        </div>
-
-        {/* CENTER COLUMN */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
-          <CombatPanel
-            activeChar={activeChar}
-            updateChar={updateChar}
-            updateCharDeep={updateCharDeep}
-            setModal={setModal}
-          />
           <SpellsPanel
             activeChar={activeChar}
             updateChar={updateChar}
@@ -91,17 +74,33 @@ export default function App() {
           />
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* CENTER COLUMN — Combat */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
+          <CombatPanel
+            activeChar={activeChar}
+            updateChar={updateChar}
+            updateCharDeep={updateCharDeep}
+            setModal={setModal}
+          />
+        </div>
+
+        {/* RIGHT COLUMN — Skills & Abilities */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
           <SkillsPanel
             activeChar={activeChar}
             updateChar={updateChar}
+            updateCharDeep={updateCharDeep}
+            setModal={setModal}
           />
         </div>
       </div>
 
       {/* BOTTOM PANELS ROW */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 6, padding: "0 6px 6px", height: 200, flexShrink: 0 }}>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: summonsExpanded ? "1fr 1fr 1fr 1fr" : "1fr 1fr 44px 1fr",
+        gap: 6, padding: "0 6px 6px", height: 200, flexShrink: 0
+      }}>
         <InventoryPanel
           activeChar={activeChar}
           updateChar={updateChar}
@@ -117,6 +116,8 @@ export default function App() {
           activeChar={activeChar}
           updateChar={updateChar}
           setModal={setModal}
+          expanded={summonsExpanded}
+          setExpanded={setSummonsExpanded}
         />
         <NotesPanel
           activeChar={activeChar}

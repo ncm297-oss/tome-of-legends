@@ -24,7 +24,12 @@ export default function CharacterHeader({ activeChar, setModal, deleteCharacter 
       <div className="char-name-block">
         <div className="char-name" onClick={() => setModal({ type: "editname" })} title="Click to edit">{activeChar.name}</div>
         <div className="char-sub">
-          {activeChar.race} · {activeChar.class} {activeChar.subclass ? `(${activeChar.subclass})` : ""} · Level {activeChar.level} · {activeChar.background}
+          <span className="char-info-link" onClick={() => setModal({ type: "inforace" })}>{activeChar.race}</span>
+          {" · "}
+          <span className="char-info-link" onClick={() => setModal({ type: "infoclass" })}>{activeChar.class}</span>
+          {activeChar.subclass ? <>{" ("}<span className="char-info-link" onClick={() => setModal({ type: "infosubclass" })}>{activeChar.subclass}</span>{")"}</> : ""}
+          {" · Level " + activeChar.level + " · "}
+          <span className="char-info-link" onClick={() => setModal({ type: "infobackground" })}>{activeChar.background}</span>
         </div>
         <div style={{ fontSize: 11, color: "var(--text-muted)", fontStyle: "italic" }}>{activeChar.alignment}</div>
       </div>
