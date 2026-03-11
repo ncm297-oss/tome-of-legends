@@ -1,0 +1,16 @@
+export const BACKGROUNDS = [
+  { name: "Acolyte", skills: ["Insight", "Religion"], feature: "Shelter of the Faithful" },
+  { name: "Criminal", skills: ["Deception", "Stealth"], feature: "Criminal Contact" },
+  { name: "Folk Hero", skills: ["Animal Handling", "Survival"], feature: "Rustic Hospitality" },
+  { name: "Noble", skills: ["History", "Persuasion"], feature: "Position of Privilege" },
+  { name: "Sage", skills: ["Arcana", "History"], feature: "Researcher" },
+  { name: "Soldier", skills: ["Athletics", "Intimidation"], feature: "Military Rank" },
+  { name: "Outlander", skills: ["Athletics", "Survival"], feature: "Wanderer" },
+  { name: "Charlatan", skills: ["Deception", "Sleight of Hand"], feature: "False Identity" },
+  { name: "Entertainer", skills: ["Acrobatics", "Performance"], feature: "By Popular Demand" },
+  { name: "Guild Artisan", skills: ["Insight", "Persuasion"], feature: "Guild Membership" },
+  { name: "Hermit", skills: ["Medicine", "Religion"], feature: "Discovery" },
+  { name: "Sailor", skills: ["Athletics", "Perception"], feature: "Ship's Passage" },
+  { name: "Urchin", skills: ["Sleight of Hand", "Stealth"], feature: "City Secrets" },
+  { name: "Custom", skills: [], feature: "" },
+];

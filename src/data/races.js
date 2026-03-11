@@ -1,0 +1,15 @@
+export const RACES = [
+  { name: "Human", asi: { str: 1, dex: 1, con: 1, int: 1, wis: 1, cha: 1 }, traits: ["Extra Language", "Extra Skill"] },
+  { name: "Elf (High)", asi: { dex: 2, int: 1 }, traits: ["Darkvision", "Fey Ancestry", "Trance", "Keen Senses", "Cantrip"] },
+  { name: "Elf (Wood)", asi: { dex: 2, wis: 1 }, traits: ["Darkvision", "Fey Ancestry", "Trance", "Fleet of Foot", "Mask of the Wild"] },
+  { name: "Dwarf (Hill)", asi: { con: 2, wis: 1 }, traits: ["Darkvision", "Dwarven Resilience", "Stonecunning", "Dwarven Toughness"] },
+  { name: "Dwarf (Mountain)", asi: { con: 2, str: 2 }, traits: ["Darkvision", "Dwarven Resilience", "Stonecunning", "Dwarven Armor Training"] },
+  { name: "Halfling (Lightfoot)", asi: { dex: 2, cha: 1 }, traits: ["Lucky", "Brave", "Halfling Nimbleness", "Naturally Stealthy"] },
+  { name: "Gnome (Forest)", asi: { int: 2, dex: 1 }, traits: ["Darkvision", "Gnome Cunning", "Natural Illusionist", "Speak with Small Beasts"] },
+  { name: "Half-Elf", asi: { cha: 2 }, traits: ["Darkvision", "Fey Ancestry", "Skill Versatility"], customAsi: 2 },
+  { name: "Half-Orc", asi: { str: 2, con: 1 }, traits: ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"] },
+  { name: "Tiefling", asi: { int: 1, cha: 2 }, traits: ["Darkvision", "Hellish Resistance", "Infernal Legacy"] },
+  { name: "Dragonborn", asi: { str: 2, cha: 1 }, traits: ["Draconic Ancestry", "Breath Weapon", "Damage Resistance"] },
+  { name: "Aasimar", asi: { cha: 2 }, traits: ["Darkvision", "Celestial Resistance", "Healing Hands", "Light Bearer"] },
+  { name: "Homebrew", asi: {}, traits: [], homebrew: true },
+];
