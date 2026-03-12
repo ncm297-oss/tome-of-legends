@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { mod, profBonus } from "../../hooks/useCharacters";
 import { COMMON_SUMMONS } from "../../data/summons";
+import CollapsiblePanel from "../CollapsiblePanel";
 
-export default function SummonsPanel({ activeChar, updateChar, setModal, expanded, setExpanded }) {
+export default function SummonsPanel({ activeChar, updateChar, setModal, expanded, setExpanded, collapsed, onToggle }) {
   const [expandedCards, setExpandedCards] = useState({});
   const [subTab, setSubTab] = useState("active"); // "active" | "browse"
   const [browseFilter, setBrowseFilter] = useState("");
@@ -61,13 +62,13 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
 
   // EXPANDED STATE
   return (
-    <div className="panel">
-      <div className="panel-header" style={{ display: "flex", alignItems: "center", gap: 6 }}>
-        <span className="ornament">🐾</span> SUMMONS
+    <CollapsiblePanel title="SUMMONS" ornament="🐾"
+      collapsed={collapsed} onToggle={onToggle}
+      headerRight={<>
         {hasSummons && <span style={{ fontSize: 8, color: "var(--text-muted)" }}>{summons.length}</span>}
-        <span style={{ marginLeft: "auto", cursor: "pointer", fontSize: 10, color: "var(--text-muted)" }}
-          onClick={() => setExpanded(false)} title="Collapse">◀</span>
-      </div>
+        <span style={{ cursor: "pointer", fontSize: 10, color: "var(--text-muted)", marginLeft: 4 }}
+          onClick={(e) => { e.stopPropagation(); setExpanded(false); }} title="Minimize">◀</span>
+      </>}>
 
       {/* Sub-tabs */}
       <div style={{ display: "flex", gap: 4, padding: "4px 6px 0" }}>
@@ -197,6 +198,6 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
           </>
         )}
       </div>
-    </div>
+    </CollapsiblePanel>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { WEAPONS, ARMOR, ADVENTURING_GEAR, MAGIC_ITEMS, GEMSTONES } from "../../data/items";
+import CollapsiblePanel from "../CollapsiblePanel";
 
 const ITEM_ICONS = {
   Weapon: "⚔️", Armor: "🛡️", Potion: "🧪", "Magic Item": "✨", Tool: "🔧",
@@ -62,7 +63,7 @@ function BufferedNumberInput({ value, onChange, className, style }) {
   );
 }
 
-export default function InventoryPanel({ activeChar, updateChar, updateCharDeep, setModal }) {
+export default function InventoryPanel({ activeChar, updateChar, updateCharDeep, setModal, collapsed, onToggle }) {
   const [showFullInv, setShowFullInv] = useState(false);
   const [invTab, setInvTab] = useState("all");
   const [tooltip, setTooltip] = useState({ item: null, pos: null });
@@ -140,11 +141,9 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
 
   return (
     <>
-      <div className="panel">
-        <div className="panel-header">
-          <span className="ornament">⊞</span> EQUIPMENT
-          <span style={{ marginLeft: "auto", fontSize: 8, color: "var(--text-muted)" }}>{totalWeight.toFixed(1)}/{carryCapacity} lb</span>
-        </div>
+      <CollapsiblePanel title="EQUIPMENT" ornament="⊞"
+        headerRight={`${totalWeight.toFixed(1)}/${carryCapacity} lb`}
+        collapsed={collapsed} onToggle={onToggle}>
         <div className="panel-body">
           {/* Equipped slots */}
           <div className="equipped-slots">
@@ -181,7 +180,7 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
           </div>
           <button className="btn small w-full" onClick={() => setShowFullInv(true)}>🎒 Open Inventory (I)</button>
         </div>
-      </div>
+      </CollapsiblePanel>
 
       {/* Full Inventory Modal */}
       {showFullInv && (

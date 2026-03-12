@@ -1,6 +1,7 @@
 import { ARMOR } from "../../data/items";
+import CollapsiblePanel from "../CollapsiblePanel";
 
-export default function FeatsPanel({ activeChar, updateChar, setModal }) {
+export default function FeatsPanel({ activeChar, updateChar, setModal, collapsed, onToggle }) {
   // Determine conditional feat states
   const equipped = activeChar?.equippedSlots || {};
   const isDualWielding = equipped.weapon && equipped.offhand && equipped.offhand !== "Shield"
@@ -27,8 +28,7 @@ export default function FeatsPanel({ activeChar, updateChar, setModal }) {
   };
 
   return (
-    <div className="panel">
-      <div className="panel-header"><span className="ornament">★</span> FEATS & FEATURES</div>
+    <CollapsiblePanel title="FEATS & FEATURES" ornament="★" collapsed={collapsed} onToggle={onToggle}>
       <div className="panel-body">
         <div className="tabs" style={{ marginBottom: 4 }}>
           <div className="tab active" style={{ fontSize: 7 }}>FEATS</div>
@@ -72,6 +72,6 @@ export default function FeatsPanel({ activeChar, updateChar, setModal }) {
         ))}
         <button className="btn small w-full mt-1" onClick={() => setModal({ type: "addclassfeature" })}>+ Add Feature</button>
       </div>
-    </div>
+    </CollapsiblePanel>
   );
 }

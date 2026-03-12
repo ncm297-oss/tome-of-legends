@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CollapsiblePanel from "../CollapsiblePanel";
 
 // Buffered textarea — uses local state while focused, syncs on blur
 function BufferedTextarea({ value, onChange, className, style, placeholder }) {
@@ -25,7 +26,7 @@ function BufferedTextarea({ value, onChange, className, style, placeholder }) {
   );
 }
 
-export default function NotesPanel({ activeChar, updateCharDeep }) {
+export default function NotesPanel({ activeChar, updateCharDeep, collapsed, onToggle }) {
   // Journal pages stored in activeChar.notes.pages: [{ name, content }]
   // Character tab is permanent (personality/ideals/bonds/flaws)
   const pages = activeChar?.notes?.pages || [];
@@ -55,8 +56,7 @@ export default function NotesPanel({ activeChar, updateCharDeep }) {
   };
 
   return (
-    <div className="panel">
-      <div className="panel-header"><span className="ornament">📜</span> SESSION JOURNAL</div>
+    <CollapsiblePanel title="SESSION JOURNAL" ornament="📜" collapsed={collapsed} onToggle={onToggle}>
       <div className="panel-body" style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         <div className="journal-sidebar">
           <div className={`journal-tab ${activeTab === "character" ? "active" : ""}`}
@@ -104,6 +104,6 @@ export default function NotesPanel({ activeChar, updateCharDeep }) {
             placeholder="Write your notes here..." />
         )}
       </div>
-    </div>
+    </CollapsiblePanel>
   );
 }

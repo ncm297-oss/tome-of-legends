@@ -13,6 +13,8 @@ import NotesPanel from "./components/panels/NotesPanel";
 import ModalRouter from "./components/modals/ModalRouter";
 import CharacterWizard from "./components/wizard/CharacterWizard";
 
+const COLLAPSED_WIDTH = "44px";
+
 export default function App() {
   const {
     characters, setCharacters,
@@ -27,9 +29,47 @@ export default function App() {
   const [modal, setModal] = useState(null);
   const [summonsExpanded, setSummonsExpanded] = useState(false);
 
+  // Collapse state for panels
+  const [collapsed, setCollapsed] = useState({
+    spells: false,
+    combat: false,
+    skills: false,
+    equipment: false,
+    feats: false,
+    summons: false,
+    journal: false,
+  });
+
+  const topKeys = ["spells", "combat", "skills"];
+  const bottomKeys = ["equipment", "feats", "journal"]; // summons has its own mini mode
+
+  const toggle = (key) => setCollapsed(prev => {
+    const next = { ...prev, [key]: !prev[key] };
+    // Prevent all panels in a row from collapsing
+    if (topKeys.includes(key) && topKeys.every(k => next[k])) return prev;
+    if (bottomKeys.includes(key) && bottomKeys.every(k => next[k])) return prev;
+    return next;
+  });
+
   useEffect(() => {
     if (!activeChar && characters.length === 0) setShowWizard(true);
   }, [characters, activeChar]);
+
+  // Build top row grid columns — open panels share space with 1fr
+  const topOpen = [!collapsed.spells, !collapsed.combat, !collapsed.skills];
+  const topCols = [
+    collapsed.spells ? COLLAPSED_WIDTH : (topOpen.filter(Boolean).length === 1 ? "1fr" : "minmax(200px, 1fr)"),
+    collapsed.combat ? COLLAPSED_WIDTH : "1fr",
+    collapsed.skills ? COLLAPSED_WIDTH : (topOpen.filter(Boolean).length === 1 ? "1fr" : "minmax(180px, 1fr)"),
+  ].join(" ");
+
+  // Build bottom row grid columns
+  const bottomCols = [
+    collapsed.equipment ? COLLAPSED_WIDTH : "1fr",
+    collapsed.feats ? COLLAPSED_WIDTH : "1fr",
+    (!summonsExpanded || collapsed.summons) ? COLLAPSED_WIDTH : "1fr",
+    collapsed.journal ? COLLAPSED_WIDTH : "1fr",
+  ].join(" ");
 
   // Empty state — no characters
   if (!activeChar && !showWizard) {
@@ -56,23 +96,28 @@ export default function App() {
         setCharacters={setCharacters}
       />
 
-      <div className="hud-layout">
-        {/* CHARACTER HEADER */}
-        {activeChar && (
+      {/* CHARACTER HEADER — outside grid so it's always full width */}
+      {activeChar && (
+        <div style={{ padding: "6px 6px 0" }}>
           <CharacterHeader
             activeChar={activeChar}
             updateChar={updateChar}
             setModal={setModal}
             deleteCharacter={deleteCharacter}
           />
-        )}
+        </div>
+      )}
 
-        {/* LEFT COLUMN — Spells (full height) */}
+      <div className="hud-layout" style={{ gridTemplateColumns: topCols }}>
+        {/* LEFT COLUMN — Spells */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
           <SpellsPanel
             activeChar={activeChar}
             updateChar={updateChar}
+            updateCharDeep={updateCharDeep}
             setModal={setModal}
+            collapsed={collapsed.spells}
+            onToggle={() => toggle("spells")}
           />
         </div>
 
@@ -83,6 +128,8 @@ export default function App() {
             updateChar={updateChar}
             updateCharDeep={updateCharDeep}
             setModal={setModal}
+            collapsed={collapsed.combat}
+            onToggle={() => toggle("combat")}
           />
         </div>
 
@@ -93,6 +140,9 @@ export default function App() {
             updateChar={updateChar}
             updateCharDeep={updateCharDeep}
             setModal={setModal}
+            collapsed={collapsed.skills}
+            onToggle={() => toggle("skills")}
+            wide={collapsed.spells || collapsed.combat}
           />
         </div>
       </div>
@@ -100,7 +150,7 @@ export default function App() {
       {/* BOTTOM PANELS ROW */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: summonsExpanded ? "1fr 1fr 1fr 1fr" : "1fr 1fr 44px 1fr",
+        gridTemplateColumns: bottomCols,
         gap: 6, padding: "0 6px 6px", height: 240, flexShrink: 0
       }}>
         <InventoryPanel
@@ -108,11 +158,15 @@ export default function App() {
           updateChar={updateChar}
           updateCharDeep={updateCharDeep}
           setModal={setModal}
+          collapsed={collapsed.equipment}
+          onToggle={() => toggle("equipment")}
         />
         <FeatsPanel
           activeChar={activeChar}
           updateChar={updateChar}
           setModal={setModal}
+          collapsed={collapsed.feats}
+          onToggle={() => toggle("feats")}
         />
         <SummonsPanel
           activeChar={activeChar}
@@ -120,10 +174,14 @@ export default function App() {
           setModal={setModal}
           expanded={summonsExpanded}
           setExpanded={setSummonsExpanded}
+          collapsed={collapsed.summons}
+          onToggle={() => toggle("summons")}
         />
         <NotesPanel
           activeChar={activeChar}
           updateCharDeep={updateCharDeep}
+          collapsed={collapsed.journal}
+          onToggle={() => toggle("journal")}
         />
       </div>
 

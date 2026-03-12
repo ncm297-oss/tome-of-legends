@@ -87,7 +87,7 @@ body {
 
 /* MAIN LAYOUT */
 .hud-layout {
-  display: grid; grid-template-columns: 260px 1fr 220px; grid-template-rows: auto 1fr;
+  display: grid; grid-template-rows: 1fr;
   gap: 6px; padding: 6px; flex: 1; overflow: hidden; min-height: 0;
 }
 
@@ -110,6 +110,13 @@ body {
   display: flex; align-items: center; gap: 6px; flex-shrink: 0;
 }
 .panel-header .ornament { color: var(--ornament); font-size: 12px; }
+.panel-header.collapsible { cursor: pointer; user-select: none; }
+.panel-header.collapsible:hover { background: linear-gradient(180deg, rgba(160,120,60,0.3) 0%, rgba(160,120,60,0.12) 100%); }
+.panel-header-right { margin-left: auto; font-size: 8px; color: var(--text-muted); font-family: 'Inter', sans-serif; letter-spacing: 0; text-transform: none; }
+.panel-collapse-icon { margin-left: auto; font-size: 9px; color: var(--text-muted); line-height: 1; }
+.panel-header-right + .panel-collapse-icon { margin-left: 6px; }
+.panel-collapsed-h { min-width: 0; transition: all 0.15s ease; }
+.panel-collapsed-h:hover { background: linear-gradient(180deg, rgba(160,120,60,0.3) 0%, rgba(160,120,60,0.12) 100%); }
 .panel-body {
   padding: 8px; overflow-y: auto; flex: 1;
   scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
@@ -120,7 +127,7 @@ body {
 
 /* CHARACTER HEADER */
 .char-header {
-  grid-column: 1 / -1; display: flex; flex-wrap: nowrap;
+  display: flex; flex-wrap: nowrap;
   gap: 12px; align-items: center; padding: 8px 14px;
   background: linear-gradient(180deg, #5c3d1e 0%, #4a2e12 100%);
   border: 1px solid var(--panel-border); border-radius: 4px;
@@ -143,6 +150,9 @@ body {
 .char-sub { font-size: 13px; color: #e8d5a3; font-style: italic; }
 .char-info-link { cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; transition: color 0.15s; }
 .char-info-link:hover { color: var(--gold-bright); }
+.char-header-actions { display: flex; flex-direction: column; gap: 3px; }
+.char-header-row2 { display: contents; } /* on desktop, children flow into parent flex */
+.char-header-stats { display: flex; align-items: center; gap: 12px; }
 .xp-bar-container { flex: 0 0 auto; display: flex; flex-direction: column; gap: 3px; }
 .xp-label { font-size: 11px; color: #c8a96e; font-family: 'Cinzel', serif; letter-spacing: 1px; }
 .xp-bar { height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px; border: 1px solid rgba(255,255,255,0.2); overflow: hidden; }
@@ -549,11 +559,11 @@ body {
 .tab.active { background: rgba(255,255,255,0.3); border-color: var(--gold); color: var(--gold); }
 
 .prof-bonus-display {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 5px 0; border-bottom: 1px solid rgba(160,120,60,0.2); margin-bottom: 6px;
+  display: flex; align-items: baseline; justify-content: center; gap: 6px;
+  padding: 2px 0; border-bottom: 1px solid rgba(160,120,60,0.2); margin-bottom: 4px;
 }
-.prof-label { font-size: 9px; font-family: 'Cinzel', serif; letter-spacing: 1px; color: var(--text-muted); }
-.prof-val { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 700; color: var(--gold); }
+.prof-label { font-size: 8px; font-family: 'Cinzel', serif; letter-spacing: 1px; color: var(--text-muted); }
+.prof-val { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: var(--gold); }
 .saving-throws { margin-bottom: 6px; }
 .st-row { display: flex; align-items: center; gap: 5px; padding: 1px 0; font-size: 10px; color: var(--text-secondary); cursor: pointer; }
 .st-row:hover { color: var(--text-primary); }
@@ -762,10 +772,9 @@ body {
   }
 
   /* Reorder panels: Combat first, then Spells, then Skills */
-  .hud-layout > :nth-child(1) { order: 0; } /* CharacterHeader */
-  .hud-layout > :nth-child(2) { order: 2; } /* Spells (left col) → after Combat */
-  .hud-layout > :nth-child(3) { order: 1; } /* Combat (center col) → first */
-  .hud-layout > :nth-child(4) { order: 3; } /* Skills (right col) → last */
+  .hud-layout > :nth-child(1) { order: 2; } /* Spells (left col) → after Combat */
+  .hud-layout > :nth-child(2) { order: 1; } /* Combat (center col) → first */
+  .hud-layout > :nth-child(3) { order: 3; } /* Skills (right col) → last */
 
   /* Give panels natural height */
   .hud-layout > div {
@@ -775,15 +784,47 @@ body {
     width: 100%;
   }
 
-  /* Character header: allow wrapping */
+  /* Character header: grid layout for mobile */
   .char-header {
-    flex-wrap: wrap !important;
-    gap: 6px;
+    display: grid !important;
+    grid-template-columns: 40px 1fr auto;
+    grid-template-areas:
+      "portrait name actions"
+      "row2 row2 row2";
+    gap: 0px 8px;
     padding: 8px 10px;
+    align-items: center;
   }
-  .char-name { font-size: 18px !important; }
-  .char-info { font-size: 10px !important; }
-  .portrait-box { width: 40px; height: 40px; font-size: 16px; }
+  .portrait-box { width: 40px; height: 40px; font-size: 16px; grid-area: portrait; }
+  .char-name-block { grid-area: name; min-width: 0; padding-bottom: 6px; }
+  .char-name { font-size: 15px !important; }
+  .char-sub { font-size: 10px !important; }
+  .char-name-block > div:last-child { font-size: 9px !important; } /* alignment */
+  .char-header-actions {
+    grid-area: actions;
+    flex-direction: row !important;
+    gap: 4px;
+    align-items: center;
+    padding-bottom: 6px;
+  }
+  /* Row 2: single wrapper with continuous border */
+  .char-header-row2 {
+    display: flex !important;
+    grid-area: row2;
+    align-items: center;
+    border-top: 1px solid rgba(232,213,163,0.15);
+    padding-top: 6px;
+  }
+  .char-header-row2 .xp-bar-container {
+    max-width: none !important;
+    flex: 1;
+    min-width: 0;
+    margin-right: 16px;
+  }
+  .char-header-row2 .char-header-stats {
+    gap: 12px;
+    flex-shrink: 0;
+  }
 
   /* Bottom row: stack vertically — override inline grid style */
   .app-root > div[style*="grid"] {
@@ -799,7 +840,6 @@ body {
   .panel-body { max-height: 350px; overflow-y: auto; }
 
   /* Header stat boxes: tighter on mobile */
-  .char-header-stats { gap: 4px; flex-wrap: wrap; }
   .char-header-stats > div { min-width: 0; }
 
   /* Modals: full-width on mobile */
