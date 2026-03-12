@@ -630,8 +630,8 @@ export default function CharacterWizard({ onClose, onCreate }) {
   // ================================================================
   // RENDER
   // ================================================================
-  const leftContent = { 1: <Step1Left />, 2: <Step2Left />, 3: <Step3Left />, 4: <Step4Left /> };
-  const rightContent = { 1: <Step1Right />, 2: <Step2Right />, 3: <Step3Right />, 4: <Step4Right /> };
+  const leftContent = { 1: Step1Left(), 2: Step2Left(), 3: Step3Left(), 4: Step4Left() };
+  const rightContent = { 1: Step1Right(), 2: Step2Right(), 3: Step3Right(), 4: Step4Right() };
 
   return (
     <div className="modal-overlay">
