@@ -36,6 +36,7 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
   const [hpMode, setHpMode] = useState("damage"); // "damage" | "heal" | "temp"
   const [hpAmount, setHpAmount] = useState("");
   const [hpUndo, setHpUndo] = useState(null); // { current, temp } snapshot before last change
+  const hpInputRef = useRef(null);
 
   const applyHpChange = () => {
     const amt = parseInt(hpAmount) || 0;
@@ -155,11 +156,11 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
           <div className="hp-adjust-tabs">
             {[["damage", "Damage", "red"], ["heal", "Heal", "green"], ["temp", "Temp HP", "blue"]].map(([mode, label, color]) => (
               <div key={mode} className={`hp-adjust-tab ${color} ${hpMode === mode ? "active" : ""}`}
-                onClick={() => setHpMode(mode)}>{label}</div>
+                onClick={() => { setHpMode(mode); setTimeout(() => hpInputRef.current?.focus(), 0); }}>{label}</div>
             ))}
           </div>
           <div className="hp-adjust-row">
-            <input className="hp-adjust-input" type="number" min="0" placeholder="0"
+            <input ref={hpInputRef} className="hp-adjust-input" type="number" min="0" placeholder="0"
               value={hpAmount}
               onChange={e => setHpAmount(e.target.value)}
               onKeyDown={e => { if (e.key === "Enter") applyHpChange(); }}
