@@ -689,3 +689,77 @@ body {
 }
 .subclass-chip:hover { border-color: var(--gold); background: rgba(184,134,11,0.08); }
 .subclass-chip.selected { border-color: var(--gold); background: rgba(184,134,11,0.15); color: var(--gold); box-shadow: 0 0 6px rgba(184,134,11,0.15); }
+
+/* ─── MOBILE RESPONSIVE ─── */
+@media (max-width: 768px) {
+  /* Allow page to scroll */
+  body { overflow: auto; height: auto; }
+  .app-root { height: auto; min-height: 100vh; overflow: auto; }
+
+  /* Top bar: compact, hide dice bar */
+  .top-bar {
+    padding: 4px 8px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .top-bar-title { font-size: 12px; letter-spacing: 1px; }
+  .top-bar-right { gap: 3px; }
+  .top-bar .btn.small { font-size: 8px; padding: 3px 6px; }
+  .dice-roller { display: none !important; } /* Hide dice roller on mobile — save space */
+
+  /* Stack main layout into single column */
+  .hud-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    flex: none !important;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  /* Reorder panels: Combat first, then Spells, then Skills */
+  .hud-layout > :nth-child(1) { order: 0; } /* CharacterHeader */
+  .hud-layout > :nth-child(2) { order: 2; } /* Spells (left col) → after Combat */
+  .hud-layout > :nth-child(3) { order: 1; } /* Combat (center col) → first */
+  .hud-layout > :nth-child(4) { order: 3; } /* Skills (right col) → last */
+
+  /* Give panels natural height */
+  .hud-layout > div {
+    max-height: none !important;
+    min-height: 0;
+    overflow: visible !important;
+    width: 100%;
+  }
+
+  /* Character header: allow wrapping */
+  .char-header {
+    flex-wrap: wrap !important;
+    gap: 6px;
+    padding: 8px 10px;
+  }
+  .char-name { font-size: 18px !important; }
+  .char-info { font-size: 10px !important; }
+  .portrait-box { width: 40px; height: 40px; font-size: 16px; }
+
+  /* Bottom row: stack vertically — override inline grid style */
+  .app-root > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 4px;
+    padding: 0 4px 4px !important;
+  }
+
+  /* Panels: natural height on mobile */
+  .panel { overflow: visible; }
+  .panel-body { max-height: 350px; overflow-y: auto; }
+
+  /* Header stat boxes: tighter on mobile */
+  .char-header-stats { gap: 4px; flex-wrap: wrap; }
+  .char-header-stats > div { min-width: 0; }
+
+  /* Modals: full-width on mobile */
+  .modal { max-width: 95vw; max-height: 90vh; width: 100%; }
+  .inventory-modal { max-width: 95vw; width: 100%; }
+}
