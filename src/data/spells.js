@@ -1,125 +1,37 @@
 export const SPELLS_DB = [
   // ─── CANTRIPS (Level 0) ───────────────────────────────────────────────
   {
-    name: "Eldritch Blast",
+    name: "Acid Splash",
     level: 0,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "120 feet",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Warlock"],
-    description: "A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack; on hit, the target takes 1d10 force damage. The spell creates additional beams at higher levels."
-  },
-  {
-    name: "Sacred Flame",
-    level: 0,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "60 feet",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Cleric"],
-    description: "Flame-like radiance descends on a creature you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage, gaining no benefit from cover."
-  },
-  {
-    name: "Shillelagh",
-    level: 0,
-    school: "Transmutation",
-    castingTime: "1 bonus action",
-    range: "Touch",
-    components: "V, S, M (mistletoe, a shamrock leaf, and a club or quarterstaff)",
-    duration: "1 minute",
-    classes: ["Druid"],
-    description: "The wood of a club or quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for attack and damage rolls, and the weapon's damage die becomes a d8."
-  },
-  {
-    name: "Light",
-    level: 0,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "Touch",
-    components: "V, M (a firefly or phosphorescent moss)",
-    duration: "1 hour",
-    classes: ["Bard", "Cleric", "Sorcerer", "Wizard"],
-    description: "You touch one object that is no larger than 10 feet in any dimension. The object sheds bright light in a 20-foot radius and dim light for an additional 20 feet."
-  },
-  {
-    name: "Mending",
-    level: 0,
-    school: "Transmutation",
-    castingTime: "1 minute",
-    range: "Touch",
-    components: "V, S, M (two lodestones)",
-    duration: "Instantaneous",
-    classes: ["Bard", "Cleric", "Druid", "Sorcerer", "Wizard"],
-    description: "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, or a torn cloak. The break must be no larger than 1 foot in any dimension."
-  },
-  {
-    name: "Prestidigitation",
-    level: 0,
-    school: "Transmutation",
-    castingTime: "1 action",
-    range: "10 feet",
-    components: "V, S",
-    duration: "Up to 1 hour",
-    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "A minor magical trick used for practice by spellcasters. You create a small sensory effect, light or snuff a small flame, clean or soil an object, chill or warm material, or create a small trinket or illusory image."
-  },
-  {
-    name: "Thaumaturgy",
-    level: 0,
-    school: "Transmutation",
-    castingTime: "1 action",
-    range: "30 feet",
-    components: "V",
-    duration: "Up to 1 minute",
-    classes: ["Cleric"],
-    description: "You manifest a minor wonder, a sign of supernatural power. You can boom your voice, cause flames to flicker, cause tremors, create an instantaneous sound, fling open doors or windows, or alter your eye appearance."
-  },
-  {
-    name: "Druidcraft",
-    level: 0,
-    school: "Transmutation",
-    castingTime: "1 action",
-    range: "30 feet",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Druid"],
-    description: "You create a tiny, harmless sensory effect that predicts the weather, instantly make a flower blossom or a seed pod open, create a harmless sensory effect like falling leaves, or light or snuff out a small flame."
-  },
-  {
-    name: "Minor Illusion",
-    level: 0,
-    school: "Illusion",
-    castingTime: "1 action",
-    range: "30 feet",
-    components: "S, M (a bit of fleece)",
-    duration: "1 minute",
-    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You create a sound or an image of an object within range that lasts for the duration. A creature that uses its action to examine the image can determine it is an illusion with a successful Intelligence (Investigation) check."
-  },
-  {
-    name: "Fire Bolt",
-    level: 0,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "120 feet",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Sorcerer", "Wizard"],
-    description: "You hurl a mote of fire at a creature or object within range. Make a ranged spell attack; on hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried."
-  },
-  {
-    name: "Ray of Frost",
-    level: 0,
-    school: "Evocation",
+    school: "Conjuration",
     castingTime: "1 action",
     range: "60 feet",
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "A frigid beam of blue-white light streaks toward a creature within range. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn."
+    description: "You hurl a bubble of acid. Choose one or two creatures within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage."
+  },
+  {
+    name: "Blade Ward",
+    level: 0,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "1 round",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You extend your hand and trace a sigil of warding in the air. Until the end of your next turn, you have resistance against bludgeoning, piercing, and slashing damage dealt by weapon attacks."
+  },
+  {
+    name: "Booming Blade",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (5-foot radius)",
+    components: "S, M (a melee weapon worth at least 1 sp)",
+    duration: "1 round",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You brandish the weapon used in the spell's casting and make a melee attack. On a hit, the target suffers the weapon attack's normal effects and becomes sheathed in booming energy. If it willingly moves before your next turn, it takes 1d8 thunder damage."
   },
   {
     name: "Chill Touch",
@@ -133,15 +45,81 @@ export const SPELLS_DB = [
     description: "You create a ghostly, skeletal hand that assails a creature with the chill of the grave. On a hit, the target takes 1d8 necrotic damage and can't regain hit points until the start of your next turn."
   },
   {
-    name: "Vicious Mockery",
+    name: "Create Bonfire",
+    level: 0,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You create a bonfire on ground you can see within range. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage."
+  },
+  {
+    name: "Dancing Lights",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a bit of phosphorus or wychwood, or a glowworm)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "You create up to four torch-sized lights within range that can appear as torches, lanterns, or glowing orbs that hover in the air. You can combine them into one glowing Medium-sized humanoid form."
+  },
+  {
+    name: "Druidcraft",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Druid"],
+    description: "You create a tiny, harmless sensory effect that predicts the weather, instantly make a flower blossom or a seed pod open, create a harmless sensory effect like falling leaves, or light or snuff out a small flame."
+  },
+  {
+    name: "Eldritch Blast",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Warlock"],
+    description: "A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack; on hit, the target takes 1d10 force damage. The spell creates additional beams at higher levels."
+  },
+  {
+    name: "Fire Bolt",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You hurl a mote of fire at a creature or object within range. Make a ranged spell attack; on hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried."
+  },
+  {
+    name: "Friends",
     level: 0,
     school: "Enchantment",
     castingTime: "1 action",
-    range: "60 feet",
-    components: "V",
+    range: "Self",
+    components: "S, M (a small amount of makeup)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "For the duration, you have advantage on all Charisma checks directed at one creature of your choice that isn't hostile toward you. When the spell ends, the creature realizes you used magic and becomes hostile."
+  },
+  {
+    name: "Green-Flame Blade",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (5-foot radius)",
+    components: "S, M (a melee weapon worth at least 1 sp)",
     duration: "Instantaneous",
-    classes: ["Bard"],
-    description: "You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target fails a Wisdom saving throw, it takes 1d4 psychic damage and has disadvantage on the next attack roll it makes before the end of its next turn."
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You brandish the weapon used in the spell's casting and make a melee attack. On a hit, the target suffers the normal effects and green fire leaps to a different creature within 5 feet, dealing fire damage equal to your spellcasting ability modifier."
   },
   {
     name: "Guidance",
@@ -155,26 +133,48 @@ export const SPELLS_DB = [
     description: "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice."
   },
   {
-    name: "Toll the Dead",
+    name: "Gust",
     level: 0,
-    school: "Necromancy",
+    school: "Transmutation",
     castingTime: "1 action",
-    range: "60 feet",
+    range: "30 feet",
     components: "V, S",
     duration: "Instantaneous",
-    classes: ["Cleric", "Warlock", "Wizard"],
-    description: "You point at one creature you can see within range, and the sound of a dolorous bell fills the air. The target must succeed on a Wisdom saving throw or take 1d8 necrotic damage, or 1d12 if it is missing any hit points."
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You seize the air and compel it to create one of several effects: push a Medium or smaller creature 5 feet away, push an unattended light object 10 feet, or create a harmless sensory effect using air."
   },
   {
-    name: "Spare the Dying",
+    name: "Infestation",
     level: 0,
-    school: "Necromancy",
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a living flea)",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You cause a cloud of mites, fleas, and other parasites to briefly appear on one creature. The target must succeed on a Constitution saving throw or take 1d6 poison damage and move 5 feet in a random direction."
+  },
+  {
+    name: "Light",
+    level: 0,
+    school: "Evocation",
     castingTime: "1 action",
     range: "Touch",
-    components: "V, S",
+    components: "V, M (a firefly or phosphorescent moss)",
+    duration: "1 hour",
+    classes: ["Bard", "Cleric", "Sorcerer", "Wizard"],
+    description: "You touch one object that is no larger than 10 feet in any dimension. The object sheds bright light in a 20-foot radius and dim light for an additional 20 feet."
+  },
+  {
+    name: "Lightning Lure",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (15-foot radius)",
+    components: "V",
     duration: "Instantaneous",
-    classes: ["Cleric"],
-    description: "You touch a living creature that has 0 hit points. The creature becomes stable. This spell has no effect on undead or constructs."
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You create a lash of lightning energy that strikes at one creature of your choice within 15 feet. The target must succeed on a Strength saving throw or be pulled up to 10 feet toward you and take 1d8 lightning damage if within 5 feet."
   },
   {
     name: "Mage Hand",
@@ -188,6 +188,28 @@ export const SPELLS_DB = [
     description: "A spectral, floating hand appears at a point you choose within range. The hand can manipulate objects, open unlocked doors, stow or retrieve items, or pour out a vial, but it can't attack, activate magic items, or carry more than 10 pounds."
   },
   {
+    name: "Magic Stone",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Touch",
+    components: "V, S",
+    duration: "1 minute",
+    classes: ["Druid", "Warlock"],
+    description: "You touch one to three pebbles and imbue them with magic. You or someone else can make a ranged spell attack with one of the pebbles; on hit, the target takes 1d6 + your spellcasting ability modifier bludgeoning damage."
+  },
+  {
+    name: "Mending",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "V, S, M (two lodestones)",
+    duration: "Instantaneous",
+    classes: ["Bard", "Cleric", "Druid", "Sorcerer", "Wizard"],
+    description: "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, or a torn cloak. The break must be no larger than 1 foot in any dimension."
+  },
+  {
     name: "Message",
     level: 0,
     school: "Transmutation",
@@ -198,18 +220,436 @@ export const SPELLS_DB = [
     classes: ["Bard", "Sorcerer", "Wizard"],
     description: "You point your finger toward a creature within range and whisper a message. The target hears the message and can reply in a whisper that only you can hear. You can cast this through solid objects if you are familiar with the target."
   },
-
-  // ─── 1ST LEVEL ────────────────────────────────────────────────────────
   {
-    name: "Magic Missile",
+    name: "Minor Illusion",
+    level: 0,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S, M (a bit of fleece)",
+    duration: "1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You create a sound or an image of an object within range that lasts for the duration. A creature that uses its action to examine the image can determine it is an illusion with a successful Intelligence (Investigation) check."
+  },
+  {
+    name: "Mold Earth",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S",
+    duration: "Instantaneous or 1 hour",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You choose a portion of dirt or stone no larger than 5 feet on a side. You can excavate it, move it along the ground, cause shapes or colors to appear, or cause it to become difficult terrain."
+  },
+  {
+    name: "Poison Spray",
+    level: 0,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You extend your hand toward a creature you can see within range and project a puff of noxious gas. The creature must succeed on a Constitution saving throw or take 1d12 poison damage."
+  },
+  {
+    name: "Prestidigitation",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S",
+    duration: "Up to 1 hour",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "A minor magical trick used for practice by spellcasters. You create a small sensory effect, light or snuff a small flame, clean or soil an object, chill or warm material, or create a small trinket or illusory image."
+  },
+  {
+    name: "Produce Flame",
+    level: 0,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "10 minutes",
+    classes: ["Druid"],
+    description: "A flickering flame appears in your hand, shedding bright light in a 10-foot radius and dim light for an additional 10 feet. You can also hurl the flame at a creature within 30 feet, making a ranged spell attack for 1d8 fire damage."
+  },
+  {
+    name: "Ray of Frost",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A frigid beam of blue-white light streaks toward a creature within range. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn."
+  },
+  {
+    name: "Resistance",
+    level: 0,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a miniature cloak)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Cleric", "Druid"],
+    description: "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one saving throw of its choice."
+  },
+  {
+    name: "Sacred Flame",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "Flame-like radiance descends on a creature you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage, gaining no benefit from cover."
+  },
+  {
+    name: "Shape Water",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S",
+    duration: "Instantaneous or 1 hour",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You choose an area of water within range that fits within a 5-foot cube. You can move or change the flow of the water, form it into simple shapes, change its color or opacity, or freeze it for 1 hour."
+  },
+  {
+    name: "Shillelagh",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Touch",
+    components: "V, S, M (mistletoe, a shamrock leaf, and a club or quarterstaff)",
+    duration: "1 minute",
+    classes: ["Druid"],
+    description: "The wood of a club or quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for attack and damage rolls, and the weapon's damage die becomes a d8."
+  },
+  {
+    name: "Shocking Grasp",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "Lightning springs from your hand to deliver a shock to a creature you try to touch. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage and can't take reactions until the start of its next turn."
+  },
+  {
+    name: "Spare the Dying",
+    level: 0,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You touch a living creature that has 0 hit points. The creature becomes stable. This spell has no effect on undead or constructs."
+  },
+  {
+    name: "Sword Burst",
+    level: 0,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Self (5-foot radius)",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You create a momentary circle of spectral blades that sweep around you. Each creature within 5 feet of you must succeed on a Dexterity saving throw or take 1d6 force damage."
+  },
+  {
+    name: "Thaumaturgy",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V",
+    duration: "Up to 1 minute",
+    classes: ["Cleric"],
+    description: "You manifest a minor wonder, a sign of supernatural power. You can boom your voice, cause flames to flicker, cause tremors, create an instantaneous sound, fling open doors or windows, or alter your eye appearance."
+  },
+  {
+    name: "Thorn Whip",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (the stem of a plant with thorns)",
+    duration: "Instantaneous",
+    classes: ["Druid"],
+    description: "You create a long, vine-like whip covered in thorns that lashes out at a creature in range. Make a melee spell attack; on a hit, the creature takes 1d6 piercing damage, and if Large or smaller, you pull it up to 10 feet closer to you."
+  },
+  {
+    name: "Thunderclap",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (5-foot radius)",
+    components: "S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You create a burst of thunderous sound that can be heard up to 100 feet away. Each creature within 5 feet of you must make a Constitution saving throw or take 1d6 thunder damage."
+  },
+  {
+    name: "Toll the Dead",
+    level: 0,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Warlock", "Wizard"],
+    description: "You point at one creature you can see within range, and the sound of a dolorous bell fills the air. The target must succeed on a Wisdom saving throw or take 1d8 necrotic damage, or 1d12 if it is missing any hit points."
+  },
+  {
+    name: "True Strike",
+    level: 0,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S",
+    duration: "Concentration, up to 1 round",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You extend your hand and point a finger at a target in range. Your magic grants you a brief insight into the target's defenses. On your next turn, you gain advantage on your first attack roll against the target."
+  },
+  {
+    name: "Vicious Mockery",
+    level: 0,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Bard"],
+    description: "You unleash a string of insults laced with subtle enchantments at a creature you can see. If the target fails a Wisdom saving throw, it takes 1d4 psychic damage and has disadvantage on the next attack roll it makes before the end of its next turn."
+  },
+  {
+    name: "Word of Radiance",
+    level: 0,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "5 feet",
+    components: "V, M (a holy symbol)",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You utter a divine word, and burning radiance erupts from you. Each creature of your choice that you can see within range must succeed on a Constitution saving throw or take 1d6 radiant damage."
+  },
+
+  // ─── LEVEL 1 ──────────────────────────────────────────────────────────
+  {
+    name: "Absorb Elements",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 reaction",
+    range: "Self",
+    components: "S",
+    duration: "1 round",
+    classes: ["Druid", "Ranger", "Sorcerer", "Wizard"],
+    description: "When you take acid, cold, fire, lightning, or thunder damage, you can use your reaction to gain resistance to that damage type until the start of your next turn. The first melee attack you make on your next turn deals an extra 1d6 damage of the triggering type."
+  },
+  {
+    name: "Alarm",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 minute",
+    range: "30 feet",
+    components: "V, S, M (a tiny bell and a piece of fine silver wire)",
+    duration: "8 hours",
+    classes: ["Ranger", "Wizard"],
+    description: "You set an alarm against unwanted intrusion. Choose a door, window, or area within range no larger than a 20-foot cube. Until the spell ends, an alarm alerts you whenever a creature touches or enters the warded area."
+  },
+  {
+    name: "Animal Friendship",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a morsel of food)",
+    duration: "24 hours",
+    classes: ["Bard", "Druid", "Ranger"],
+    description: "This spell lets you convince a beast that you mean it no harm. Choose a beast within range that can see and hear you. It must succeed on a Wisdom saving throw or be charmed by you for the spell's duration."
+  },
+  {
+    name: "Armor of Agathys",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a cup of water)",
+    duration: "1 hour",
+    classes: ["Warlock"],
+    description: "A protective magical force surrounds you, manifesting as spectral frost. You gain 5 temporary hit points for the duration. If a creature hits you with a melee attack while you have these hit points, the creature takes 5 cold damage."
+  },
+  {
+    name: "Arms of Hadar",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Self (10-foot radius)",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Warlock"],
+    description: "You invoke the power of Hadar. Tendrils of dark energy erupt from you. Each creature within 10 feet must make a Strength saving throw. On a failure, a target takes 2d6 necrotic damage and can't take reactions until its next turn."
+  },
+  {
+    name: "Bane",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a drop of blood)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Cleric"],
+    description: "Up to three creatures of your choice within range must make Charisma saving throws. On a failure, whenever a target makes an attack roll or saving throw before the spell ends, it must roll a d4 and subtract the number rolled."
+  },
+  {
+    name: "Bless",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a sprinkling of holy water)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Cleric", "Paladin"],
+    description: "You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or saving throw before the spell ends, the target can roll a d4 and add the number rolled."
+  },
+  {
+    name: "Burning Hands",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (15-foot cone)",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth. Each creature in a 15-foot cone must make a Dexterity saving throw, taking 3d6 fire damage on a failure, or half on a success."
+  },
+  {
+    name: "Catapult",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "Choose one object weighing 1 to 5 pounds that isn't being worn or carried. The object flies in a straight line up to 90 feet and strikes a creature, which must make a Dexterity saving throw or take 3d8 bludgeoning damage."
+  },
+  {
+    name: "Cause Fear",
+    level: 1,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Warlock", "Wizard"],
+    description: "You awaken the sense of mortality in one creature you can see within range. The target must succeed on a Wisdom saving throw or become frightened of you until the spell ends."
+  },
+  {
+    name: "Ceremony",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 hour",
+    range: "Touch",
+    components: "V, S, M (25 gp worth of powdered silver)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Paladin"],
+    description: "You perform a special religious ceremony infused with magic. Choose one of several rites: Atonement, Bless Water, Coming of Age, Dedication, Funeral Rite, or Wedding."
+  },
+  {
+    name: "Chaos Bolt",
     level: 1,
     school: "Evocation",
     castingTime: "1 action",
     range: "120 feet",
     components: "V, S",
     duration: "Instantaneous",
+    classes: ["Sorcerer"],
+    description: "You hurl an undulating, warbling mass of chaotic energy at a creature. On a hit, the target takes 2d8 + 1d6 damage. Choose one of the d8s to determine the damage type. If you roll the same number on both d8s, the bolt leaps to a different target."
+  },
+  {
+    name: "Charm Person",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "1 hour",
+    classes: ["Bard", "Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You attempt to charm a humanoid you can see within range. It must make a Wisdom saving throw, with advantage if you or your companions are fighting it. If it fails, it is charmed by you until the spell ends or you harm it."
+  },
+  {
+    name: "Chromatic Orb",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a diamond worth at least 50 gp)",
+    duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "You create three glowing darts of magical force. Each dart automatically hits a creature of your choice that you can see within range, dealing 1d4+1 force damage. You can direct them at one or multiple targets."
+    description: "You hurl a 4-inch-diameter sphere of energy at a creature. Choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create. On a hit, the creature takes 3d8 damage of the chosen type."
+  },
+  {
+    name: "Color Spray",
+    level: 1,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "Self (15-foot cone)",
+    components: "V, S, M (a pinch of powder or sand colored red, yellow, and blue)",
+    duration: "1 round",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A dazzling array of flashing, colored light springs from your hand. Roll 6d10; the total is how many hit points of creatures this spell can affect, starting with the lowest. Affected creatures are blinded until the end of your next turn."
+  },
+  {
+    name: "Command",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V",
+    duration: "1 round",
+    classes: ["Cleric", "Paladin"],
+    description: "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Common commands include Approach, Drop, Flee, Grovel, and Halt."
+  },
+  {
+    name: "Compelled Duel",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 bonus action",
+    range: "30 feet",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "You attempt to compel a creature into a duel. The target must make a Wisdom saving throw. On a failure, the creature is drawn to you, compelled by your demand. It has disadvantage on attack rolls against creatures other than you."
+  },
+  {
+    name: "Comprehend Languages",
+    level: 1,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a pinch of soot and salt)",
+    duration: "1 hour",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "For the duration, you understand the literal meaning of any spoken language that you hear. You also understand any written language that you see, but you must be touching the surface on which the words are written."
+  },
+  {
+    name: "Create or Destroy Water",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a drop of water or a few grains of sand)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Druid"],
+    description: "You either create up to 10 gallons of clean water within range in an open container, or you destroy up to 10 gallons of water in an open container or a 30-foot cube of fog."
   },
   {
     name: "Cure Wounds",
@@ -223,125 +663,15 @@ export const SPELLS_DB = [
     description: "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
   },
   {
-    name: "Healing Word",
-    level: 1,
-    school: "Evocation",
-    castingTime: "1 bonus action",
-    range: "60 feet",
-    components: "V",
-    duration: "Instantaneous",
-    classes: ["Bard", "Cleric", "Druid"],
-    description: "A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
-  },
-  {
-    name: "Shield",
-    level: 1,
-    school: "Abjuration",
-    castingTime: "1 reaction",
-    range: "Self",
-    components: "V, S",
-    duration: "1 round",
-    classes: ["Sorcerer", "Wizard"],
-    description: "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile."
-  },
-  {
-    name: "Mage Armor",
-    level: 1,
-    school: "Abjuration",
-    castingTime: "1 action",
-    range: "Touch",
-    components: "V, S, M (a piece of cured leather)",
-    duration: "8 hours",
-    classes: ["Sorcerer", "Wizard"],
-    description: "You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier."
-  },
-  {
-    name: "Thunderwave",
-    level: 1,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "Self (15-foot cube)",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
-    description: "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw, taking 2d8 thunder damage on a failure, or half as much on a success. Creatures that fail are pushed 10 feet away."
-  },
-  {
-    name: "Hex",
-    level: 1,
-    school: "Enchantment",
-    castingTime: "1 bonus action",
-    range: "90 feet",
-    components: "V, S, M (the petrified eye of a newt)",
-    duration: "Concentration, up to 1 hour",
-    classes: ["Warlock"],
-    description: "You place a curse on a creature within range. Until the spell ends, you deal an extra 1d6 necrotic damage to the target whenever you hit it with an attack. You also choose one ability; the target has disadvantage on ability checks made with that ability."
-  },
-  {
-    name: "Speak with Animals",
+    name: "Detect Evil and Good",
     level: 1,
     school: "Divination",
     castingTime: "1 action",
     range: "Self",
     components: "V, S",
-    duration: "10 minutes",
-    classes: ["Bard", "Druid", "Ranger"],
-    description: "You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited, but they can relay information about nearby locations and monsters."
-  },
-  {
-    name: "Entangle",
-    level: 1,
-    school: "Conjuration",
-    castingTime: "1 action",
-    range: "90 feet",
-    components: "V, S",
-    duration: "Concentration, up to 1 minute",
-    classes: ["Druid"],
-    description: "Grasping weeds and vines sprout from the ground in a 20-foot square within range. Creatures in the area must succeed on a Strength saving throw or be restrained. A restrained creature can use its action to make a Strength check to free itself."
-  },
-  {
-    name: "Bless",
-    level: 1,
-    school: "Enchantment",
-    castingTime: "1 action",
-    range: "30 feet",
-    components: "V, S, M (a sprinkling of holy water)",
-    duration: "Concentration, up to 1 minute",
+    duration: "Concentration, up to 10 minutes",
     classes: ["Cleric", "Paladin"],
-    description: "You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or saving throw before the spell ends, the target can roll a d4 and add the number rolled to the result."
-  },
-  {
-    name: "Identify",
-    level: 1,
-    school: "Divination",
-    castingTime: "1 minute",
-    range: "Touch",
-    components: "V, S, M (a pearl worth at least 100 gp and an owl feather)",
-    duration: "Instantaneous",
-    classes: ["Bard", "Wizard"],
-    description: "You choose one object that you must touch throughout the casting. If it is a magic item or magical object, you learn its properties and how to use them, whether it requires attunement, and how many charges it has."
-  },
-  {
-    name: "Burning Hands",
-    level: 1,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "Self (15-foot cone)",
-    components: "V, S",
-    duration: "Instantaneous",
-    classes: ["Sorcerer", "Wizard"],
-    description: "As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth. Each creature in a 15-foot cone must make a Dexterity saving throw, taking 3d6 fire damage on a failure, or half as much on a success."
-  },
-  {
-    name: "Chromatic Orb",
-    level: 1,
-    school: "Evocation",
-    castingTime: "1 action",
-    range: "90 feet",
-    components: "V, S, M (a diamond worth at least 50 gp)",
-    duration: "Instantaneous",
-    classes: ["Sorcerer", "Wizard"],
-    description: "You hurl a 4-inch-diameter sphere of energy at a creature you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb, then make a ranged spell attack dealing 3d8 damage of that type on a hit."
+    description: "For the duration, you know if there is an aberration, celestial, elemental, fey, fiend, or undead within 30 feet of you, as well as where the creature is located."
   },
   {
     name: "Detect Magic",
@@ -355,6 +685,17 @@ export const SPELLS_DB = [
     description: "For the duration, you sense the presence of magic within 30 feet of you. If you sense magic, you can use your action to see a faint aura around any visible creature or object that bears magic, and you learn its school of magic."
   },
   {
+    name: "Detect Poison and Disease",
+    level: 1,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a yew leaf)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric", "Druid", "Paladin", "Ranger"],
+    description: "For the duration, you can sense the presence and location of poisons, poisonous creatures, and diseases within 30 feet of you. You also identify the kind of poison, creature, or disease in each case."
+  },
+  {
     name: "Disguise Self",
     level: 1,
     school: "Illusion",
@@ -363,7 +704,73 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "1 hour",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "You make yourself, including your clothing, armor, weapons, and other belongings, look different until the spell ends or you dismiss it. You can appear up to 1 foot shorter or taller and can appear thin, fat, or in between."
+    description: "You make yourself look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. The changes fail to hold up to physical inspection."
+  },
+  {
+    name: "Dissonant Whispers",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Bard"],
+    description: "You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failure, it takes 3d6 psychic damage and must use its reaction to move away from you."
+  },
+  {
+    name: "Divine Favor",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "Your prayer empowers you with divine radiance. Until the spell ends, your weapon attacks deal an extra 1d4 radiant damage on a hit."
+  },
+  {
+    name: "Earth Tremor",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
+    description: "You cause a tremor in the ground within 10 feet of you. Each creature other than you in that area must make a Dexterity saving throw. On a failure, a creature takes 1d6 bludgeoning damage and is knocked prone."
+  },
+  {
+    name: "Ensnaring Strike",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Ranger"],
+    description: "The next time you hit a creature with a weapon attack, a writhing mass of thorny vines appears at the point of impact. The target must succeed on a Strength saving throw or be restrained. A Large or larger creature has advantage on this save."
+  },
+  {
+    name: "Entangle",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid"],
+    description: "Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range. The area becomes difficult terrain, and each creature in the area must succeed on a Strength saving throw or be restrained."
+  },
+  {
+    name: "Expeditious Retreat",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "This spell allows you to move at an incredible pace. When you cast this spell, and then as a bonus action on each of your turns until the spell ends, you can take the Dash action."
   },
   {
     name: "Faerie Fire",
@@ -374,7 +781,40 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Druid"],
-    description: "Each object in a 20-foot cube within range is outlined in blue, green, or violet light. Any creature in the area must succeed on a Dexterity saving throw or be outlined as well. Attack rolls against an affected creature or object have advantage, and the creature or object can't benefit from being invisible."
+    description: "Each object in a 20-foot cube within range is outlined in blue, green, or violet light. Any creature in the area when the spell is cast must succeed on a Dexterity saving throw or be outlined as well. Attack rolls against affected creatures or objects have advantage."
+  },
+  {
+    name: "False Life",
+    level: 1,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a small amount of alcohol or distilled spirits)",
+    duration: "1 hour",
+    classes: ["Sorcerer", "Wizard"],
+    description: "Bolstering yourself with a necromantic facsimile of life, you gain 1d4 + 4 temporary hit points for the duration."
+  },
+  {
+    name: "Feather Fall",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 reaction",
+    range: "60 feet",
+    components: "V, M (a small feather or piece of down)",
+    duration: "1 minute",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If the creature lands before the spell ends, it takes no falling damage."
+  },
+  {
+    name: "Find Familiar",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 hour",
+    range: "10 feet",
+    components: "V, S, M (10 gp worth of charcoal, incense, and herbs consumed by fire in a brass brazier)",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "You gain the service of a familiar, a spirit that takes an animal form you choose. The familiar acts independently but obeys your commands. You can communicate with it telepathically and perceive through its senses."
   },
   {
     name: "Fog Cloud",
@@ -385,7 +825,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 hour",
     classes: ["Druid", "Ranger", "Sorcerer", "Wizard"],
-    description: "You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. A wind of moderate or greater speed disperses it."
+    description: "You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured."
   },
   {
     name: "Goodberry",
@@ -396,7 +836,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a sprig of mistletoe)",
     duration: "Instantaneous",
     classes: ["Druid", "Ranger"],
-    description: "Up to ten berries appear in your hand and are infused with magic for the duration. A creature can use its action to eat one berry, restoring 1 hit point. The berries provide enough nourishment for a day."
+    description: "Up to ten berries appear in your hand and are infused with magic for the duration. A creature can use its action to eat one berry, restoring 1 hit point. The berries also provide enough nourishment for one day."
+  },
+  {
+    name: "Grease",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a bit of pork rind or butter)",
+    duration: "1 minute",
+    classes: ["Wizard"],
+    description: "Slick grease covers the ground in a 10-foot square centered on a point within range, turning it into difficult terrain. When the grease appears, each creature standing in the area must succeed on a Dexterity saving throw or fall prone."
   },
   {
     name: "Guiding Bolt",
@@ -407,7 +858,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "1 round",
     classes: ["Cleric"],
-    description: "A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack; on hit, the target takes 4d6 radiant damage, and the next attack roll made against it before the end of your next turn has advantage."
+    description: "A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack; on a hit, the target takes 4d6 radiant damage, and the next attack roll made against this target before the end of your next turn has advantage."
+  },
+  {
+    name: "Hail of Thorns",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Ranger"],
+    description: "The next time you hit a creature with a ranged weapon attack, a rain of thorns sprouts from your ammunition. The target and each creature within 5 feet of it must make a Dexterity saving throw, taking 1d10 piercing damage on a failure."
+  },
+  {
+    name: "Healing Word",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "60 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Bard", "Cleric", "Druid"],
+    description: "A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
   },
   {
     name: "Hellish Rebuke",
@@ -418,7 +891,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Warlock"],
-    description: "You point your finger at the creature that damaged you and it is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw, taking 2d10 fire damage on a failure, or half as much on a success."
+    description: "You point your finger at the creature that damaged you, and it is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw, taking 2d10 fire damage on a failure, or half on a success."
+  },
+  {
+    name: "Heroism",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Paladin"],
+    description: "A willing creature you touch is imbued with bravery. Until the spell ends, the creature is immune to being frightened and gains temporary hit points equal to your spellcasting ability modifier at the start of each of its turns."
+  },
+  {
+    name: "Hex",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 bonus action",
+    range: "90 feet",
+    components: "V, S, M (the petrified eye of a newt)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Warlock"],
+    description: "You place a curse on a creature that you can see within range. Until the spell ends, you deal an extra 1d6 necrotic damage to the target whenever you hit it with an attack. Also, choose one ability; the target has disadvantage on ability checks made with the chosen ability."
   },
   {
     name: "Hunter's Mark",
@@ -429,7 +924,40 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Concentration, up to 1 hour",
     classes: ["Ranger"],
-    description: "You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra 1d6 damage to the target whenever you hit it with a weapon attack, and you have advantage on Perception and Survival checks to find it."
+    description: "You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra 1d6 damage to the target whenever you hit it with a weapon attack. You also have advantage on Perception and Survival checks to find it."
+  },
+  {
+    name: "Ice Knife",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "S, M (a drop of water or piece of ice)",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You create a shard of ice and fling it at one creature within range. Make a ranged spell attack; on a hit, the target takes 1d10 piercing damage. The shard then explodes, and each creature within 5 feet must succeed on a Dexterity save or take 2d6 cold damage."
+  },
+  {
+    name: "Identify",
+    level: 1,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "V, S, M (a pearl worth at least 100 gp and an owl feather)",
+    duration: "Instantaneous",
+    classes: ["Bard", "Wizard"],
+    description: "You choose one object that you must touch throughout the casting. If it is a magic item or magical object, you learn its properties and how to use them, whether it requires attunement, and how many charges it has."
+  },
+  {
+    name: "Illusory Script",
+    level: 1,
+    school: "Illusion",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "S, M (a lead-based ink worth at least 10 gp)",
+    duration: "10 days",
+    classes: ["Bard", "Warlock", "Wizard"],
+    description: "You write on parchment, paper, or other suitable material and imbue it with a potent illusion. To you and any creatures you designate, the writing appears normal. To all others, the writing appears as an unknown or magical script or a different message."
   },
   {
     name: "Inflict Wounds",
@@ -440,7 +968,18 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Cleric"],
-    description: "Make a melee spell attack against a creature you can reach. On hit, the target takes 3d10 necrotic damage. This is one of the highest damage single-target spells at 1st level."
+    description: "Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage."
+  },
+  {
+    name: "Jump",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a grasshopper's hind leg)",
+    duration: "1 minute",
+    classes: ["Druid", "Ranger", "Sorcerer", "Wizard"],
+    description: "You touch a creature. The creature's jump distance is tripled until the spell ends."
   },
   {
     name: "Longstrider",
@@ -454,6 +993,61 @@ export const SPELLS_DB = [
     description: "You touch a creature. The target's speed increases by 10 feet until the spell ends."
   },
   {
+    name: "Mage Armor",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a piece of cured leather)",
+    duration: "8 hours",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier."
+  },
+  {
+    name: "Magic Missile",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range, dealing 1d4 + 1 force damage. The darts all strike simultaneously."
+  },
+  {
+    name: "Protection from Evil and Good",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (holy water or powdered silver and iron)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric", "Paladin", "Warlock", "Wizard"],
+    description: "Until the spell ends, one willing creature you touch is protected against aberrations, celestials, elementals, fey, fiends, and undead. Those creatures have disadvantage on attack rolls against the target and cannot charm, frighten, or possess it."
+  },
+  {
+    name: "Purify Food and Drink",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Druid", "Paladin"],
+    description: "All nonmagical food and drink within a 5-foot-radius sphere centered on a point of your choice within range is purified and rendered free of poison and disease."
+  },
+  {
+    name: "Ray of Sickness",
+    level: 1,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack; on a hit, the target takes 2d8 poison damage and must make a Constitution saving throw or be poisoned until the end of your next turn."
+  },
+  {
     name: "Sanctuary",
     level: 1,
     school: "Abjuration",
@@ -462,7 +1056,51 @@ export const SPELLS_DB = [
     components: "V, S, M (a small silver mirror)",
     duration: "1 minute",
     classes: ["Cleric"],
-    description: "You ward a creature within range against attack. Any creature that targets the warded creature with an attack or harmful spell must first make a Wisdom saving throw; on a failure, the creature must choose a new target or lose the attack or spell."
+    description: "You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or harmful spell must first make a Wisdom saving throw. On a failure, it must choose a new target or lose the attack or spell."
+  },
+  {
+    name: "Searing Smite",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit a creature with a melee weapon attack, your weapon flares with white-hot intensity and deals an extra 1d6 fire damage. The target must make a Constitution saving throw or ignite in flames, taking 1d6 fire damage at the start of each of its turns."
+  },
+  {
+    name: "Shield",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 reaction",
+    range: "Self",
+    components: "V, S",
+    duration: "1 round",
+    classes: ["Sorcerer", "Wizard"],
+    description: "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile."
+  },
+  {
+    name: "Shield of Faith",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 bonus action",
+    range: "60 feet",
+    components: "V, S, M (a small parchment with a bit of holy text written on it)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric", "Paladin"],
+    description: "A shimmering field appears and surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration."
+  },
+  {
+    name: "Silent Image",
+    level: 1,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a bit of fleece)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot cube. The image appears at a spot within range and lasts for the duration. It is purely visual."
   },
   {
     name: "Sleep",
@@ -473,7 +1111,84 @@ export const SPELLS_DB = [
     components: "V, S, M (a pinch of fine sand, rose petals, or a cricket)",
     duration: "1 minute",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "You send creatures into a magical slumber. Roll 5d8; the total is how many hit points of creatures this spell can affect. Starting with the creature with the lowest current hit points, each creature falls unconscious."
+    description: "This spell sends creatures into a magical slumber. Roll 5d8; the total is how many hit points of creatures this spell can affect, starting with the creature with the lowest current hit points. Undead and creatures immune to being charmed are unaffected."
+  },
+  {
+    name: "Snare",
+    level: 1,
+    school: "Abjuration",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "S, M (25 feet of rope)",
+    duration: "8 hours",
+    classes: ["Druid", "Ranger", "Wizard"],
+    description: "You create a magical trap on a surface within reach. The trap is nearly invisible and requires a successful Intelligence (Investigation) check to be found. A creature that steps on the trap must succeed on a Dexterity saving throw or be hoisted 3 feet into the air, restrained."
+  },
+  {
+    name: "Speak with Animals",
+    level: 1,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "10 minutes",
+    classes: ["Bard", "Druid", "Ranger"],
+    description: "You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters."
+  },
+  {
+    name: "Tasha's Hideous Laughter",
+    level: 1,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (tiny tarts and a feather)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Wizard"],
+    description: "A creature of your choice that you can see within range perceives everything as hilariously funny and falls into fits of laughter. The target must succeed on a Wisdom saving throw or fall prone, becoming incapacitated and unable to stand up."
+  },
+  {
+    name: "Tenser's Floating Disk",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a drop of mercury)",
+    duration: "1 hour",
+    classes: ["Wizard"],
+    description: "This spell creates a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground. The disk can hold up to 500 pounds and follows you at a distance of 20 feet."
+  },
+  {
+    name: "Thunderous Smite",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder and deals an extra 2d6 thunder damage. The target must succeed on a Strength saving throw or be pushed 10 feet away and knocked prone."
+  },
+  {
+    name: "Thunderwave",
+    level: 1,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (15-foot cube)",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
+    description: "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failure, a creature takes 2d8 thunder damage and is pushed 10 feet away from you."
+  },
+  {
+    name: "Unseen Servant",
+    level: 1,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a piece of string and a bit of wood)",
+    duration: "1 hour",
+    classes: ["Bard", "Warlock", "Wizard"],
+    description: "This spell creates an invisible, mindless, shapeless force that performs simple tasks at your command. The servant can perform simple tasks that a human servant could do, such as fetching things, cleaning, and mending."
   },
   {
     name: "Witch Bolt",
@@ -484,20 +1199,42 @@ export const SPELLS_DB = [
     components: "V, S, M (a twig from a tree that has been struck by lightning)",
     duration: "Concentration, up to 1 minute",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "A beam of crackling blue energy lances toward a creature within range. On a hit, the target takes 1d12 lightning damage, and on each of your turns for the duration, you can use your action to deal 1d12 lightning damage automatically."
+    description: "A beam of crackling, blue energy lances out toward a creature within range. Make a ranged spell attack; on a hit, the target takes 1d12 lightning damage. On each of your turns, you can use your action to deal 1d12 lightning damage to the target automatically."
   },
-
-  // ─── 2ND LEVEL ────────────────────────────────────────────────────────
   {
-    name: "Misty Step",
-    level: 2,
-    school: "Conjuration",
+    name: "Wrathful Smite",
+    level: 1,
+    school: "Evocation",
     castingTime: "1 bonus action",
     range: "Self",
     components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra 1d6 psychic damage. If the target is a creature, it must make a Wisdom saving throw or be frightened of you until the spell ends."
+  },
+  {
+    name: "Zephyr Strike",
+    level: 1,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Ranger"],
+    description: "You move like the wind. Until the spell ends, your movement doesn't provoke opportunity attacks. Once before the spell ends, you can give yourself advantage on one weapon attack roll. If that attack hits, you deal an extra 1d8 force damage and your speed increases by 30 feet until the end of that turn."
+  },
+
+  // ─── LEVEL 2 ──────────────────────────────────────────────────────────
+  {
+    name: "Aganazzar's Scorcher",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a red dragon's scale)",
     duration: "Instantaneous",
-    classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see."
+    classes: ["Sorcerer", "Wizard"],
+    description: "A line of roaring flame 30 feet long and 5 feet wide emanates from you. Each creature in the line must make a Dexterity saving throw, taking 3d8 fire damage on a failure, or half as much on a success."
   },
   {
     name: "Aid",
@@ -511,6 +1248,72 @@ export const SPELLS_DB = [
     description: "Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target's hit point maximum and current hit points increase by 5 for the duration."
   },
   {
+    name: "Alter Self",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You assume a different form. You can choose Aquatic Adaptation (gain a swimming speed and water breathing), Change Appearance (alter your physical form), or Natural Weapons (grow claws, fangs, or other natural weapons)."
+  },
+  {
+    name: "Animal Messenger",
+    level: 2,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a morsel of food)",
+    duration: "24 hours",
+    classes: ["Bard", "Druid", "Ranger"],
+    description: "You choose a Tiny beast you can see within range and specify a location and recipient. The beast travels to that location for the duration, and when it arrives it delivers a short message of up to twenty-five words."
+  },
+  {
+    name: "Arcane Lock",
+    level: 2,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (gold dust worth at least 25 gp)",
+    duration: "Until dispelled",
+    classes: ["Wizard"],
+    description: "You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration. You and designated creatures can open the object normally. You can also set a password that suppresses the spell for 1 minute."
+  },
+  {
+    name: "Augury",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V, S, M (specially marked sticks, bones, or similar tokens worth at least 25 gp)",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You receive an omen from an otherworldly entity about the results of a specific course of action you plan to take within the next 30 minutes. The DM chooses from weal, woe, weal and woe, or nothing."
+  },
+  {
+    name: "Barkskin",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a handful of oak bark)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger"],
+    description: "You touch a willing creature. Until the spell ends, the target's skin has a rough, bark-like appearance, and the target's AC can't be less than 16, regardless of what kind of armor it is wearing."
+  },
+  {
+    name: "Beast Sense",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger"],
+    description: "You touch a willing beast. For the duration, you can use your action to see through the beast's eyes and hear what it hears, gaining the benefits of any special senses that the beast has."
+  },
+  {
     name: "Blindness/Deafness",
     level: 2,
     school: "Necromancy",
@@ -519,7 +1322,29 @@ export const SPELLS_DB = [
     components: "V",
     duration: "1 minute",
     classes: ["Bard", "Cleric", "Sorcerer", "Wizard"],
-    description: "You can blind or deafen a foe. The target must succeed on a Constitution saving throw or be blinded or deafened (your choice) for the duration. The target can repeat the saving throw at the end of each of its turns."
+    description: "You can blind or deafen a foe. Choose one creature that you can see within range. That creature must make a Constitution saving throw. If it fails, the target is either blinded or deafened (your choice) for the duration."
+  },
+  {
+    name: "Blur",
+    level: 2,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "Your body becomes blurred, shifting and wavering to all who can see you. For the duration, any creature has disadvantage on attack rolls against you. An attacker is immune to this effect if it doesn't rely on sight or can see through illusions."
+  },
+  {
+    name: "Branding Smite",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit a creature with a weapon attack before this spell ends, the weapon gleams with astral radiance and deals an extra 2d6 radiant damage. The target becomes visible if it's invisible and it sheds dim light in a 5-foot radius."
   },
   {
     name: "Calm Emotions",
@@ -530,7 +1355,51 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Cleric"],
-    description: "You attempt to suppress strong emotions in a group of people. Each humanoid in a 20-foot-radius sphere must make a Charisma saving throw. On a failure, you can suppress any charmed or frightened effect, or make the target indifferent about hostile creatures."
+    description: "You attempt to suppress strong emotions in a group of people. Each humanoid in a 20-foot-radius sphere must make a Charisma saving throw. On a failure, you can suppress any effect causing the target to be charmed or frightened, or make it indifferent about hostile creatures."
+  },
+  {
+    name: "Cloud of Daggers",
+    level: 2,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a sliver of glass)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You fill the air with spinning daggers in a cube 5 feet on each side, centered on a point you choose within range. A creature takes 4d4 slashing damage when it enters the spell's area for the first time on a turn or starts its turn there."
+  },
+  {
+    name: "Continual Flame",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (ruby dust worth 50 gp)",
+    duration: "Until dispelled",
+    classes: ["Cleric", "Wizard"],
+    description: "A flame, equivalent in brightness to a torch, springs forth from an object that you touch. The flame emits no heat, doesn't use oxygen, and can't be extinguished by nonmagical means."
+  },
+  {
+    name: "Cordon of Arrows",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "5 feet",
+    components: "V, S, M (four or more arrows or bolts)",
+    duration: "8 hours",
+    classes: ["Ranger"],
+    description: "You plant four pieces of nonmagical ammunition in the ground within range. When a creature other than you comes within 30 feet of the ammunition for the first time or ends its turn there, one piece of ammunition flies at it, dealing 1d6 piercing damage on a failed Dexterity save."
+  },
+  {
+    name: "Crown of Madness",
+    level: 2,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "One humanoid of your choice that you can see within range must succeed on a Wisdom saving throw or become charmed by you. A twisted crown of iron appears on its head and a madness glows in its eyes. It must use its action to make a melee attack against a creature you choose."
   },
   {
     name: "Darkness",
@@ -541,7 +1410,7 @@ export const SPELLS_DB = [
     components: "V, M (bat fur and a drop of pitch or piece of coal)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere. Creatures with darkvision can't see through it, and nonmagical light can't illuminate it."
+    description: "Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere. Darkvision can't see through it, and nonmagical light can't illuminate it."
   },
   {
     name: "Darkvision",
@@ -555,6 +1424,50 @@ export const SPELLS_DB = [
     description: "You touch a willing creature to grant it the ability to see in the dark. For the duration, that creature has darkvision out to a range of 60 feet."
   },
   {
+    name: "Detect Thoughts",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a copper piece)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "For the duration, you can read the thoughts of certain creatures. You initially sense the presence of thinking creatures within 30 feet. You can then focus on one creature to read its surface thoughts or probe deeper with a contested Intelligence check."
+  },
+  {
+    name: "Dragon's Breath",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Touch",
+    components: "V, S, M (a hot pepper)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You touch one willing creature and choose acid, cold, fire, lightning, or poison. Until the spell ends, the creature can use an action to exhale energy of the chosen type in a 15-foot cone, dealing 3d6 damage on a failed Dexterity save."
+  },
+  {
+    name: "Dust Devil",
+    level: 2,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a pinch of dust)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "Choose an unoccupied 5-foot cube of air you can see within range. An elemental force that resembles a dust devil appears in the cube and lasts for the duration. Creatures that start their turn adjacent to it must make a Strength save or take 1d8 bludgeoning damage and be pushed 10 feet."
+  },
+  {
+    name: "Earthbind",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "Choose one creature you can see within range. Yellow strips of magical energy loop around the creature. The target must succeed on a Strength saving throw, or its flying speed is reduced to 0 feet and it descends at 60 feet per round."
+  },
+  {
     name: "Enhance Ability",
     level: 2,
     school: "Transmutation",
@@ -563,7 +1476,62 @@ export const SPELLS_DB = [
     components: "V, S, M (fur or a feather from a beast)",
     duration: "Concentration, up to 1 hour",
     classes: ["Bard", "Cleric", "Druid", "Sorcerer"],
-    description: "You touch a creature and bestow upon it a magical enhancement. Choose one of six effects granting advantage on checks with a specific ability score, plus an additional benefit based on the ability chosen."
+    description: "You touch a creature and bestow upon it a magical enhancement. Choose one effect: advantage on Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma checks for the duration. Some options grant additional benefits."
+  },
+  {
+    name: "Enlarge/Reduce",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a pinch of powdered iron)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You cause a creature or an object you can see within range to grow larger or smaller for the duration. Enlarge grants advantage on Strength checks and +1d4 weapon damage. Reduce grants disadvantage on Strength checks and -1d4 weapon damage."
+  },
+  {
+    name: "Enthrall",
+    level: 2,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "1 minute",
+    classes: ["Bard", "Warlock"],
+    description: "You weave a distracting string of words, causing creatures of your choice within range to make a Wisdom saving throw. On a failure, the creature has disadvantage on Wisdom (Perception) checks to perceive any creature other than you."
+  },
+  {
+    name: "Find Steed",
+    level: 2,
+    school: "Conjuration",
+    castingTime: "10 minutes",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Paladin"],
+    description: "You summon a spirit that assumes the form of an unusually intelligent, strong, and loyal steed, establishing a bond with it. The steed serves you as a mount, in combat and out, and you have an instinctive bond with it."
+  },
+  {
+    name: "Find Traps",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Druid", "Ranger"],
+    description: "You sense the presence of any trap within range that is within line of sight. A trap is anything that would inflict a sudden or unexpected effect harmful to you. You learn the general nature but not the exact location of each trap."
+  },
+  {
+    name: "Flame Blade",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V, S, M (leaf of sumac)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid"],
+    description: "You evoke a fiery blade in your free hand. The blade provides bright light in a 10-foot radius and dim light for an additional 10 feet. You can use your action to make a melee spell attack, dealing 3d6 fire damage on a hit."
   },
   {
     name: "Flaming Sphere",
@@ -574,7 +1542,40 @@ export const SPELLS_DB = [
     components: "V, S, M (a bit of tallow, a pinch of brimstone, and a dusting of powdered iron)",
     duration: "Concentration, up to 1 minute",
     classes: ["Druid", "Wizard"],
-    description: "A 5-foot-diameter sphere of fire appears in an unoccupied space within range. Any creature that ends its turn within 5 feet must make a Dexterity saving throw, taking 2d6 fire damage on a failure. You can move the sphere 30 feet as a bonus action."
+    description: "A 5-foot-diameter sphere of fire appears in an unoccupied space within range. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw, taking 2d6 fire damage on a failure. You can move the sphere as a bonus action."
+  },
+  {
+    name: "Gentle Repose",
+    level: 2,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a pinch of salt and one copper piece placed on each of the corpse's eyes)",
+    duration: "10 days",
+    classes: ["Cleric", "Wizard"],
+    description: "You touch a corpse or other remains. For the duration, the target is protected from decay and can't become undead. The spell also extends the time limit on raising the target from the dead."
+  },
+  {
+    name: "Gust of Wind",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (60-foot line)",
+    components: "V, S, M (a legume seed)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "A line of strong wind 60 feet long and 10 feet wide blasts from you. Each creature in the line must succeed on a Strength saving throw or be pushed 15 feet away from you. Any creature in the line must spend 2 feet of movement for every 1 foot moved toward you."
+  },
+  {
+    name: "Heat Metal",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a piece of iron and a flame)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Druid"],
+    description: "Choose a manufactured metal object within range. You cause the object to glow red-hot. Any creature in physical contact with the object takes 2d8 fire damage. If a creature is holding or wearing the object, it must make a Constitution save or drop it."
   },
   {
     name: "Hold Person",
@@ -585,7 +1586,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a small, straight piece of iron)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"],
-    description: "You choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. The target can repeat the saving throw at the end of each of its turns."
+    description: "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. The target can make another saving throw at the end of each of its turns."
   },
   {
     name: "Invisibility",
@@ -626,10 +1627,87 @@ export const SPELLS_DB = [
     school: "Transmutation",
     castingTime: "1 action",
     range: "60 feet",
-    components: "V, S, M (either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end)",
+    components: "V, S, M (either a small leather loop or a piece of golden wire bent into a cup shape)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Sorcerer", "Wizard"],
-    description: "One creature or object of your choice that you can see within range rises vertically, up to 20 feet, and remains suspended there for the duration. An unwilling creature must succeed on a Constitution saving throw to avoid being affected."
+    description: "One creature or object of your choice that you can see within range rises vertically, up to 20 feet, and remains suspended there for the duration. You can change the target's altitude by up to 20 feet in either direction on your turn."
+  },
+  {
+    name: "Locate Animals or Plants",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a bit of fur from a bloodhound)",
+    duration: "Instantaneous",
+    classes: ["Bard", "Druid", "Ranger"],
+    description: "Describe or name a specific kind of beast or plant. Concentrating on the voice of nature in your surroundings, you learn the direction and distance to the closest creature or plant of that kind within 5 miles, if any are present."
+  },
+  {
+    name: "Locate Object",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a forked twig)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Wizard"],
+    description: "Describe or name an object that is familiar to you. You sense the direction to the object's location, as long as that object is within 1,000 feet of you."
+  },
+  {
+    name: "Magic Mouth",
+    level: 2,
+    school: "Illusion",
+    castingTime: "1 minute",
+    range: "30 feet",
+    components: "V, S, M (a small bit of honeycomb and jade dust worth at least 10 gp)",
+    duration: "Until dispelled",
+    classes: ["Bard", "Wizard"],
+    description: "You implant a message within an object in range, a message that is uttered when a trigger condition is met. The message can be up to 25 words long and can be delivered over as long as 10 minutes."
+  },
+  {
+    name: "Magic Weapon",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Paladin", "Wizard"],
+    description: "You touch a nonmagical weapon. Until the spell ends, that weapon becomes a magic weapon with a +1 bonus to attack rolls and damage rolls."
+  },
+  {
+    name: "Maximilian's Earthen Grasp",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a miniature hand sculpted from clay)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You choose a 5-foot-square unoccupied space on the ground that you can see within range. A Medium hand made from compacted soil rises there and reaches for one creature you can see within 5 feet of it. The target must make a Strength save or take 2d6 bludgeoning damage and be restrained."
+  },
+  {
+    name: "Melf's Acid Arrow",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (powdered rhubarb leaf and an adder's stomach)",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack; on a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn."
+  },
+  {
+    name: "Mind Spike",
+    level: 2,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You reach into the mind of one creature you can see within range. The target must make a Wisdom saving throw, taking 3d8 psychic damage on a failure, or half on a success. On a failure, you always know the target's location until the spell ends."
   },
   {
     name: "Mirror Image",
@@ -640,7 +1718,18 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "1 minute",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "Three illusory duplicates of yourself appear in your space. Each time a creature targets you with an attack during the spell's duration, roll to determine whether the attack targets one of your duplicates instead."
+    description: "Three illusory duplicates of yourself appear in your space. Each time a creature targets you with an attack, roll a d20 to determine whether the attack instead targets one of your duplicates. A duplicate's AC equals 10 + your Dexterity modifier."
+  },
+  {
+    name: "Misty Step",
+    level: 2,
+    school: "Conjuration",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see."
   },
   {
     name: "Moonbeam",
@@ -651,10 +1740,21 @@ export const SPELLS_DB = [
     components: "V, S, M (several seeds of any moonseed plant and a piece of opalescent feldspar)",
     duration: "Concentration, up to 1 minute",
     classes: ["Druid"],
-    description: "A silvery beam of pale light shines down in a 5-foot-radius, 40-foot-high cylinder centered on a point within range. A creature that enters the area or starts its turn there must make a Constitution saving throw, taking 2d10 radiant damage on a failure. Shapechangers have disadvantage on this save."
+    description: "A silvery beam of pale light shines down in a 5-foot-radius, 40-foot-high cylinder centered on a point within range. A creature that enters the area or starts its turn there must make a Constitution saving throw, taking 2d10 radiant damage on a failure. Shapechangers have disadvantage."
   },
   {
-    name: "Pass Without Trace",
+    name: "Nystul's Magic Aura",
+    level: 2,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a small square of silk)",
+    duration: "24 hours",
+    classes: ["Wizard"],
+    description: "You place an illusion on a creature or an object you touch so that divination spells reveal false information about it. You can make the target appear magical or nonmagical, or change the apparent type of creature or school of magic."
+  },
+  {
+    name: "Pass without Trace",
     level: 2,
     school: "Abjuration",
     castingTime: "1 action",
@@ -663,6 +1763,17 @@ export const SPELLS_DB = [
     duration: "Concentration, up to 1 hour",
     classes: ["Druid", "Ranger"],
     description: "A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet has a +10 bonus to Dexterity (Stealth) checks and can't be tracked except by magical means."
+  },
+  {
+    name: "Phantasmal Force",
+    level: 2,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a bit of fleece)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "You craft an illusion that takes root in the mind of a creature you can see within range. The target must make an Intelligence saving throw. On a failure, it perceives a phantasmal object, creature, or phenomenon that deals 1d6 psychic damage each turn."
   },
   {
     name: "Prayer of Healing",
@@ -676,6 +1787,50 @@ export const SPELLS_DB = [
     description: "Up to six creatures of your choice that you can see within range each regain hit points equal to 2d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
   },
   {
+    name: "Protection from Poison",
+    level: 2,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "1 hour",
+    classes: ["Cleric", "Druid", "Paladin", "Ranger"],
+    description: "You touch a creature. If it is poisoned, you neutralize the poison. For the duration, the target has advantage on saving throws against being poisoned and has resistance to poison damage."
+  },
+  {
+    name: "Pyrotechnics",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "Choose a nonmagical flame within range. You can either extinguish the fire and create a blinding burst of fireworks (creatures within 10 feet must make a Constitution save or be blinded) or create a cloud of thick smoke that heavily obscures the area."
+  },
+  {
+    name: "Ray of Enfeeblement",
+    level: 2,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Warlock", "Wizard"],
+    description: "A black beam of enervating energy springs from your finger toward a creature within range. Make a ranged spell attack. On a hit, the target deals only half damage with weapon attacks that use Strength until the spell ends."
+  },
+  {
+    name: "Rope Trick",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (powdered corn extract and a twisted loop of parchment)",
+    duration: "1 hour",
+    classes: ["Wizard"],
+    description: "You touch a length of rope that is up to 60 feet long. One end of the rope rises into the air until the whole rope hangs perpendicular to the ground. At the upper end, an invisible entrance opens to an extradimensional space that can hold up to eight Medium creatures."
+  },
+  {
     name: "Scorching Ray",
     level: 2,
     school: "Evocation",
@@ -684,7 +1839,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "You create three rays of fire and hurl them at targets within range. You can direct them at one target or several. Make a ranged spell attack for each ray; on hit, each ray deals 2d6 fire damage."
+    description: "You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several. Make a ranged spell attack for each ray; on a hit, the target takes 2d6 fire damage."
   },
   {
     name: "See Invisibility",
@@ -706,7 +1861,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a chip of mica)",
     duration: "Instantaneous",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "A sudden loud ringing noise erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere must make a Constitution saving throw, taking 3d8 thunder damage on a failure, or half as much on a success. Creatures made of inorganic material have disadvantage."
+    description: "A sudden loud ringing noise erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere must make a Constitution saving throw, taking 3d8 thunder damage on a failure, or half on a success. Creatures made of inorganic material have disadvantage."
   },
   {
     name: "Silence",
@@ -717,7 +1872,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 10 minutes",
     classes: ["Bard", "Cleric", "Ranger"],
-    description: "For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature entirely inside the sphere is immune to thunder damage and is deafened. Casting a spell with a verbal component is impossible within the area."
+    description: "For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are deafened. Casting a spell with a verbal component is impossible there."
+  },
+  {
+    name: "Skywrite",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Sight",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Bard", "Druid", "Wizard"],
+    description: "You cause up to ten words to form in a part of the sky you can see. The words appear to be made of cloud and remain in place for the duration. The words dissipate when the spell ends. A strong wind can disperse the clouds early."
+  },
+  {
+    name: "Snilloc's Snowball Swarm",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a piece of ice or a small white rock chip)",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A flurry of magic snowballs erupts from a point you choose within range. Each creature in a 5-foot-radius sphere centered on that point must make a Dexterity saving throw, taking 3d6 cold damage on a failure, or half on a success."
   },
   {
     name: "Spider Climb",
@@ -728,7 +1905,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a drop of bitumen and a spider)",
     duration: "Concentration, up to 1 hour",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "Until the spell ends, one willing creature you touch gains the ability to move up, down, and across vertical surfaces and upside down along ceilings, while leaving its hands free. The target also gains a climbing speed equal to its walking speed."
+    description: "Until the spell ends, one willing creature you touch gains the ability to move up, down, and across vertical surfaces and upside down along ceilings, while leaving its hands free. The target gains a climbing speed equal to its walking speed."
+  },
+  {
+    name: "Spike Growth",
+    level: 2,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (seven sharp thorns or seven small twigs)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Ranger"],
+    description: "The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain, and a creature that moves through the area takes 2d4 piercing damage for every 5 feet it travels."
   },
   {
     name: "Spiritual Weapon",
@@ -739,7 +1927,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "1 minute",
     classes: ["Cleric"],
-    description: "You create a floating, spectral weapon within range that lasts for the duration. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon, dealing 1d8 + your spellcasting modifier force damage on a hit. As a bonus action, you can move the weapon and attack again."
+    description: "You create a floating, spectral weapon within range that lasts for the duration. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon, dealing 1d8 + your spellcasting ability modifier force damage on a hit. As a bonus action on your turn, you can move the weapon and attack again."
   },
   {
     name: "Suggestion",
@@ -750,7 +1938,29 @@ export const SPELLS_DB = [
     components: "V, M (a snake's tongue and either a bit of honeycomb or a drop of sweet oil)",
     duration: "Concentration, up to 8 hours",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You suggest a course of activity to a creature within range that can hear and understand you. The suggestion must be worded to sound reasonable. The target must make a Wisdom saving throw; on a failure, it pursues the course of action you described."
+    description: "You suggest a course of activity to a creature you can see within range that can hear and understand you. The suggestion must be worded to sound reasonable. The target must make a Wisdom saving throw. On a failure, it pursues the course of action you described."
+  },
+  {
+    name: "Warding Bond",
+    level: 2,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a pair of platinum rings worth at least 50 gp each, which you and the target must wear)",
+    duration: "1 hour",
+    classes: ["Cleric"],
+    description: "This spell wards a willing creature you touch and creates a mystic connection between you. The target gains +1 to AC, +1 to saving throws, and resistance to all damage. Each time it takes damage, you take the same amount of damage."
+  },
+  {
+    name: "Warding Wind",
+    level: 2,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
+    description: "A strong wind swirls around you in a 10-foot radius, moving with you. The wind deafens you and other creatures in its area, extinguishes unprotected flames, and makes the area difficult terrain for other creatures. Ranged weapon attacks into or out of the area have disadvantage."
   },
   {
     name: "Web",
@@ -761,20 +1971,141 @@ export const SPELLS_DB = [
     components: "V, S, M (a bit of spiderweb)",
     duration: "Concentration, up to 1 hour",
     classes: ["Sorcerer", "Wizard"],
-    description: "You conjure a mass of thick, sticky webbing at a point of your choice within range, filling a 20-foot cube. The webs are difficult terrain and lightly obscure the area. A creature that starts its turn in the webs or enters them must succeed on a Dexterity saving throw or be restrained."
+    description: "You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube and are difficult terrain. Each creature that starts its turn in the webs or enters them must make a Dexterity saving throw or be restrained."
+  },
+  {
+    name: "Zone of Truth",
+    level: 2,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "10 minutes",
+    classes: ["Bard", "Cleric", "Paladin"],
+    description: "You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. A creature that enters the area must make a Charisma saving throw. On a failure, a creature can't speak a deliberate lie."
   },
 
-  // ─── 3RD LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 3 ──────────────────────────────────────────────────────────
   {
-    name: "Fireball",
+    name: "Animate Dead",
+    level: 3,
+    school: "Necromancy",
+    castingTime: "1 minute",
+    range: "10 feet",
+    components: "V, S, M (a drop of blood, a piece of flesh, and a pinch of bone dust)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Wizard"],
+    description: "This spell creates an undead servant. Choose a pile of bones or a corpse of a Medium or Small humanoid within range. The target becomes a skeleton or zombie that obeys your commands."
+  },
+  {
+    name: "Aura of Vitality",
     level: 3,
     school: "Evocation",
     castingTime: "1 action",
-    range: "150 feet",
-    components: "V, S, M (a tiny ball of bat guano and sulfur)",
-    duration: "Instantaneous",
+    range: "Self (30-foot radius)",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "Healing energy radiates from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, and you can use a bonus action to cause one creature in the aura to regain 2d6 hit points."
+  },
+  {
+    name: "Beacon of Hope",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Cleric"],
+    description: "This spell bestows hope and vitality. Choose any number of creatures within range. For the duration, each target has advantage on Wisdom saving throws and death saving throws, and regains the maximum number of hit points possible from any healing."
+  },
+  {
+    name: "Bestow Curse",
+    level: 3,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Cleric", "Wizard"],
+    description: "You touch a creature, and that creature must succeed on a Wisdom saving throw or become cursed. You choose the nature of the curse from several options, such as disadvantage on checks with one ability score, disadvantage on attacks against you, wasting turns, or extra necrotic damage from your attacks."
+  },
+  {
+    name: "Blinding Smite",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit a creature with a melee weapon attack during this spell's duration, your weapon flares with bright light, dealing an extra 3d8 radiant damage. The target must succeed on a Constitution saving throw or be blinded until the spell ends."
+  },
+  {
+    name: "Blink",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "1 minute",
     classes: ["Sorcerer", "Wizard"],
-    description: "A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere must make a Dexterity saving throw, taking 8d6 fire damage on a failure, or half as much on a success."
+    description: "At the end of each of your turns, roll a d20. On a roll of 11 or higher, you vanish from your current plane of existence and appear in the Ethereal Plane. At the start of your next turn, you return to an unoccupied space of your choice within 10 feet."
+  },
+  {
+    name: "Call Lightning",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid"],
+    description: "A storm cloud appears in the shape of a cylinder 10 feet tall with a 60-foot radius, centered on a point you can see 100 feet directly above you. Each turn, you can use your action to call a bolt of lightning, dealing 3d10 lightning damage on a failed Dexterity save."
+  },
+  {
+    name: "Catnap",
+    level: 3,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S, M (a pinch of sand)",
+    duration: "10 minutes",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "You make a calming gesture, and up to three willing creatures of your choice within range fall unconscious for the spell's duration. The spell ends on a target early if it takes damage or someone uses an action to shake or slap it awake. A target gains the benefits of a short rest."
+  },
+  {
+    name: "Clairvoyance",
+    level: 3,
+    school: "Divination",
+    castingTime: "10 minutes",
+    range: "1 mile",
+    components: "V, S, M (a focus worth at least 100 gp)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Bard", "Cleric", "Sorcerer", "Wizard"],
+    description: "You create an invisible sensor within range in a location familiar to you or in an obvious location. For the duration, you can see or hear through the sensor as if you were there."
+  },
+  {
+    name: "Conjure Animals",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger"],
+    description: "You summon fey spirits that take the form of beasts. Choose one of several options for the number and challenge rating of beasts summoned. They are friendly to you and your companions and obey your verbal commands."
+  },
+  {
+    name: "Conjure Barrage",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Self (60-foot cone)",
+    components: "V, S, M (one piece of ammunition or a thrown weapon)",
+    duration: "Instantaneous",
+    classes: ["Ranger"],
+    description: "You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the air to create a cone of identical weapons that shoot forward. Each creature in a 60-foot cone must make a Dexterity saving throw, taking 3d8 damage on a failure."
   },
   {
     name: "Counterspell",
@@ -788,37 +2119,37 @@ export const SPELLS_DB = [
     description: "You attempt to interrupt a creature in the process of casting a spell. If the creature is casting a spell of 3rd level or lower, its spell fails. If it is casting a spell of 4th level or higher, make an ability check to counter it."
   },
   {
-    name: "Conjure Animals",
+    name: "Create Food and Water",
     level: 3,
     school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Paladin"],
+    description: "You create 45 pounds of food and 30 gallons of water on the ground or in containers within range, enough to sustain up to fifteen humanoids or five steeds for 24 hours."
+  },
+  {
+    name: "Crusader's Mantle",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "Holy power radiates from you in a 30-foot aura, awakening boldness in friendly creatures. Until the spell ends, each nonhostile creature in the aura deals an extra 1d4 radiant damage when it hits with a weapon attack."
+  },
+  {
+    name: "Daylight",
+    level: 3,
+    school: "Evocation",
     castingTime: "1 action",
     range: "60 feet",
     components: "V, S",
-    duration: "Concentration, up to 1 hour",
-    classes: ["Druid", "Ranger"],
-    description: "You summon fey spirits that take the form of beasts and appear in unoccupied spaces that you can see within range. Choose one of several options for the number and challenge rating of beasts summoned."
-  },
-  {
-    name: "Conjure Woodland Beings",
-    level: 3,
-    school: "Conjuration",
-    castingTime: "1 action",
-    range: "60 feet",
-    components: "V, S, M (one holly berry per creature summoned)",
-    duration: "Concentration, up to 1 hour",
-    classes: ["Druid", "Ranger"],
-    description: "You summon fey creatures that appear in unoccupied spaces that you can see within range. Choose one of several options for the number and challenge rating of fey creatures summoned."
-  },
-  {
-    name: "Call Lightning",
-    level: 3,
-    school: "Conjuration",
-    castingTime: "1 action",
-    range: "120 feet",
-    components: "V, S",
-    duration: "Concentration, up to 10 minutes",
-    classes: ["Druid"],
-    description: "A storm cloud appears above you in a 10-foot-tall, 60-foot-radius cylinder. You call down a bolt of lightning, forcing creatures within 5 feet of the strike point to make a Dexterity saving throw, taking 3d10 lightning damage on a failure. You can call another bolt each turn."
+    duration: "1 hour",
+    classes: ["Cleric", "Druid", "Paladin", "Ranger", "Sorcerer"],
+    description: "A 60-foot-radius sphere of light spreads out from a point you choose within range. The sphere is bright light and sheds dim light for an additional 60 feet. If the area overlaps with magical darkness created by a spell of 3rd level or lower, the darkness is dispelled."
   },
   {
     name: "Dispel Magic",
@@ -829,7 +2160,40 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"],
-    description: "Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher, make an ability check to end it."
+    description: "Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher, make an ability check using your spellcasting ability to end it."
+  },
+  {
+    name: "Elemental Weapon",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Paladin"],
+    description: "A nonmagical weapon you touch becomes a magic weapon. Choose acid, cold, fire, lightning, or thunder. For the duration, the weapon has a +1 bonus to attack rolls and deals an extra 1d4 damage of the chosen type when it hits."
+  },
+  {
+    name: "Enemies Abound",
+    level: 3,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You reach into the mind of one creature you can see and force it to make an Intelligence saving throw. On a failure, the target loses the ability to distinguish friend from foe, regarding all creatures it can see as enemies until the spell ends."
+  },
+  {
+    name: "Erupting Earth",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a piece of obsidian)",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "Choose a point you can see on the ground within range. A fountain of churned earth and stone erupts in a 20-foot cube centered on that point. Each creature in that area must make a Dexterity saving throw, taking 3d12 bludgeoning damage on a failure. The area becomes difficult terrain."
   },
   {
     name: "Fear",
@@ -840,7 +2204,40 @@ export const SPELLS_DB = [
     components: "V, S, M (a white feather or the heart of a hen)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You project a phantasmal image of a creature's worst fears. Each creature in a 30-foot cone must succeed on a Wisdom saving throw or drop whatever it is holding and become frightened for the duration, dashing away from you."
+    description: "You project a phantasmal image of a creature's worst fears. Each creature in a 30-foot cone must succeed on a Wisdom saving throw or drop whatever it is holding and become frightened. A frightened target must take the Dash action and move away from you."
+  },
+  {
+    name: "Feign Death",
+    level: 3,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a pinch of graveyard dirt)",
+    duration: "1 hour",
+    classes: ["Bard", "Cleric", "Druid", "Wizard"],
+    description: "You touch a willing creature and put it into a cataleptic state that is indistinguishable from death. The target appears dead to all outward inspection and to spells used to determine its status. The target is blinded and incapacitated, has resistance to all damage except psychic, and its speed drops to 0."
+  },
+  {
+    name: "Fireball",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (a tiny ball of bat guano and sulfur)",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere must make a Dexterity saving throw, taking 8d6 fire damage on a failure, or half on a success."
+  },
+  {
+    name: "Flame Arrows",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger", "Sorcerer", "Wizard"],
+    description: "You touch a quiver containing arrows or bolts. When a target is hit by a ranged weapon attack using a piece of ammunition drawn from the quiver, the target takes an extra 1d6 fire damage. The spell ends after twelve pieces of ammunition have been drawn from the quiver."
   },
   {
     name: "Fly",
@@ -851,7 +2248,29 @@ export const SPELLS_DB = [
     components: "V, S, M (a wing feather from any bird)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft unless it can stop the fall."
+    description: "You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall."
+  },
+  {
+    name: "Gaseous Form",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a bit of gauze and a wisp of smoke)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You transform a willing creature you touch into a misty cloud. The target's only method of movement is a flying speed of 10 feet. The target has resistance to nonmagical damage and advantage on Strength, Dexterity, and Constitution saving throws. It can pass through small holes and cracks."
+  },
+  {
+    name: "Glyph of Warding",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 hour",
+    range: "Touch",
+    components: "V, S, M (incense and powdered diamond worth at least 200 gp)",
+    duration: "Until dispelled or triggered",
+    classes: ["Bard", "Cleric", "Wizard"],
+    description: "You inscribe a glyph that harms other creatures on a surface or within an object that can be closed. The glyph is nearly invisible. When triggered, the glyph erupts with magical energy in a 20-foot-radius sphere, dealing 5d8 damage of a type you choose."
   },
   {
     name: "Haste",
@@ -862,7 +2281,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a shaving of licorice root)",
     duration: "Concentration, up to 1 minute",
     classes: ["Sorcerer", "Wizard"],
-    description: "Choose a willing creature that you can see within range. The target's speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity saving throws, and it gains an additional action on each of its turns. When the spell ends, the target is lethargic and cannot move or take actions until after its next turn."
+    description: "Choose a willing creature that you can see within range. Until the spell ends, the target's speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity saving throws, and it gains an additional action on each of its turns. When the spell ends, the target can't move or take actions until after its next turn."
+  },
+  {
+    name: "Hunger of Hadar",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (a pickled octopus tentacle)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Warlock"],
+    description: "You open a gateway to the dark between the stars, a region infested with unknown horrors. A 20-foot-radius sphere of blackness and bitter cold appears. No light can illuminate it. Any creature that starts its turn in the area takes 2d6 cold damage. A creature that ends its turn there must make a Dexterity save or take 2d6 acid damage."
   },
   {
     name: "Hypnotic Pattern",
@@ -873,7 +2303,18 @@ export const SPELLS_DB = [
     components: "S, M (a glowing stick of incense or a crystal vial filled with phosphorescent material)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You create a twisting pattern of colors that weaves through the air in a 30-foot cube within range. Each creature in the area must make a Wisdom saving throw. On a failure, the creature becomes charmed, incapacitated, and has a speed of 0."
+    description: "You create a twisting pattern of colors that weaves through the air inside a 30-foot cube within range. Each creature in the area who sees the pattern must make a Wisdom saving throw. On a failure, the creature becomes charmed, incapacitated, and has a speed of 0."
+  },
+  {
+    name: "Leomund's Tiny Hut",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 minute",
+    range: "Self (10-foot-radius hemisphere)",
+    components: "V, S, M (a small crystal bead)",
+    duration: "8 hours",
+    classes: ["Bard", "Wizard"],
+    description: "A 10-foot-radius immobile dome of force springs into existence around and above you. Up to nine Medium creatures can fit inside. The atmosphere is comfortable and dry. The dome is opaque from the outside but transparent from the inside. Spells and other magical effects can't extend through the dome."
   },
   {
     name: "Lightning Bolt",
@@ -884,7 +2325,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a bit of fur and a rod of amber, crystal, or glass)",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "A stroke of lightning forming a line 100 feet long and 5 feet wide blasts out from you. Each creature in the line must make a Dexterity saving throw, taking 8d6 lightning damage on a failure, or half as much on a success."
+    description: "A stroke of lightning forming a line 100 feet long and 5 feet wide blasts out from you. Each creature in the line must make a Dexterity saving throw, taking 8d6 lightning damage on a failure, or half on a success."
+  },
+  {
+    name: "Magic Circle",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 minute",
+    range: "10 feet",
+    components: "V, S, M (holy water or powdered silver and iron worth at least 100 gp)",
+    duration: "1 hour",
+    classes: ["Cleric", "Paladin", "Warlock", "Wizard"],
+    description: "You create a 10-foot-radius, 20-foot-tall cylinder of magical energy centered on a point on the ground that you can see. Choose celestials, elementals, fey, fiends, or undead. The circle affects a creature of the chosen type that tries to enter or leave the area."
   },
   {
     name: "Major Image",
@@ -895,7 +2347,40 @@ export const SPELLS_DB = [
     components: "V, S, M (a bit of fleece)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 20-foot cube. The image appears at a spot within range and includes sounds, smells, and temperature appropriate to the thing depicted."
+    description: "You create the image of an object, creature, or other visible phenomenon no larger than a 20-foot cube. The image appears at a spot you can see and lasts for the duration. It seems completely real, including sounds, smells, and temperature."
+  },
+  {
+    name: "Mass Healing Word",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "60 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "As you call out words of restoration, up to six creatures of your choice that you can see within range regain hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+  },
+  {
+    name: "Meld into Stone",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "8 hours",
+    classes: ["Cleric", "Druid"],
+    description: "You step into a stone object or surface large enough to fully contain your body, melding yourself and all the equipment you carry with the stone for the duration. You are aware of the passage of time and can cast spells on yourself while inside."
+  },
+  {
+    name: "Nondetection",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a pinch of diamond dust worth 25 gp)",
+    duration: "8 hours",
+    classes: ["Bard", "Ranger", "Wizard"],
+    description: "For the duration, you hide a target that you touch from divination magic. The target can be a willing creature, a place, or an object no larger than 10 feet in any dimension. The target can't be targeted by any divination magic or perceived through magical scrying sensors."
   },
   {
     name: "Plant Growth",
@@ -906,7 +2391,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Bard", "Druid", "Ranger"],
-    description: "If you cast this spell using 1 action, all normal plants in a 100-foot radius centered on a point within range become thick and overgrown, making the area difficult terrain. If cast over 8 hours, it enriches the land, doubling plant yield for a year."
+    description: "This spell channels vitality into plants. If cast with 1 action, all normal plants in a 100-foot radius become thick and overgrown, making the area difficult terrain. If cast over 8 hours, the spell enriches the land, making plants yield twice the normal food for 1 year."
+  },
+  {
+    name: "Protection from Energy",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Cleric", "Druid", "Ranger", "Sorcerer", "Wizard"],
+    description: "For the duration, the willing creature you touch has resistance to one damage type of your choice: acid, cold, fire, lightning, or thunder."
+  },
+  {
+    name: "Remove Curse",
+    level: 3,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Paladin", "Warlock", "Wizard"],
+    description: "At your touch, all curses affecting one creature or object end. If the object is a cursed magic item, its curse remains, but the spell breaks its owner's attunement to the object so it can be removed or discarded."
   },
   {
     name: "Revivify",
@@ -920,6 +2427,28 @@ export const SPELLS_DB = [
     description: "You touch a creature that has died within the last minute. That creature returns to life with 1 hit point. This spell can't return to life a creature that has died of old age, nor can it restore any missing body parts."
   },
   {
+    name: "Sending",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Unlimited",
+    components: "V, S, M (a short piece of fine copper wire)",
+    duration: "1 round",
+    classes: ["Bard", "Cleric", "Wizard"],
+    description: "You send a short message of twenty-five words or less to a creature with which you are familiar. The creature hears the message in its mind, recognizes you as the sender, and can answer in a like manner immediately."
+  },
+  {
+    name: "Sleet Storm",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (a pinch of dust and a few drops of water)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "Until the spell ends, freezing rain and sleet fall in a 20-foot-tall cylinder with a 40-foot radius centered on a point you choose. The area is heavily obscured, the ground is difficult terrain, and concentration checks are more difficult. Creatures entering the area must make a Dexterity save or fall prone."
+  },
+  {
     name: "Slow",
     level: 3,
     school: "Transmutation",
@@ -928,7 +2457,29 @@ export const SPELLS_DB = [
     components: "V, S, M (a drop of molasses)",
     duration: "Concentration, up to 1 minute",
     classes: ["Sorcerer", "Wizard"],
-    description: "You alter time around up to six creatures in a 40-foot cube within range. Each target must succeed on a Wisdom saving throw or be affected. An affected target's speed is halved, it takes a -2 penalty to AC and Dexterity saving throws, and it can't use reactions."
+    description: "You alter time around up to six creatures of your choice in a 40-foot cube within range. Each target must succeed on a Wisdom saving throw or be affected. An affected target's speed is halved, takes a -2 penalty to AC and Dexterity saves, and can't use reactions."
+  },
+  {
+    name: "Speak with Dead",
+    level: 3,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S, M (burning incense)",
+    duration: "10 minutes",
+    classes: ["Bard", "Cleric"],
+    description: "You grant the semblance of life and intelligence to a corpse of your choice within range, allowing it to answer up to five questions. The corpse must still have a mouth. Answers are usually brief, cryptic, or repetitive."
+  },
+  {
+    name: "Speak with Plants",
+    level: 3,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self (30-foot radius)",
+    components: "V, S",
+    duration: "10 minutes",
+    classes: ["Bard", "Druid", "Ranger"],
+    description: "You imbue plants within 30 feet of you with limited sentience and animation, giving them the ability to communicate with you and follow your simple commands. You can question plants about events in the spell's area within the past day."
   },
   {
     name: "Spirit Guardians",
@@ -939,7 +2490,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a holy symbol)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Cleric"],
-    description: "You call forth spirits to protect you. They flit around you to a distance of 15 feet for the duration. When a hostile creature enters the area for the first time or starts its turn there, it must make a Wisdom saving throw, taking 3d8 radiant or necrotic damage on a failure."
+    description: "You call forth spirits to protect you. They flit around you to a distance of 15 feet. When a creature enters the area for the first time on a turn or starts its turn there, it must make a Wisdom saving throw, taking 3d8 radiant or necrotic damage on a failure, or half on a success."
   },
   {
     name: "Stinking Cloud",
@@ -950,7 +2501,51 @@ export const SPELLS_DB = [
     components: "V, S, M (a rotten egg or several skunk cabbage leaves)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "You create a 20-foot-radius sphere of nauseating yellow-green gas centered on a point within range. Each creature that starts its turn in the area must succeed on a Constitution saving throw or spend its action retching and reeling."
+    description: "You create a 20-foot-radius sphere of yellow, nauseating gas centered on a point within range. Each creature that starts its turn in the area must succeed on a Constitution saving throw or spend its action that turn retching and reeling."
+  },
+  {
+    name: "Summon Lesser Demons",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a vial of blood from a humanoid killed within the past 24 hours)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Warlock", "Wizard"],
+    description: "You utter foul words, summoning demons from the chaos of the Abyss. Roll on a table to determine what appears. The demons are hostile to all creatures, including you. They disappear when they drop to 0 hit points or when the spell ends."
+  },
+  {
+    name: "Thunder Step",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You teleport yourself to an unoccupied space you can see within range. Immediately after you disappear, a thunderous boom sounds, and each creature within 10 feet of the space you left must make a Constitution saving throw, taking 3d10 thunder damage on a failure."
+  },
+  {
+    name: "Tidal Wave",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a drop of water)",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You conjure up a wave of water that crashes down on an area within range. The area can be up to 30 feet long, up to 10 feet wide, and up to 10 feet tall. Each creature in the area must make a Dexterity saving throw, taking 4d8 bludgeoning damage on a failure and being knocked prone."
+  },
+  {
+    name: "Tongues",
+    level: 3,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, M (a small clay model of a ziggurat)",
+    duration: "1 hour",
+    classes: ["Bard", "Cleric", "Sorcerer", "Warlock", "Wizard"],
+    description: "This spell grants the creature you touch the ability to understand any spoken language it hears. Moreover, when the target speaks, any creature that knows at least one language and can hear the target understands what it says."
   },
   {
     name: "Vampiric Touch",
@@ -961,7 +2556,18 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 minute",
     classes: ["Warlock", "Wizard"],
-    description: "The touch of your shadow-wreathed hand can siphon life force from others. Make a melee spell attack; on hit, the target takes 3d6 necrotic damage and you regain hit points equal to half the necrotic damage dealt."
+    description: "The touch of your shadow-wreathed hand can siphon life force from others to heal your wounds. Make a melee spell attack against a creature within your reach. On a hit, the target takes 3d6 necrotic damage, and you regain hit points equal to half the damage dealt."
+  },
+  {
+    name: "Wall of Water",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a drop of water)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You create a wall of water on the ground at a point you can see within range. The wall is up to 30 feet long, 10 feet high, and 1 foot thick. Ranged weapon attacks that pass through the wall have disadvantage. Fire damage is halved if the fire effect passes through the wall."
   },
   {
     name: "Water Breathing",
@@ -974,18 +2580,62 @@ export const SPELLS_DB = [
     classes: ["Druid", "Ranger", "Sorcerer", "Wizard"],
     description: "This spell grants up to ten willing creatures you can see within range the ability to breathe underwater until the spell ends. Affected creatures also retain their normal mode of respiration."
   },
-
-  // ─── 4TH LEVEL ────────────────────────────────────────────────────────
   {
-    name: "Wild Shape",
-    level: 4,
+    name: "Water Walk",
+    level: 3,
     school: "Transmutation",
     castingTime: "1 action",
-    range: "Self",
-    components: "V, S",
+    range: "30 feet",
+    components: "V, S, M (a piece of cork)",
+    duration: "1 hour",
+    classes: ["Cleric", "Druid", "Ranger", "Sorcerer"],
+    description: "This spell grants the ability to move across any liquid surface as if it were harmless solid ground. Up to ten willing creatures you can see within range gain this ability for the duration."
+  },
+  {
+    name: "Wind Wall",
+    level: 3,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a tiny fan and a feather of exotic origin)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Ranger"],
+    description: "A wall of strong wind rises from the ground at a point you choose within range. The wall is up to 50 feet long, 15 feet high, and 1 foot thick. Each creature in the area when the wall appears must make a Strength saving throw, taking 3d8 bludgeoning damage on a failure. Small or smaller flying creatures or objects can't pass through the wall."
+  },
+
+  // ─── LEVEL 4 ──────────────────────────────────────────────────────────
+  {
+    name: "Arcane Eye",
+    level: 4,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a bit of bat fur)",
     duration: "Concentration, up to 1 hour",
-    classes: ["Druid"],
-    description: "You magically assume the shape of a beast that you have seen before. You can use this feature twice, regaining expended uses after a short or long rest. Your game statistics are replaced by the statistics of the beast."
+    classes: ["Wizard"],
+    description: "You create an invisible, magical eye within range that hovers in the air for the duration. You receive visual information from the eye, which has normal vision and darkvision out to 30 feet. You can move the eye up to 30 feet as an action."
+  },
+  {
+    name: "Aura of Life",
+    level: 4,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self (30-foot radius)",
+    components: "V",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Paladin"],
+    description: "Life-preserving energy radiates from you in a 30-foot aura. Nonhostile creatures in the aura have resistance to necrotic damage, and their hit point maximum can't be reduced. If a nonhostile creature with 0 hit points starts its turn in the aura, it regains 1 hit point."
+  },
+  {
+    name: "Aura of Purity",
+    level: 4,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self (30-foot radius)",
+    components: "V",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Paladin"],
+    description: "Purifying energy radiates from you in a 30-foot aura. Nonhostile creatures in the aura can't become diseased, have resistance to poison damage, and have advantage on saving throws against being blinded, charmed, deafened, frightened, paralyzed, poisoned, or stunned."
   },
   {
     name: "Banishment",
@@ -996,7 +2646,7 @@ export const SPELLS_DB = [
     components: "V, S, M (an item distasteful to the target)",
     duration: "Concentration, up to 1 minute",
     classes: ["Cleric", "Paladin", "Sorcerer", "Warlock", "Wizard"],
-    description: "You attempt to send one creature that you can see within range to another plane of existence. The target must succeed on a Charisma saving throw or be banished. If the target is native to a different plane, it is permanently banished on a failed save if the spell lasts its full duration."
+    description: "You attempt to send one creature that you can see within range to another plane of existence. The target must succeed on a Charisma saving throw or be banished. If the target is native to a different plane, it is permanently banished if the spell lasts its full duration."
   },
   {
     name: "Blight",
@@ -1007,7 +2657,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
-    description: "Necromantic energy washes over a creature of your choice within range, draining moisture and vitality. The target must make a Constitution saving throw, taking 8d8 necrotic damage on a failure, or half as much on a success. Plant creatures have disadvantage on this save."
+    description: "Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw, taking 8d8 necrotic damage on a failure, or half on a success. Plant creatures have disadvantage."
+  },
+  {
+    name: "Charm Monster",
+    level: 4,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "1 hour",
+    classes: ["Bard", "Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "You attempt to charm a creature you can see within range. It must make a Wisdom saving throw, with advantage if you or your companions are fighting it. If it fails, it is charmed by you until the spell ends or you harm it."
+  },
+  {
+    name: "Compulsion",
+    level: 4,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard"],
+    description: "Creatures of your choice that you can see within range must make a Wisdom saving throw. On a failed save, a target is affected by this spell. You can use a bonus action to designate a direction; affected targets must use as much of their movement as possible to move in that direction."
   },
   {
     name: "Confusion",
@@ -1018,7 +2690,51 @@ export const SPELLS_DB = [
     components: "V, S, M (three nut shells)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
-    description: "Each creature in a 10-foot-radius sphere centered on a point within range must succeed on a Wisdom saving throw or be affected. An affected target can't take reactions and must roll a d10 at the start of each turn to determine its behavior randomly."
+    description: "Each creature in a 10-foot-radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw or be affected. An affected target can't take reactions and must roll a d10 at the start of each turn to determine its behavior."
+  },
+  {
+    name: "Conjure Minor Elementals",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Wizard"],
+    description: "You summon elementals that appear in unoccupied spaces that you can see within range. Choose one of several options for the number and challenge rating of elementals summoned. They are friendly to you and your companions and obey your verbal commands."
+  },
+  {
+    name: "Conjure Woodland Beings",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (one holly berry per creature summoned)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger"],
+    description: "You summon fey creatures that appear in unoccupied spaces that you can see within range. Choose one of several options for the number and challenge rating of fey summoned. They are friendly to you and your companions and obey your verbal commands."
+  },
+  {
+    name: "Control Water",
+    level: 4,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V, S, M (a drop of water and a pinch of dust)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric", "Druid", "Wizard"],
+    description: "You control freestanding water in an area up to 100 feet on a side. You can choose from several effects: Flood, Part Water, Redirect Flow, or Whirlpool. Each has different effects on the water and creatures within it."
+  },
+  {
+    name: "Death Ward",
+    level: 4,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "8 hours",
+    classes: ["Cleric", "Paladin"],
+    description: "You touch a creature and grant it a measure of protection from death. The first time the target would drop to 0 hit points as a result of taking damage, the target instead drops to 1 hit point, and the spell ends."
   },
   {
     name: "Dimension Door",
@@ -1029,7 +2745,84 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Instantaneous",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You teleport yourself from your current location to any other spot within range. You can bring along objects and one willing creature of your size or smaller that is carrying gear up to its carrying capacity."
+    description: "You teleport yourself from your current location to any other spot within range. You arrive at exactly the spot desired. You can bring along objects as long as their weight doesn't exceed what you can carry, and you can bring one willing creature of your size or smaller."
+  },
+  {
+    name: "Divination",
+    level: 4,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (incense and a sacrificial offering worth at least 25 gp)",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "Your magic and an offering put you in contact with a god or a god's servants. You ask a single question concerning a specific goal, event, or activity to occur within 7 days. The DM offers a truthful reply, which might be a short phrase, a cryptic rhyme, or an omen."
+  },
+  {
+    name: "Dominate Beast",
+    level: 4,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer"],
+    description: "You attempt to beguile a beast that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. While the beast is charmed, you have a telepathic link with it and can issue commands."
+  },
+  {
+    name: "Elemental Bane",
+    level: 4,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Warlock", "Wizard"],
+    description: "Choose one creature you can see within range, and choose acid, cold, fire, lightning, or thunder. The target must succeed on a Constitution saving throw or be affected. The affected target loses any resistance to the chosen damage type and takes an extra 2d6 damage of that type the first time each turn it takes that damage."
+  },
+  {
+    name: "Evard's Black Tentacles",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a piece of tentacle from a giant octopus or a giant squid)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Wizard"],
+    description: "Squirming, ebony tentacles fill a 20-foot square on ground that you can see within range. The area becomes difficult terrain. A creature that enters the area or starts its turn there must succeed on a Dexterity saving throw or take 3d6 bludgeoning damage and be restrained."
+  },
+  {
+    name: "Fabricate",
+    level: 4,
+    school: "Transmutation",
+    castingTime: "10 minutes",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "You convert raw materials into products of the same material. For example, you can fabricate a wooden bridge from a clump of trees or a rope from a patch of hemp. You must be proficient with artisan's tools to craft objects requiring special skill."
+  },
+  {
+    name: "Find Greater Steed",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "10 minutes",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Paladin"],
+    description: "You summon a spirit that assumes the form of a powerful and loyal steed. The steed can be a griffon, pegasus, peryton, dire wolf, rhinoceros, or saber-toothed tiger. It has the statistics of the chosen form but is a celestial, fey, or fiend."
+  },
+  {
+    name: "Fire Shield",
+    level: 4,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a bit of phosphorus or a firefly)",
+    duration: "10 minutes",
+    classes: ["Wizard"],
+    description: "Thin and wispy flames wreathe your body for the duration. You can choose warm shield (fire resistance, 2d8 fire damage to melee attackers) or chill shield (cold resistance, 2d8 cold damage to melee attackers)."
   },
   {
     name: "Freedom of Movement",
@@ -1039,8 +2832,19 @@ export const SPELLS_DB = [
     range: "Touch",
     components: "V, S, M (a leather strap, bound around the arm or a similar appendage)",
     duration: "1 hour",
-    classes: ["Bard", "Cleric", "Druid", "Ranger"],
-    description: "You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce its speed nor cause it to be paralyzed or restrained."
+    classes: ["Bard", "Cleric", "Druid", "Paladin", "Ranger"],
+    description: "You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained."
+  },
+  {
+    name: "Giant Insect",
+    level: 4,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid"],
+    description: "You transform up to ten centipedes, three spiders, five wasps, or one scorpion within range into giant versions of their natural forms for the duration. The giant insects are friendly to you and your companions and obey your verbal commands."
   },
   {
     name: "Greater Invisibility",
@@ -1051,7 +2855,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "You or a creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target. Unlike regular Invisibility, this spell does not end when the target attacks or casts a spell."
+    description: "You or a creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The target remains invisible even when it attacks or casts spells."
+  },
+  {
+    name: "Guardian of Faith",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V",
+    duration: "8 hours",
+    classes: ["Cleric"],
+    description: "A Large spectral guardian appears and hovers for the duration in an unoccupied space of your choice. Any hostile creature that moves to a space within 10 feet of the guardian for the first time on a turn must succeed on a Dexterity saving throw or take 20 radiant damage."
+  },
+  {
+    name: "Hallucinatory Terrain",
+    level: 4,
+    school: "Illusion",
+    castingTime: "10 minutes",
+    range: "300 feet",
+    components: "V, S, M (a stone, a twig, and a bit of green plant)",
+    duration: "24 hours",
+    classes: ["Bard", "Druid", "Warlock", "Wizard"],
+    description: "You make natural terrain in a 150-foot cube in range look, sound, and smell like some other sort of natural terrain. Open fields or a road can be made to resemble a swamp, hill, crevasse, or other difficult or impassable terrain."
   },
   {
     name: "Ice Storm",
@@ -1062,7 +2888,73 @@ export const SPELLS_DB = [
     components: "V, S, M (a pinch of dust and a few drops of water)",
     duration: "Instantaneous",
     classes: ["Druid", "Sorcerer", "Wizard"],
-    description: "A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the area must make a Dexterity saving throw, taking 2d8 bludgeoning and 4d6 cold damage on a failure. The area becomes difficult terrain."
+    description: "A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw, taking 2d8 bludgeoning damage and 4d6 cold damage on a failure, or half on a success."
+  },
+  {
+    name: "Leomund's Secret Chest",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (an exquisite chest worth 5,000 gp and a tiny replica worth 50 gp)",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "You hide a chest and all its contents on the Ethereal Plane. You must touch the chest and the miniature replica that serves as a material component. The chest can contain up to 12 cubic feet of nonliving material. While hidden, you can use an action to recall it."
+  },
+  {
+    name: "Locate Creature",
+    level: 4,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a bit of fur from a bloodhound)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Wizard"],
+    description: "Describe or name a creature that is familiar to you. You sense the direction to the creature's location, as long as that creature is within 1,000 feet of you. If the creature is moving, you know the direction of its movement."
+  },
+  {
+    name: "Mordenkainen's Faithful Hound",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a tiny silver whistle, a piece of bone, and a thread)",
+    duration: "8 hours",
+    classes: ["Wizard"],
+    description: "You conjure a phantom watchdog in an unoccupied space that you can see within range. The hound is invisible to all creatures except you and can't be harmed. It barks loudly if any creature comes within 30 feet of it and can bite creatures that move within 5 feet, dealing 4d8 piercing damage."
+  },
+  {
+    name: "Mordenkainen's Private Sanctum",
+    level: 4,
+    school: "Abjuration",
+    castingTime: "10 minutes",
+    range: "120 feet",
+    components: "V, S, M (a thin sheet of lead, a piece of opaque glass, a wad of cotton or cloth, and powdered chrysolite)",
+    duration: "24 hours",
+    classes: ["Wizard"],
+    description: "You make an area within range magically secure. The area is a cube from 5 to 100 feet on each side. For the duration, you choose what happens in the area from several options: sound can't pass through, the area is darkened, divination spells can't target anything in the area, and teleportation fails."
+  },
+  {
+    name: "Otiluke's Resilient Sphere",
+    level: 4,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a hemispherical piece of clear crystal and a matching hemispherical piece of gum arabic)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Wizard"],
+    description: "A sphere of shimmering force encloses a creature or object of Large size or smaller within range. An unwilling creature must make a Dexterity saving throw. Nothing can pass through the sphere, and it is immune to all damage."
+  },
+  {
+    name: "Phantasmal Killer",
+    level: 4,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Wizard"],
+    description: "You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears. The target must make a Wisdom saving throw. On a failure, the target becomes frightened and takes 4d10 psychic damage at the end of each of its turns."
   },
   {
     name: "Polymorph",
@@ -1073,7 +2965,51 @@ export const SPELLS_DB = [
     components: "V, S, M (a caterpillar cocoon)",
     duration: "Concentration, up to 1 hour",
     classes: ["Bard", "Druid", "Sorcerer", "Wizard"],
-    description: "You transform a creature that you can see within range into a new beast form. An unwilling creature must make a Wisdom saving throw to avoid the effect. The target's game statistics are replaced by the statistics of the chosen beast, but it retains its alignment and personality."
+    description: "This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. The target's game statistics are replaced by the statistics of the chosen beast, but it retains its alignment and personality."
+  },
+  {
+    name: "Shadow of Moil",
+    level: 4,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (an undead eyeball encased in a gem worth at least 150 gp)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Warlock"],
+    description: "Flame-like shadows wreathe your body for the duration, causing you to become heavily obscured to others. The shadows provide dim light in a 10-foot radius. When a creature hits you with an attack within 10 feet, the shadows lash out, dealing 2d8 necrotic damage."
+  },
+  {
+    name: "Sickening Radiance",
+    level: 4,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "Dim, greenish light spreads within a 30-foot-radius sphere centered on a point you choose. A creature that enters or starts its turn in the area must make a Constitution saving throw. On a failure, it takes 4d10 radiant damage and suffers one level of exhaustion. Creatures can't benefit from being invisible in the area."
+  },
+  {
+    name: "Staggering Smite",
+    level: 4,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit a creature with a melee weapon attack during this spell's duration, your weapon pierces body and mind, dealing an extra 4d6 psychic damage. The target must make a Wisdom saving throw. On a failure, it has disadvantage on attack rolls and ability checks and can't take reactions until the end of its next turn."
+  },
+  {
+    name: "Stone Shape",
+    level: 4,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (soft clay)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Druid", "Wizard"],
+    description: "You touch a stone object of Medium size or smaller or a section of stone no more than 5 feet in any dimension and form it into any shape that suits your purpose, including a crude door, passage, or container."
   },
   {
     name: "Stoneskin",
@@ -1087,6 +3023,17 @@ export const SPELLS_DB = [
     description: "This spell turns the flesh of a willing creature you touch as hard as stone. Until the spell ends, the target has resistance to nonmagical bludgeoning, piercing, and slashing damage."
   },
   {
+    name: "Storm Sphere",
+    level: 4,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A 20-foot-radius sphere of whirling air springs into existence centered on a point you choose. Each creature in the sphere must make a Strength saving throw or take 2d6 bludgeoning damage. The area is difficult terrain. As a bonus action each turn, you can hurl a bolt of lightning at a creature, dealing 4d6 lightning damage on a failed Dexterity save."
+  },
+  {
     name: "Wall of Fire",
     level: 4,
     school: "Evocation",
@@ -1095,10 +3042,21 @@ export const SPELLS_DB = [
     components: "V, S, M (a small piece of phosphorus)",
     duration: "Concentration, up to 1 minute",
     classes: ["Druid", "Sorcerer", "Wizard"],
-    description: "You create a wall of fire on a solid surface within range. The wall can be up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter. Creatures within 10 feet of one side take 5d8 fire damage on a failed Dexterity save."
+    description: "You create a wall of fire on a solid surface within range. The wall is up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter. One side of the wall deals 5d8 fire damage to each creature in the area when it appears, and creatures ending their turn within 10 feet of that side take the same damage."
+  },
+  {
+    name: "Watery Sphere",
+    level: 4,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a droplet of water)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You conjure up a sphere of water with a 5-foot radius at a point you can see within range. The sphere can restrain a Large or smaller creature that fails a Strength saving throw. You can move the sphere up to 30 feet as an action. Restrained creatures move with the sphere."
   },
 
-  // ─── 5TH LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 5 ──────────────────────────────────────────────────────────
   {
     name: "Animate Objects",
     level: 5,
@@ -1108,7 +3066,62 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "Objects come to life at your command. Choose up to ten nonmagical objects within range that are not being worn or carried. Each target animates and becomes a creature under your control, using statistics based on its size."
+    description: "Objects come to life at your command. Choose up to ten nonmagical objects within range that are not being worn or carried. Each target animates and becomes a creature under your control. Animated objects have statistics based on their size."
+  },
+  {
+    name: "Antilife Shell",
+    level: 5,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self (10-foot radius)",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid"],
+    description: "A shimmering barrier extends out from you in a 10-foot radius and moves with you, remaining centered on you. The barrier prevents creatures other than undead and constructs from passing or reaching through it."
+  },
+  {
+    name: "Awaken",
+    level: 5,
+    school: "Transmutation",
+    castingTime: "8 hours",
+    range: "Touch",
+    components: "V, S, M (an agate worth at least 1,000 gp, which the spell consumes)",
+    duration: "Instantaneous",
+    classes: ["Bard", "Druid"],
+    description: "After spending the casting time tracing magical pathways within a precious gemstone, you touch a Huge or smaller beast or plant. The target gains an Intelligence of 10 and the ability to speak one language you know. It is charmed by you for 30 days."
+  },
+  {
+    name: "Banishing Smite",
+    level: 5,
+    school: "Abjuration",
+    castingTime: "1 bonus action",
+    range: "Self",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Paladin"],
+    description: "The next time you hit a creature with a weapon attack, your weapon crackles with force, dealing an extra 5d10 force damage. If this attack reduces the target to 50 hit points or fewer, you banish it to a harmless demiplane where it is incapacitated."
+  },
+  {
+    name: "Bigby's Hand",
+    level: 5,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (an eggshell and a snakeskin glove)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Wizard"],
+    description: "You create a Large hand of shimmering, translucent force in an unoccupied space that you can see within range. The hand can punch, shove, grasp, or interpose itself as a shield. The hand's AC is 20 and it has hit points equal to your hit point maximum."
+  },
+  {
+    name: "Circle of Power",
+    level: 5,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self (30-foot radius)",
+    components: "V",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Paladin"],
+    description: "Divine energy radiates from you, distorting and diffusing magical energy within a 30-foot-radius sphere. Until the spell ends, each friendly creature in the area has advantage on saving throws against spells and other magical effects. If a creature succeeds on such a save, it takes no damage if it would normally take half."
   },
   {
     name: "Cloudkill",
@@ -1119,7 +3132,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 10 minutes",
     classes: ["Sorcerer", "Wizard"],
-    description: "You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. A creature that starts its turn in the area must make a Constitution saving throw, taking 5d8 poison damage on a failure, or half on a success. The fog moves 10 feet away from you at the start of each of your turns."
+    description: "You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. The fog spreads around corners. A creature that starts its turn in the area must succeed on a Constitution saving throw or take 5d8 poison damage. The sphere moves 10 feet away from you each turn."
+  },
+  {
+    name: "Commune",
+    level: 5,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V, S, M (incense and a vial of holy or unholy water)",
+    duration: "1 minute",
+    classes: ["Cleric"],
+    description: "You contact your deity or a divine proxy and ask up to three questions that can be answered with a yes or no. You receive a correct answer for each question. Divine beings aren't necessarily omniscient, so the answer might be unclear."
+  },
+  {
+    name: "Commune with Nature",
+    level: 5,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Druid", "Ranger"],
+    description: "You briefly become one with nature and gain knowledge of the surrounding territory. In the outdoors, the spell gives you knowledge of the land within 3 miles. You learn about terrain, bodies of water, prevalent plants, minerals, animals, and peoples, as well as powerful creatures."
   },
   {
     name: "Cone of Cold",
@@ -1130,7 +3165,139 @@ export const SPELLS_DB = [
     components: "V, S, M (a small crystal or glass cone)",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a Constitution saving throw, taking 8d8 cold damage on a failure, or half as much on a success. A creature killed by this spell becomes a frozen statue."
+    description: "A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a Constitution saving throw, taking 8d8 cold damage on a failure, or half on a success. A creature killed by this spell becomes a frozen statue."
+  },
+  {
+    name: "Conjure Elemental",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "90 feet",
+    components: "V, S, M (burning incense for air, soft clay for earth, sulfur and phosphorus for fire, or water and sand for water)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Wizard"],
+    description: "You call forth an elemental servant. Choose an area of air, earth, fire, or water that fills a 10-foot cube within range. An elemental of challenge rating 5 or lower appears in an unoccupied space within 10 feet of it. It obeys your verbal commands."
+  },
+  {
+    name: "Conjure Volley",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (one piece of ammunition or one thrown weapon)",
+    duration: "Instantaneous",
+    classes: ["Ranger"],
+    description: "You fire a piece of nonmagical ammunition or throw a nonmagical weapon into the air and choose a point within range. Hundreds of duplicates rain down in a volley. Each creature in a 40-foot-radius, 20-foot-high cylinder must make a Dexterity saving throw, taking 8d8 damage on a failure."
+  },
+  {
+    name: "Contact Other Plane",
+    level: 5,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V",
+    duration: "1 minute",
+    classes: ["Warlock", "Wizard"],
+    description: "You mentally contact a demigod, the spirit of a long-dead sage, or some other mysterious entity from another plane. You can ask the entity up to five questions. You must make a DC 15 Intelligence saving throw or take 6d6 psychic damage and be insane until you finish a long rest."
+  },
+  {
+    name: "Contagion",
+    level: 5,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "7 days",
+    classes: ["Cleric", "Druid"],
+    description: "Your touch inflicts disease. Make a melee spell attack against a creature within your reach. On a hit, you afflict the creature with a disease of your choice from the list provided: blinding sickness, filth fever, flesh rot, mindfire, seizure, or slimy doom."
+  },
+  {
+    name: "Control Winds",
+    level: 5,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You take control of the air in a 100-foot cube that you can see within range. Choose one of the following effects: Gusts, Downdraft, or Updraft. You can change the effect as an action on each of your turns."
+  },
+  {
+    name: "Creation",
+    level: 5,
+    school: "Illusion",
+    castingTime: "1 minute",
+    range: "30 feet",
+    components: "V, S, M (a tiny piece of matter of the same type of the item you plan to create)",
+    duration: "Special",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You pull wisps of shadow material from the Shadowfell to create a nonliving object of vegetable matter or mineral within range. The duration depends on the material: vegetable matter lasts 1 day, stone or crystal 12 hours, precious metals 1 hour, gems 10 minutes."
+  },
+  {
+    name: "Destructive Wave",
+    level: 5,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (30-foot radius)",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Paladin"],
+    description: "You strike the ground, creating a burst of divine energy that ripples outward from you. Each creature you choose within 30 feet must succeed on a Constitution saving throw or take 5d6 thunder damage plus 5d6 radiant or necrotic damage and be knocked prone."
+  },
+  {
+    name: "Dispel Evil and Good",
+    level: 5,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (holy water or powdered silver and iron)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Cleric", "Paladin"],
+    description: "Shimmering energy surrounds and protects you from fey, undead, and creatures originating from beyond the Material Plane. Celestials, elementals, fey, fiends, and undead that try to hit you have disadvantage. You can also use it to end enchantments, dismiss creatures, or break possessions."
+  },
+  {
+    name: "Dominate Person",
+    level: 5,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "You attempt to beguile a humanoid that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. While the target is charmed, you have a telepathic link with it and can issue commands telepathically."
+  },
+  {
+    name: "Dream",
+    level: 5,
+    school: "Illusion",
+    castingTime: "1 minute",
+    range: "Special",
+    components: "V, S, M (a handful of sand, a dab of ink, and a writing quill)",
+    duration: "8 hours",
+    classes: ["Bard", "Warlock", "Wizard"],
+    description: "This spell shapes a creature's dreams. Choose a creature known to you. A messenger appears in the target's dreams and delivers a message of up to 200 words. The target can also converse with the messenger. Alternatively, the messenger can appear as a monstrous nightmare, dealing 3d6 psychic damage."
+  },
+  {
+    name: "Flame Strike",
+    level: 5,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a pinch of sulfur)",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot-radius, 40-foot-high cylinder must make a Dexterity saving throw, taking 4d6 fire damage and 4d6 radiant damage on a failure, or half on a success."
+  },
+  {
+    name: "Geas",
+    level: 5,
+    school: "Enchantment",
+    castingTime: "1 minute",
+    range: "60 feet",
+    components: "V",
+    duration: "30 days",
+    classes: ["Bard", "Cleric", "Druid", "Paladin", "Wizard"],
+    description: "You place a magical command on a creature that you can see within range, forcing it to carry out some service or refrain from some action. If the creature can understand you, it must succeed on a Wisdom saving throw or become charmed. While charmed, it takes 5d10 psychic damage each time it acts against your instructions."
   },
   {
     name: "Greater Restoration",
@@ -1141,7 +3308,18 @@ export const SPELLS_DB = [
     components: "V, S, M (diamond dust worth at least 100 gp, which the spell consumes)",
     duration: "Instantaneous",
     classes: ["Bard", "Cleric", "Druid"],
-    description: "You imbue a creature you touch with positive energy to undo a debilitating effect. You can reduce the target's exhaustion level by one, or end one charmed/petrified condition, one curse, any ability score reduction, or one hit point maximum reduction."
+    description: "You imbue a creature you touch with positive energy to undo a debilitating effect. You can reduce the target's exhaustion level by one, or end a charm, petrification, curse, ability score reduction, or hit point maximum reduction effect on it."
+  },
+  {
+    name: "Hallow",
+    level: 5,
+    school: "Evocation",
+    castingTime: "24 hours",
+    range: "Touch",
+    components: "V, S, M (herbs, oils, and incense worth at least 1,000 gp, which the spell consumes)",
+    duration: "Until dispelled",
+    classes: ["Cleric"],
+    description: "You touch a point and infuse an area around it with holy or unholy power. The area can have a radius up to 60 feet. Celestials, elementals, fey, fiends, and undead can't enter the area, and you can bind an extra effect such as darkness, daylight, tongues, or fear to the area."
   },
   {
     name: "Hold Monster",
@@ -1152,7 +3330,29 @@ export const SPELLS_DB = [
     components: "V, S, M (a small, straight piece of iron)",
     duration: "Concentration, up to 1 minute",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "Choose a creature that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. This spell works on any creature type, unlike Hold Person. The target can repeat the saving throw at the end of each of its turns."
+    description: "Choose a creature that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. This spell has no effect on undead. At the end of each of its turns, the target can make another Wisdom saving throw."
+  },
+  {
+    name: "Insect Plague",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V, S, M (a few grains of sugar, some kernels of grain, and a smear of fat)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric", "Druid", "Sorcerer"],
+    description: "Swarming, biting locusts fill a 20-foot-radius sphere centered on a point you choose within range. The area is lightly obscured and difficult terrain. When a creature enters the area or starts its turn there, it must make a Constitution saving throw, taking 4d10 piercing damage on a failure."
+  },
+  {
+    name: "Legend Lore",
+    level: 5,
+    school: "Divination",
+    castingTime: "10 minutes",
+    range: "Self",
+    components: "V, S, M (incense worth at least 250 gp, which the spell consumes, and four ivory strips worth at least 50 gp each)",
+    duration: "Instantaneous",
+    classes: ["Bard", "Cleric", "Wizard"],
+    description: "Name or describe a person, place, or object. The spell brings to your mind a brief summary of the significant lore about the thing you named. The lore might consist of current tales, forgotten stories, or even secret lore."
   },
   {
     name: "Mass Cure Wounds",
@@ -1163,7 +3363,40 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Bard", "Cleric", "Druid"],
-    description: "A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere. Each target regains hit points equal to 3d8 + your spellcasting ability modifier."
+    description: "A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to 3d8 + your spellcasting ability modifier."
+  },
+  {
+    name: "Mislead",
+    level: 5,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "Self",
+    components: "S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Bard", "Wizard"],
+    description: "You become invisible at the same time that an illusory double of you appears where you are standing. The double lasts for the duration but the invisibility ends if you attack or cast a spell. You can use your action to move the double and make it gesture, speak, and behave however you wish."
+  },
+  {
+    name: "Modify Memory",
+    level: 5,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Wizard"],
+    description: "You attempt to reshape another creature's memories. The target must make a Wisdom saving throw. If it fails, the target becomes charmed and you can alter its memories of an event that took place within the last 24 hours and lasted no more than 10 minutes."
+  },
+  {
+    name: "Planar Binding",
+    level: 5,
+    school: "Abjuration",
+    castingTime: "1 hour",
+    range: "60 feet",
+    components: "V, S, M (a jewel worth at least 1,000 gp, which the spell consumes)",
+    duration: "24 hours",
+    classes: ["Bard", "Cleric", "Druid", "Wizard"],
+    description: "With this spell, you attempt to bind a celestial, an elemental, a fey, or a fiend to your service. The creature must make a Charisma saving throw. On a failure, it is bound to serve you for the duration and must follow your instructions to the best of its ability."
   },
   {
     name: "Raise Dead",
@@ -1174,7 +3407,84 @@ export const SPELLS_DB = [
     components: "V, S, M (a diamond worth at least 500 gp, which the spell consumes)",
     duration: "Instantaneous",
     classes: ["Bard", "Cleric", "Paladin"],
-    description: "You return a dead creature you touch to life, provided it has been dead no longer than 10 days. The creature returns to life with 1 hit point and takes a -4 penalty to all attack rolls, saving throws, and ability checks, which reduces by 1 after each long rest."
+    description: "You return a dead creature you touch to life, provided it has been dead no longer than 10 days. If the creature's soul is free and willing, it returns with 1 hit point. The spell can't return an undead creature to life and can't restore missing body parts."
+  },
+  {
+    name: "Rary's Telepathic Bond",
+    level: 5,
+    school: "Divination",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (pieces of eggshell from two different kinds of creatures)",
+    duration: "1 hour",
+    classes: ["Wizard"],
+    description: "You forge a telepathic link among up to eight willing creatures of your choice within range, psychically linking each creature to all the others for the duration. Creatures with Intelligence scores of 2 or less aren't affected."
+  },
+  {
+    name: "Reincarnate",
+    level: 5,
+    school: "Transmutation",
+    castingTime: "1 hour",
+    range: "Touch",
+    components: "V, S, M (rare oils and unguents worth at least 1,000 gp, which the spell consumes)",
+    duration: "Instantaneous",
+    classes: ["Druid"],
+    description: "You touch a dead humanoid or a piece of a dead humanoid. Provided that the creature has been dead no longer than 10 days, the spell forms a new adult body for it and then calls the soul to enter that body. The DM rolls on a table to determine the new race."
+  },
+  {
+    name: "Scrying",
+    level: 5,
+    school: "Divination",
+    castingTime: "10 minutes",
+    range: "Self",
+    components: "V, S, M (a focus worth at least 1,000 gp, such as a crystal ball, a silver mirror, or a font filled with holy water)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Bard", "Cleric", "Druid", "Warlock", "Wizard"],
+    description: "You can see and hear a particular creature you choose that is on the same plane of existence as you. The target must make a Wisdom saving throw, which is modified by how well you know the target and what physical connection you have to it."
+  },
+  {
+    name: "Seeming",
+    level: 5,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "8 hours",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "This spell allows you to change the appearance of any number of creatures that you can see within range. You give each target you choose a new, illusory appearance. An unwilling target can make a Charisma saving throw to resist the spell."
+  },
+  {
+    name: "Steel Wind Strike",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "S, M (a melee weapon worth at least 1 sp)",
+    duration: "Instantaneous",
+    classes: ["Ranger", "Wizard"],
+    description: "You flourish the weapon used in the casting and then vanish to strike like the wind. Choose up to five creatures you can see within range. Make a melee spell attack against each target. On a hit, a target takes 6d10 force damage. You then teleport to an unoccupied space within 5 feet of one of the targets."
+  },
+  {
+    name: "Swift Quiver",
+    level: 5,
+    school: "Transmutation",
+    castingTime: "1 bonus action",
+    range: "Touch",
+    components: "V, S, M (a quiver containing at least one piece of ammunition)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Ranger"],
+    description: "You transmute your quiver so it produces an endless supply of nonmagical ammunition. On each of your turns until the spell ends, you can use a bonus action to make two attacks with a weapon that uses ammunition from the quiver."
+  },
+  {
+    name: "Synaptic Static",
+    level: 5,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You choose a point within range and cause psychic energy to explode there. Each creature in a 20-foot-radius sphere must make an Intelligence saving throw, taking 8d6 psychic damage on a failure, or half on a success. On a failure, the target also subtracts 1d6 from its attack rolls, ability checks, and concentration saves for 1 minute."
   },
   {
     name: "Telekinesis",
@@ -1185,7 +3495,29 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 10 minutes",
     classes: ["Sorcerer", "Wizard"],
-    description: "You gain the ability to move or manipulate creatures or objects by thought. You can exert fine control on objects, move a creature that weighs up to 1,000 pounds, or hurl a creature. An unwilling creature can make a Strength check to resist."
+    description: "You gain the ability to move or manipulate creatures or objects by thought. You can exert fine control on objects, try to move a Huge or smaller creature (contested by its Strength check), or move an object up to 1,000 pounds up to 30 feet."
+  },
+  {
+    name: "Teleportation Circle",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "10 feet",
+    components: "V, M (rare chalks and inks infused with precious gems worth 50 gp, which the spell consumes)",
+    duration: "1 round",
+    classes: ["Bard", "Sorcerer", "Wizard"],
+    description: "As you cast the spell, you draw a 10-foot-diameter circle on the ground inscribed with sigils that link your location to a permanent teleportation circle of your choice whose sigil sequence you know."
+  },
+  {
+    name: "Tree Stride",
+    level: 5,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Ranger"],
+    description: "You gain the ability to enter a tree and move from inside it to inside another tree of the same kind within 500 feet. Both trees must be living and at least the same size as you. You can use 5 feet of movement to step into a tree and then teleport to the other."
   },
   {
     name: "Wall of Force",
@@ -1196,7 +3528,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a pinch of powder made by crushing a clear gemstone)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Wizard"],
-    description: "An invisible wall of force springs into existence at a point you choose within range. The wall can be a flat surface made of ten 10-foot-by-10-foot panels or a dome or sphere. Nothing can physically pass through it, and it is immune to all damage."
+    description: "An invisible wall of force springs into existence at a point you choose within range. The wall is composed of up to ten 10-foot-by-10-foot panels. It is immune to all damage and can't be dispelled by dispel magic. A disintegrate spell destroys it instantly."
   },
   {
     name: "Wall of Stone",
@@ -1207,10 +3539,43 @@ export const SPELLS_DB = [
     components: "V, S, M (a small block of granite)",
     duration: "Concentration, up to 10 minutes",
     classes: ["Druid", "Sorcerer", "Wizard"],
-    description: "A nonmagical wall of solid stone springs into existence at a point you choose within range. The wall is made of ten 10-foot-by-10-foot panels, each 6 inches thick. If the wall is maintained for the full duration, it becomes permanent and can't be dispelled."
+    description: "A nonmagical wall of solid stone springs into existence at a point you choose within range. The wall is composed of up to ten 10-foot-by-10-foot panels, each 6 inches thick. If the wall is not continuous, each panel must share an edge with another panel."
+  },
+  {
+    name: "Wrath of Nature",
+    level: 5,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Ranger"],
+    description: "You call out to the spirits of nature to rouse them against your enemies. Choose a point you can see within range. Trees, rocks, and grasses in a 60-foot cube centered on that point become animated. Grasses make the area difficult terrain, vines restrain creatures, rocks attack from range, and trees make melee attacks."
   },
 
-  // ─── 6TH LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 6 ──────────────────────────────────────────────────────────
+  {
+    name: "Arcane Gate",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "500 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You create linked teleportation portals that remain open for the duration. Choose two points on the ground within range, one within 10 feet of you and one within 500 feet. A circular portal opens at each point. Any creature or object entering one portal exits from the other."
+  },
+  {
+    name: "Blade Barrier",
+    level: 6,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Cleric"],
+    description: "You create a vertical wall of whirling, razor-sharp blades made of magical energy. The wall is up to 100 feet long, 20 feet high, and 5 feet thick. A creature that enters the wall's area for the first time on a turn or starts its turn there takes 6d10 slashing damage on a failed Dexterity save."
+  },
   {
     name: "Chain Lightning",
     level: 6,
@@ -1220,7 +3585,51 @@ export const SPELLS_DB = [
     components: "V, S, M (a bit of fur, a piece of amber, glass, or a crystal rod, and three silver pins)",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "You create a bolt of lightning that arcs toward a target of your choice within range. Three bolts then leap from that target to up to three other targets within 30 feet. Each target must make a Dexterity saving throw, taking 10d8 lightning damage on a failure, or half on a success."
+    description: "You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other targets, each of which must be within 30 feet of the first target. Each target must make a Dexterity saving throw, taking 10d8 lightning damage on a failure."
+  },
+  {
+    name: "Circle of Death",
+    level: 6,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (the powder of a crushed black pearl worth at least 500 gp)",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a Constitution saving throw, taking 8d6 necrotic damage on a failed save, or half as much on a success."
+  },
+  {
+    name: "Conjure Fey",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Warlock"],
+    description: "You summon a fey creature of challenge rating 6 or lower, or a fey spirit that takes the form of a beast of challenge rating 6 or lower. It appears in an unoccupied space that you can see within range. The creature is friendly to you and your companions."
+  },
+  {
+    name: "Contingency",
+    level: 6,
+    school: "Evocation",
+    castingTime: "10 minutes",
+    range: "Self",
+    components: "V, S, M (a statuette of yourself carved from ivory and decorated with gems worth at least 1,500 gp)",
+    duration: "10 days",
+    classes: ["Wizard"],
+    description: "Choose a spell of 5th level or lower that you can cast, that has a casting time of 1 action, and that can target you. You cast that spell as part of casting contingency, and it takes effect when a certain circumstance occurs. You describe that circumstance when you cast the two spells."
+  },
+  {
+    name: "Create Undead",
+    level: 6,
+    school: "Necromancy",
+    castingTime: "1 minute",
+    range: "10 feet",
+    components: "V, S, M (one clay pot filled with grave dirt, one clay pot filled with brackish water, and one 150 gp black onyx stone for each corpse)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Warlock", "Wizard"],
+    description: "You can cast this spell only at night. Choose up to three corpses of Medium or Small humanoids within range. Each corpse becomes a ghoul under your control. You can issue mental commands to any creature you made with this spell."
   },
   {
     name: "Disintegrate",
@@ -1231,7 +3640,62 @@ export const SPELLS_DB = [
     components: "V, S, M (a lodestone and a pinch of dust)",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "A thin green ray springs from your pointing finger to a target within range. The target takes 10d6+40 force damage. A creature reduced to 0 hit points by this spell is disintegrated, leaving behind only fine gray dust."
+    description: "A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force. A creature targeted must make a Dexterity saving throw, taking 10d6 + 40 force damage on a failure. If this reduces the target to 0 hit points, it is disintegrated."
+  },
+  {
+    name: "Drawmij's Instant Summons",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "V, S, M (a sapphire worth 1,000 gp)",
+    duration: "Until dispelled",
+    classes: ["Wizard"],
+    description: "You touch an object weighing 10 pounds or less. At any time thereafter, you can crush the sapphire and speak the item's name, and the item appears in your hand regardless of physical or planar distances."
+  },
+  {
+    name: "Eyebite",
+    level: 6,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "For the spell's duration, your eyes become an inky void imbued with dread power. One creature of your choice within 60 feet must succeed on a Wisdom saving throw or be affected by one of the following effects of your choice: Asleep, Panicked, or Sickened."
+  },
+  {
+    name: "Find the Path",
+    level: 6,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V, S, M (a set of divinatory tools worth 100 gp and an object from the location you wish to find)",
+    duration: "Concentration, up to 1 day",
+    classes: ["Bard", "Cleric", "Druid"],
+    description: "This spell allows you to find the shortest, most direct physical route to a specific fixed location that you are familiar with on the same plane of existence. For the duration, as long as you are on the same plane, you know how far it is and in what direction it lies."
+  },
+  {
+    name: "Flesh to Stone",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a pinch of lime, water, and earth)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Warlock", "Wizard"],
+    description: "You attempt to turn one creature that you can see within range into stone. If the target's body is made of flesh, the creature must make a Constitution saving throw. On a failure, it is restrained as its flesh begins to harden. After three failed saves, it is petrified."
+  },
+  {
+    name: "Forbiddance",
+    level: 6,
+    school: "Abjuration",
+    castingTime: "10 minutes",
+    range: "Touch",
+    components: "V, S, M (a sprinkling of holy water, rare incense, and powdered ruby worth at least 1,000 gp)",
+    duration: "1 day",
+    classes: ["Cleric"],
+    description: "You create a ward against magical travel that protects up to 40,000 square feet of floor space. Creatures can't teleport into the area or use portals to enter. The spell also damages creatures of a type you choose when they enter the area for the first time or start their turn there (5d10 radiant or necrotic)."
   },
   {
     name: "Globe of Invulnerability",
@@ -1245,6 +3709,28 @@ export const SPELLS_DB = [
     description: "An immobile, faintly shimmering barrier springs into existence in a 10-foot radius around you and remains for the duration. Any spell of 5th level or lower cast from outside the barrier can't affect creatures or objects within it."
   },
   {
+    name: "Guards and Wards",
+    level: 6,
+    school: "Abjuration",
+    castingTime: "10 minutes",
+    range: "Touch",
+    components: "V, S, M (burning incense, a small measure of brimstone and oil, a knotted string, a small amount of umber hulk blood, and a small silver rod worth at least 10 gp)",
+    duration: "24 hours",
+    classes: ["Bard", "Wizard"],
+    description: "You create a ward that protects up to 2,500 square feet of floor space. You can place various magical effects in the area: fog, locked doors, webs, stinking cloud, confusion, suggestion, and others to hinder intruders."
+  },
+  {
+    name: "Harm",
+    level: 6,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You unleash a virulent disease on a creature that you can see within range. The target must make a Constitution saving throw, taking 14d6 necrotic damage on a failure, or half on a success. The damage can't reduce the target's hit points below 1."
+  },
+  {
     name: "Heal",
     level: 6,
     school: "Evocation",
@@ -1256,6 +3742,149 @@ export const SPELLS_DB = [
     description: "Choose a creature that you can see within range. A surge of positive energy washes through the creature, causing it to regain 70 hit points. This spell also ends blindness, deafness, and any diseases affecting the target."
   },
   {
+    name: "Heroes' Feast",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "10 minutes",
+    range: "30 feet",
+    components: "V, S, M (a gem-encrusted bowl worth at least 1,000 gp, which the spell consumes)",
+    duration: "Instantaneous",
+    classes: ["Cleric", "Druid"],
+    description: "You bring forth a great feast that takes 1 hour to consume. Up to twelve creatures partake. A creature that partakes gains several benefits: it is cured of all diseases and poison, becomes immune to poison and being frightened, and makes all Wisdom saving throws with advantage. Its hit point maximum increases by 2d10, and it gains the same number of hit points. These benefits last for 24 hours."
+  },
+  {
+    name: "Investiture of Flame",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "Flames race across your body, shedding bright light in a 30-foot radius. You have immunity to fire damage, resistance to cold damage, and any creature that moves within 5 feet of you takes 1d10 fire damage. You can use your action to create a line of fire 15 feet long and 5 feet wide, dealing 4d8 fire damage."
+  },
+  {
+    name: "Investiture of Ice",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "Until the spell ends, ice rimes your body and you gain immunity to cold damage, resistance to fire damage. The ground in a 10-foot radius around you is icy and is difficult terrain. You can use your action to create a cone of freezing wind 15 feet long, dealing 4d6 cold damage and reducing speed by 10 feet."
+  },
+  {
+    name: "Investiture of Stone",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "Until the spell ends, bits of rock spread across your body, and you gain resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks. You can move across difficult terrain made of earth or stone without spending extra movement, and can move through solid earth or stone as if it were air."
+  },
+  {
+    name: "Investiture of Wind",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid", "Sorcerer", "Warlock", "Wizard"],
+    description: "Until the spell ends, wind whirls around you and you gain a flying speed of 60 feet. Ranged weapon attacks against you have disadvantage. You can use your action to create a 15-foot cube of swirling wind centered on a point you can see within 60 feet, dealing 2d10 bludgeoning damage on a failed Constitution save and pushing creatures 10 feet."
+  },
+  {
+    name: "Magic Jar",
+    level: 6,
+    school: "Necromancy",
+    castingTime: "1 minute",
+    range: "Self",
+    components: "V, S, M (a gem, crystal, reliquary, or similar ornamental container worth at least 500 gp)",
+    duration: "Until dispelled",
+    classes: ["Wizard"],
+    description: "Your body falls into a catatonic state as your soul leaves it and enters the container. While your soul inhabits the container, you can attempt to possess a humanoid within 100 feet. It must make a Charisma saving throw. On a failure, your soul moves into the target's body."
+  },
+  {
+    name: "Mass Suggestion",
+    level: 6,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, M (a snake's tongue and either a bit of honeycomb or a drop of sweet oil)",
+    duration: "24 hours",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You suggest a course of activity to up to twelve creatures of your choice that you can see within range that can hear and understand you. The suggestion must be worded to sound reasonable. Each target must make a Wisdom saving throw or pursue the course of action."
+  },
+  {
+    name: "Move Earth",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (an iron blade and a small bag containing a mixture of soils: clay, loam, and sand)",
+    duration: "Concentration, up to 2 hours",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "Choose an area of terrain no larger than 40 feet on a side within range. You can reshape dirt, sand, or clay in the area in any manner you choose for the duration. You can raise or lower the area's elevation, create or fill in a trench, or erect or flatten a wall."
+  },
+  {
+    name: "Otiluke's Freezing Sphere",
+    level: 6,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V, S, M (a small crystal sphere)",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "A frigid globe of cold energy streaks from your fingertips to a point of your choice within range, where it explodes in a 60-foot-radius sphere. Each creature within the area must make a Constitution saving throw, taking 10d6 cold damage on a failure, or half on a success."
+  },
+  {
+    name: "Otto's Irresistible Dance",
+    level: 6,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Wizard"],
+    description: "Choose one creature that you can see within range. The target begins a comic dance in place. The dancing creature must use all its movement to dance without leaving its space, has disadvantage on Dexterity saving throws and attack rolls, and other creatures have advantage on attacks against it."
+  },
+  {
+    name: "Planar Ally",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "10 minutes",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You beseech an otherworldly entity for aid. The being sends a celestial, an elemental, or a fiend loyal to it to aid you. If you know a specific creature's name, you can speak that name to request that creature. The creature is under no compulsion to behave in any particular way; you must negotiate payment."
+  },
+  {
+    name: "Primordial Ward",
+    level: 6,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid"],
+    description: "You have resistance to acid, cold, fire, lightning, and thunder damage for the spell's duration. When you take damage of one of those types, you can use your reaction to gain immunity to that damage type until the start of your next turn, but you lose all other resistances from this spell."
+  },
+  {
+    name: "Programmed Illusion",
+    level: 6,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a bit of fleece and jade dust worth at least 25 gp)",
+    duration: "Until dispelled",
+    classes: ["Bard", "Wizard"],
+    description: "You create an illusion of an object, a creature, or some other visible phenomenon within range that activates when a specific condition occurs. The illusion includes sounds, smells, and temperature appropriate to what is depicted. It can last up to 5 minutes per occurrence."
+  },
+  {
     name: "Sunbeam",
     level: 6,
     school: "Evocation",
@@ -1264,7 +3893,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a magnifying glass)",
     duration: "Concentration, up to 1 minute",
     classes: ["Druid", "Sorcerer", "Wizard"],
-    description: "A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-long line. Each creature in the line must make a Constitution saving throw, taking 6d8 radiant damage on a failure, or half on a success. Undead and oozes have disadvantage. You can create a new beam on subsequent turns."
+    description: "A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-long line. Each creature in the line must make a Constitution saving throw, taking 6d8 radiant damage on a failure, or half on a success. Undead and oozes have disadvantage. You can create a new line of radiance as your action on any turn."
+  },
+  {
+    name: "Transport via Plants",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "10 feet",
+    components: "V, S",
+    duration: "1 round",
+    classes: ["Druid"],
+    description: "This spell creates a magical link between a Large or larger inanimate plant within range and another plant, at any distance, on the same plane of existence. You must have seen or touched the destination plant at least once before. For the duration, any creature can step into the target plant and exit from the destination plant."
   },
   {
     name: "True Seeing",
@@ -1272,13 +3912,101 @@ export const SPELLS_DB = [
     school: "Divination",
     castingTime: "1 action",
     range: "Touch",
-    components: "V, S, M (an ointment for the eyes that costs 25 gp, which the spell consumes)",
+    components: "V, S, M (an ointment for the eyes that costs 25 gp, made from mushroom powder, saffron, and fat, which is consumed by the spell)",
     duration: "1 hour",
     classes: ["Bard", "Cleric", "Sorcerer", "Warlock", "Wizard"],
-    description: "You give the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight to a range of 120 feet, can see into the Ethereal Plane, and sees through illusions and the true form of shapechangers."
+    description: "This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight to a range of 120 feet, notices secret doors hidden by magic, and can see into the Ethereal Plane."
+  },
+  {
+    name: "Wall of Ice",
+    level: 6,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a small piece of quartz)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Wizard"],
+    description: "You create a wall of ice on a solid surface within range. The wall is 10 feet high and 1 foot thick, and extends up to 50 feet long. When the wall appears, each creature within its area is pushed to one side and must make a Dexterity saving throw, taking 10d6 cold damage on a failure."
+  },
+  {
+    name: "Wall of Thorns",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S, M (a handful of thorns)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Druid"],
+    description: "You create a wall of tough, pliable, tangled brush bristling with needle-sharp thorns. The wall is up to 60 feet long, 10 feet high, and 5 feet thick. A creature that enters the wall or starts its turn there takes 7d8 slashing damage on a failed Dexterity save."
+  },
+  {
+    name: "Wind Walk",
+    level: 6,
+    school: "Transmutation",
+    castingTime: "1 minute",
+    range: "30 feet",
+    components: "V, S, M (fire and holy water)",
+    duration: "8 hours",
+    classes: ["Druid"],
+    description: "You and up to ten willing creatures you can see within range assume a gaseous form for the duration, appearing as wisps of cloud. While in this cloud form, a creature has a flying speed of 300 feet and has resistance to damage from nonmagical weapons."
+  },
+  {
+    name: "Word of Recall",
+    level: 6,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "5 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You and up to five willing creatures within 5 feet of you instantly teleport to a previously designated sanctuary. You and any creatures that teleport with you appear in the nearest unoccupied space to the spot you designated when you prepared your sanctuary."
   },
 
-  // ─── 7TH LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 7 ──────────────────────────────────────────────────────────
+  {
+    name: "Conjure Celestial",
+    level: 7,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "90 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Cleric"],
+    description: "You summon a celestial of challenge rating 4 or lower, which appears in an unoccupied space that you can see within range. The celestial is friendly to you and your companions for the duration and obeys any verbal commands that you issue to it."
+  },
+  {
+    name: "Crown of Stars",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S",
+    duration: "1 hour",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "Seven star-like motes of light appear and orbit your head until the spell ends. As a bonus action, you can send one of the motes streaking toward one creature or object within 120 feet. Make a ranged spell attack; on a hit, the target takes 4d12 radiant damage."
+  },
+  {
+    name: "Delayed Blast Fireball",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (a tiny ball of bat guano and sulfur)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A beam of yellow light flashes from your pointing finger, then condenses to linger at a chosen point within range as a glowing bead. It detonates when concentration ends or a creature touches it. The fire damage starts at 12d6 and increases by 1d6 for each round the bead persists."
+  },
+  {
+    name: "Divine Word",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 bonus action",
+    range: "30 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Cleric"],
+    description: "You utter a divine word, imbued with the power that shaped the world at the dawn of creation. Each creature of your choice that can hear you within range must make a Charisma saving throw. Depending on remaining hit points, the creature can be deafened, blinded, stunned, or killed."
+  },
   {
     name: "Etherealness",
     level: 7,
@@ -1288,7 +4016,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Up to 8 hours",
     classes: ["Bard", "Cleric", "Sorcerer", "Warlock", "Wizard"],
-    description: "You step into the border regions of the Ethereal Plane, in the area where it overlaps with your current plane. You remain in the Border Ethereal for the duration or until you dismiss the spell. You can only affect and be affected by other creatures on the Ethereal Plane."
+    description: "You step into the border regions of the Ethereal Plane, in the area where it overlaps with your current plane. You remain in the Border Ethereal for the duration or until you use your action to dismiss the spell. You can see and hear the plane you originated from, but everything there looks gray."
   },
   {
     name: "Finger of Death",
@@ -1299,7 +4027,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Warlock", "Wizard"],
-    description: "You send negative energy coursing through a creature within range. The target must make a Constitution saving throw, taking 7d8+30 necrotic damage on a failure, or half on a success. A humanoid killed by this spell rises as a zombie permanently under your command."
+    description: "You send negative energy coursing through a creature that you can see within range, causing it searing pain. The target must make a Constitution saving throw, taking 7d8 + 30 necrotic damage on a failure, or half on a success. A humanoid killed by this spell rises as a zombie permanently under your command."
   },
   {
     name: "Fire Storm",
@@ -1310,7 +4038,51 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Cleric", "Druid", "Sorcerer"],
-    description: "A storm made up of sheets of roaring flame appears in a location you choose. The area of the storm consists of up to ten 10-foot cubes, which you can arrange as you wish. Each creature in the area must make a Dexterity saving throw, taking 7d10 fire damage on a failure, or half on a success."
+    description: "A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten 10-foot cubes, which you can arrange as you wish. Each creature in the area must make a Dexterity saving throw, taking 7d10 fire damage on a failure."
+  },
+  {
+    name: "Forcecage",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "100 feet",
+    components: "V, S, M (ruby dust worth 1,500 gp)",
+    duration: "1 hour",
+    classes: ["Warlock", "Wizard"],
+    description: "An immobile, invisible, cube-shaped prison composed of magical force springs into existence around an area you choose within range. The prison can be a cage (barred, up to 20 feet on a side) or a box (solid walls, up to 10 feet on a side). A creature inside can't leave by nonmagical means."
+  },
+  {
+    name: "Mirage Arcane",
+    level: 7,
+    school: "Illusion",
+    castingTime: "10 minutes",
+    range: "Sight",
+    components: "V, S",
+    duration: "10 days",
+    classes: ["Bard", "Druid", "Wizard"],
+    description: "You make terrain in an area up to 1 mile square look, sound, smell, and even feel like some other sort of terrain. The terrain's general shape remains the same, however. The illusion includes audible, visual, tactile, and olfactory elements, so it can turn clear ground into difficult terrain."
+  },
+  {
+    name: "Mordenkainen's Magnificent Mansion",
+    level: 7,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "300 feet",
+    components: "V, S, M (a miniature portal carved from ivory, a small piece of polished marble, and a tiny silver spoon, each item worth at least 5 gp)",
+    duration: "24 hours",
+    classes: ["Bard", "Wizard"],
+    description: "You conjure an extradimensional dwelling that has a single entrance on the plane from which the spell was cast. The entry point shimmers faintly and is 5 feet wide and 10 feet tall. The dwelling contains a foyer, numerous chambers, and enough food to serve a nine-course banquet for up to 100 people."
+  },
+  {
+    name: "Mordenkainen's Sword",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Bard", "Wizard"],
+    description: "You create a sword-shaped plane of force that hovers within range. When the sword appears, you make a melee spell attack against a target of your choice within 5 feet of the sword, dealing 3d10 force damage on a hit. On subsequent turns, you can use a bonus action to move the sword and repeat the attack."
   },
   {
     name: "Plane Shift",
@@ -1321,7 +4093,40 @@ export const SPELLS_DB = [
     components: "V, S, M (a forked, metal rod worth at least 250 gp, attuned to a particular plane of existence)",
     duration: "Instantaneous",
     classes: ["Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"],
-    description: "You and up to eight willing creatures who link hands in a circle are transported to a different plane of existence. Alternatively, you can use this spell as an attack, making a melee spell attack to send an unwilling creature to another plane on a failed Charisma save."
+    description: "You and up to eight willing creatures who link hands in a circle are transported to a different plane of existence. Alternatively, you can use this spell as an attack, making a melee spell attack. On a hit, the target must make a Charisma saving throw or be transported to a random location on a different plane."
+  },
+  {
+    name: "Power Word Pain",
+    level: 7,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Warlock", "Wizard"],
+    description: "You speak a word of power that causes waves of intense pain to assail one creature you can see within range. If the target has 100 hit points or fewer, it is subject to crippling pain. It has disadvantage on attack rolls, ability checks, and saving throws other than Constitution, and its speed is reduced to 10 feet."
+  },
+  {
+    name: "Prismatic Spray",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Self (60-foot cone)",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "Eight multicolored rays of light flash from your hand. Each ray is a different color and has a different power and purpose. Each creature in a 60-foot cone must make a Dexterity saving throw. For each target, roll a d8 to determine which color ray affects it, each dealing different damage types or effects."
+  },
+  {
+    name: "Project Image",
+    level: 7,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "500 miles",
+    components: "V, S, M (a small replica of you made from materials worth at least 5 gp)",
+    duration: "Concentration, up to 1 day",
+    classes: ["Bard", "Wizard"],
+    description: "You create an illusory copy of yourself that lasts for the duration. The copy appears at a place within range that you have seen before. The illusion looks and sounds like you but is intangible. You can use your action to move this image up to twice your walking speed and have it gesture, speak, and behave as you wish."
   },
   {
     name: "Regenerate",
@@ -1332,7 +4137,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a prayer wheel and holy water)",
     duration: "1 hour",
     classes: ["Bard", "Cleric", "Druid"],
-    description: "You touch a creature and stimulate its natural healing ability. The target regains 4d8+15 hit points and then regains 1 hit point at the start of each of its turns for the duration. The target's severed body members are restored after 2 minutes."
+    description: "You touch a creature and stimulate its natural healing ability. The target regains 4d8 + 15 hit points. For the duration of the spell, the target regains 1 hit point at the start of each of its turns. The target's severed body members are restored after 2 minutes."
   },
   {
     name: "Resurrection",
@@ -1343,7 +4148,51 @@ export const SPELLS_DB = [
     components: "V, S, M (a diamond worth at least 1,000 gp, which the spell consumes)",
     duration: "Instantaneous",
     classes: ["Bard", "Cleric"],
-    description: "You touch a dead creature that has been dead for no more than a century, that didn't die of old age, and that isn't undead. The target returns to life with all its hit points. This spell neutralizes any poisons and cures nonmagical diseases that affected the creature at the time of death."
+    description: "You touch a dead creature that has been dead for no more than a century. Provided the creature's soul is free and willing, the creature is restored to life with all its hit points. This spell neutralizes any poisons and cures normal diseases. It closes mortal wounds and restores any missing body parts."
+  },
+  {
+    name: "Reverse Gravity",
+    level: 7,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "100 feet",
+    components: "V, S, M (a lodestone and iron filings)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "This spell reverses gravity in a 50-foot-radius, 100-foot high cylinder centered on a point within range. All creatures and objects that aren't anchored to the ground in the area fall upward and reach the top of the area. A creature can make a Dexterity saving throw to grab onto a fixed object it can reach."
+  },
+  {
+    name: "Sequester",
+    level: 7,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S, M (a powder composed of diamond, emerald, ruby, and sapphire dust worth at least 5,000 gp, which the spell consumes)",
+    duration: "Until dispelled",
+    classes: ["Wizard"],
+    description: "You place a willing creature or object you touch into a state of suspended animation. Time ceases to flow for the target, and it is invisible. To the target, no time passes at all. A condition or a trigger you determine ends the spell."
+  },
+  {
+    name: "Simulacrum",
+    level: 7,
+    school: "Illusion",
+    castingTime: "12 hours",
+    range: "Touch",
+    components: "V, S, M (snow or ice in quantities sufficient to make a life-size copy of the duplicated creature, and powdered ruby worth 1,500 gp)",
+    duration: "Until dispelled",
+    classes: ["Wizard"],
+    description: "You shape an illusory duplicate of one beast or humanoid that is within range for the entire casting time of the spell. The duplicate is a creature, partially real, with half the creature's hit point maximum. It obeys your commands and acts on your turn in combat."
+  },
+  {
+    name: "Symbol",
+    level: 7,
+    school: "Abjuration",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "V, S, M (mercury, phosphorus, and powdered diamond and opal with a total value of at least 1,000 gp, which the spell consumes)",
+    duration: "Until dispelled or triggered",
+    classes: ["Bard", "Cleric", "Wizard"],
+    description: "When you cast this spell, you inscribe a harmful glyph either on a surface or within an object that can be closed. The glyph is nearly invisible. You decide what triggers the glyph when you cast the spell. Choose from: death, discord, fear, hopelessness, insanity, pain, sleep, or stunning."
   },
   {
     name: "Teleport",
@@ -1354,10 +4203,98 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Instantaneous",
     classes: ["Bard", "Sorcerer", "Wizard"],
-    description: "This spell instantly transports you and up to eight willing creatures within range to a destination you select. Your familiarity with the destination determines the accuracy of arrival, with results ranging from arriving on target to a mishap."
+    description: "This spell instantly transports you and up to eight willing creatures of your choice within range to a destination you select. The destination must be known to you, and it must be on the same plane of existence. Your familiarity with the destination determines whether you arrive there successfully."
+  },
+  {
+    name: "Whirlwind",
+    level: 7,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "300 feet",
+    components: "V, M (a piece of straw)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "A whirlwind howls down to a point on the ground you specify. The whirlwind is a 10-foot-radius, 30-foot-high cylinder centered on that point. Each creature in the whirlwind must make a Dexterity saving throw, taking 10d6 bludgeoning damage on a failure. Large or smaller creatures must also make a Strength save or be restrained and pulled upward."
   },
 
-  // ─── 8TH LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 8 ──────────────────────────────────────────────────────────
+  {
+    name: "Abi-Dalzim's Horrid Wilting",
+    level: 8,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S, M (a bit of sponge)",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You draw the moisture from every creature in a 30-foot cube centered on a point you choose within range. Each creature in that area must make a Constitution saving throw, taking 12d8 necrotic damage on a failure, or half on a success. Plant creatures and water elementals have disadvantage."
+  },
+  {
+    name: "Animal Shapes",
+    level: 8,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S",
+    duration: "Concentration, up to 24 hours",
+    classes: ["Druid"],
+    description: "Your magic turns others into beasts. Choose any number of willing creatures that you can see within range. You transform each target into the form of a Large or smaller beast with a challenge rating of 4 or lower. On subsequent turns, you can use your action to transform affected creatures into new forms."
+  },
+  {
+    name: "Antimagic Field",
+    level: 8,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self (10-foot-radius sphere)",
+    components: "V, S, M (a pinch of powdered iron or iron filings)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Cleric", "Wizard"],
+    description: "A 10-foot-radius invisible sphere of antimagic surrounds you. Within the sphere, spells can't be cast, summoned creatures disappear, and even magic items become mundane. Spells and other magical effects are suppressed in the sphere and can't protrude into it."
+  },
+  {
+    name: "Antipathy/Sympathy",
+    level: 8,
+    school: "Enchantment",
+    castingTime: "1 hour",
+    range: "60 feet",
+    components: "V, S, M (either a lump of alum soaked in vinegar for antipathy or a drop of honey for sympathy)",
+    duration: "10 days",
+    classes: ["Druid", "Wizard"],
+    description: "This spell attracts or repels creatures of your choice. You target a Huge or smaller object or creature or an area no larger than a 200-foot cube. You can choose either antipathy (target repels specified creatures) or sympathy (target attracts specified creatures)."
+  },
+  {
+    name: "Clone",
+    level: 8,
+    school: "Necromancy",
+    castingTime: "1 hour",
+    range: "Touch",
+    components: "V, S, M (a diamond worth at least 1,000 gp and at least 1 cubic inch of flesh of the creature that is to be cloned, and a vessel worth at least 2,000 gp with a sealable lid)",
+    duration: "Instantaneous",
+    classes: ["Wizard"],
+    description: "This spell grows an inert duplicate of a living creature as a safeguard against death. The clone grows to full size and maturity after 120 days. At any time after the clone matures, if the original creature dies, its soul transfers to the clone."
+  },
+  {
+    name: "Control Weather",
+    level: 8,
+    school: "Transmutation",
+    castingTime: "10 minutes",
+    range: "Self (5-mile radius)",
+    components: "V, S, M (burning incense and bits of earth and wood mixed in water)",
+    duration: "Concentration, up to 8 hours",
+    classes: ["Cleric", "Druid", "Wizard"],
+    description: "You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. You can change the precipitation, temperature, and wind conditions. It takes 1d4 x 10 minutes for the new conditions to take effect."
+  },
+  {
+    name: "Demiplane",
+    level: 8,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "S",
+    duration: "1 hour",
+    classes: ["Warlock", "Wizard"],
+    description: "You create a shadowy door on a flat solid surface that you can see within range. The door is large enough to allow Medium creatures to pass through unhindered. When opened, it leads to a demiplane that appears as an empty room 30 feet in each dimension, made of wood or stone."
+  },
   {
     name: "Dominate Monster",
     level: 8,
@@ -1367,7 +4304,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Concentration, up to 1 hour",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You attempt to beguile a creature that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. While charmed, you have a telepathic link with it and can issue commands. It takes the most direct action to carry out your commands."
+    description: "You attempt to beguile a creature that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. While it is charmed, you have a telepathic link with it. You can use this telepathic link to issue commands to the creature."
   },
   {
     name: "Earthquake",
@@ -1378,7 +4315,7 @@ export const SPELLS_DB = [
     components: "V, S, M (a pinch of dirt, a piece of rock, and a lump of clay)",
     duration: "Concentration, up to 1 minute",
     classes: ["Cleric", "Druid", "Sorcerer"],
-    description: "You create a seismic disturbance at a point on the ground that you can see within range. For the duration, an intense tremor rips through the ground in a 100-foot-radius circle. Each creature on the ground in the area must make a Dexterity saving throw or be knocked prone. The ground may crack into fissures."
+    description: "You create a seismic disturbance at a point on the ground that you can see within range. For the duration, an intense tremor rips through the ground in a 100-foot-radius circle centered on that point. Each creature on the ground must make a Dexterity saving throw or be knocked prone. The ground can develop fissures."
   },
   {
     name: "Feeblemind",
@@ -1389,7 +4326,73 @@ export const SPELLS_DB = [
     components: "V, S, M (a handful of clay, crystal, glass, or mineral spheres)",
     duration: "Instantaneous",
     classes: ["Bard", "Druid", "Warlock", "Wizard"],
-    description: "You blast the mind of a creature you can see within range, attempting to shatter its intellect and personality. The target takes 4d6 psychic damage and must make an Intelligence saving throw. On a failure, its Intelligence and Charisma scores become 1, and it can't cast spells or understand language."
+    description: "You blast the mind of a creature that you can see within range, attempting to shatter its intellect and personality. The target takes 4d6 psychic damage and must make an Intelligence saving throw. On a failure, the creature's Intelligence and Charisma scores become 1 and it can't cast spells or understand language."
+  },
+  {
+    name: "Glibness",
+    level: 8,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V",
+    duration: "1 hour",
+    classes: ["Bard", "Warlock"],
+    description: "Until the spell ends, when you make a Charisma check, you can replace the number you roll with a 15. Additionally, no matter what you say, magic that would determine if you are telling the truth indicates that you are being truthful."
+  },
+  {
+    name: "Holy Aura",
+    level: 8,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a tiny reliquary worth at least 1,000 gp containing a sacred relic)",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Cleric"],
+    description: "Divine light washes out from you and coalesces in a soft radiance in a 30-foot radius around you. Creatures of your choice in that radius when you cast this spell shed dim light in a 5-foot radius, have advantage on all saving throws, and other creatures have disadvantage on attack rolls against them."
+  },
+  {
+    name: "Incendiary Cloud",
+    level: 8,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Sorcerer", "Wizard"],
+    description: "A swirling cloud of smoke shot through with white-hot embers appears in a 20-foot-radius sphere centered on a point within range. The cloud spreads around corners and is heavily obscured. A creature that enters the cloud or starts its turn there must make a Dexterity saving throw, taking 10d8 fire damage on a failure."
+  },
+  {
+    name: "Maddening Darkness",
+    level: 8,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "150 feet",
+    components: "V, M (a drop of pitch mixed with a drop of mercury)",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Warlock", "Wizard"],
+    description: "Magical darkness spreads from a point you choose within range to fill a 60-foot-radius sphere. Darkvision can't see through it. A creature that starts its turn in the darkness must make a Wisdom saving throw, taking 8d8 psychic damage on a failure, or half on a success."
+  },
+  {
+    name: "Maze",
+    level: 8,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "Concentration, up to 10 minutes",
+    classes: ["Wizard"],
+    description: "You banish a creature that you can see within range into a labyrinthine demiplane. The target remains there for the duration or until it escapes the maze. The target can use its action to attempt to escape by making a DC 20 Intelligence check."
+  },
+  {
+    name: "Mind Blank",
+    level: 8,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "24 hours",
+    classes: ["Bard", "Wizard"],
+    description: "Until the spell ends, one willing creature you touch is immune to psychic damage, any effect that would sense its emotions or read its thoughts, divination spells, and the charmed condition."
   },
   {
     name: "Power Word Stun",
@@ -1400,7 +4403,7 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Instantaneous",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You speak a word of power that can overwhelm the mind of one creature you can see within range. If the target has 150 hit points or fewer, it is stunned. Otherwise, the spell has no effect. The stunned target must make a Constitution saving throw at the end of each of its turns to end the effect."
+    description: "You speak a word of power that can overwhelm the mind of one creature you can see within range, leaving it dumbfounded. If the target has 150 hit points or fewer, it is stunned. Otherwise, the spell has no effect. The stunned target must make a Constitution saving throw at the end of each of its turns to end the effect."
   },
   {
     name: "Sunburst",
@@ -1411,10 +4414,54 @@ export const SPELLS_DB = [
     components: "V, S, M (fire and a piece of sunstone)",
     duration: "Instantaneous",
     classes: ["Druid", "Sorcerer", "Wizard"],
-    description: "Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in the light must make a Constitution saving throw, taking 12d6 radiant damage on a failure, or half on a success. Creatures that fail are blinded for 1 minute."
+    description: "Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw, taking 12d6 radiant damage on a failure, or half on a success. A creature that fails is blinded for 1 minute. Undead and oozes have disadvantage."
+  },
+  {
+    name: "Telepathy",
+    level: 8,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Unlimited",
+    components: "V, S, M (a pair of linked silver rings)",
+    duration: "24 hours",
+    classes: ["Wizard"],
+    description: "You create a telepathic link between yourself and a willing creature with which you are familiar. The creature can be anywhere on the same plane of existence as you. Until the spell ends, you and the target can instantaneously share words, images, sounds, and other sensory messages."
+  },
+  {
+    name: "Tsunami",
+    level: 8,
+    school: "Conjuration",
+    castingTime: "1 minute",
+    range: "Sight",
+    components: "V, S",
+    duration: "Concentration, up to 6 rounds",
+    classes: ["Druid"],
+    description: "A wall of water springs into existence at a point you choose within range. The wall is up to 300 feet long, 300 feet high, and 50 feet thick. Each creature in the wall must make a Strength saving throw, taking 6d10 bludgeoning damage on a failure. The wall moves 50 feet away from you each round."
   },
 
-  // ─── 9TH LEVEL ────────────────────────────────────────────────────────
+  // ─── LEVEL 9 ──────────────────────────────────────────────────────────
+  {
+    name: "Astral Projection",
+    level: 9,
+    school: "Necromancy",
+    castingTime: "1 hour",
+    range: "10 feet",
+    components: "V, S, M (for each creature you affect, one jacinth worth at least 1,000 gp and one ornately carved bar of silver worth at least 100 gp)",
+    duration: "Special",
+    classes: ["Cleric", "Warlock", "Wizard"],
+    description: "You and up to eight willing creatures within range project your astral bodies into the Astral Plane. Your astral body resembles your mortal form, with all your game statistics. The spell ends for a creature if its astral body or physical body drops to 0 hit points."
+  },
+  {
+    name: "Foresight",
+    level: 9,
+    school: "Divination",
+    castingTime: "1 minute",
+    range: "Touch",
+    components: "V, S, M (a hummingbird feather)",
+    duration: "8 hours",
+    classes: ["Bard", "Druid", "Warlock", "Wizard"],
+    description: "You touch a willing creature and bestow a limited ability to see into the immediate future. For the duration, the target can't be surprised and has advantage on attack rolls, ability checks, and saving throws. Other creatures have disadvantage on attack rolls against the target."
+  },
   {
     name: "Gate",
     level: 9,
@@ -1424,7 +4471,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a diamond worth at least 5,000 gp)",
     duration: "Concentration, up to 1 minute",
     classes: ["Cleric", "Sorcerer", "Wizard"],
-    description: "You conjure a portal linking an unoccupied space you can see within range to a precise location on a different plane of existence. Any creature that enters the portal instantly appears within 5 feet of the destination. You can also speak the true name of a specific creature to draw it through the gate."
+    description: "You conjure a portal linking an unoccupied space you can see within range to a precise location on a different plane of existence. The portal is a circular opening between 5 and 20 feet in diameter. Any creature that enters the portal instantly appears within 5 feet of the destination."
+  },
+  {
+    name: "Imprisonment",
+    level: 9,
+    school: "Abjuration",
+    castingTime: "1 minute",
+    range: "30 feet",
+    components: "V, S, M (a vellum depiction or a carved statuette of the target, and a special component depending on the form of imprisonment, worth at least 500 gp per Hit Die of the target)",
+    duration: "Until dispelled",
+    classes: ["Warlock", "Wizard"],
+    description: "You create a magical restraint to hold a creature that you can see within range. The target must succeed on a Wisdom saving throw or be bound by the spell. You choose from several forms of imprisonment: Burial, Chaining, Hedged Prison, Minimus Containment, or Slumber."
   },
   {
     name: "Mass Heal",
@@ -1435,7 +4493,7 @@ export const SPELLS_DB = [
     components: "V, S",
     duration: "Instantaneous",
     classes: ["Cleric"],
-    description: "A flood of healing energy flows from you into injured creatures around you. You restore up to 700 hit points, divided as you choose among any number of creatures that you can see within range. This spell also cures all diseases and ends blindness and deafness."
+    description: "A flood of healing energy flows from you into injured creatures around you. You restore up to 700 hit points, divided as you choose among any number of creatures that you can see within range. This spell also ends blindness, deafness, and any diseases on creatures healed."
   },
   {
     name: "Meteor Swarm",
@@ -1449,6 +4507,17 @@ export const SPELLS_DB = [
     description: "Blazing orbs of fire plummet to the ground at four different points you can see within range. Each creature in a 40-foot-radius sphere centered on each point must make a Dexterity saving throw, taking 20d6 fire damage and 20d6 bludgeoning damage on a failure, or half on a success."
   },
   {
+    name: "Power Word Heal",
+    level: 9,
+    school: "Evocation",
+    castingTime: "1 action",
+    range: "Touch",
+    components: "V, S",
+    duration: "Instantaneous",
+    classes: ["Bard"],
+    description: "A wave of healing energy washes over the creature you touch. The target regains all its hit points. If the creature is charmed, frightened, paralyzed, or stunned, the condition ends. If the creature is prone, it can use its reaction to stand up."
+  },
+  {
     name: "Power Word Kill",
     level: 9,
     school: "Enchantment",
@@ -1457,7 +4526,73 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Instantaneous",
     classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
-    description: "You utter a word of power that can compel one creature you can see within range to die instantly. If the creature you chose has 100 hit points or fewer, it dies. Otherwise, the spell has no effect."
+    description: "You utter a word of power that can compel one creature you can see within range to die instantly. If the creature you choose has 100 hit points or fewer, it dies. Otherwise, the spell has no effect."
+  },
+  {
+    name: "Prismatic Wall",
+    level: 9,
+    school: "Abjuration",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S",
+    duration: "10 minutes",
+    classes: ["Wizard"],
+    description: "A shimmering, multicolored plane of light forms a vertical opaque wall centered on a point you can see within range. The wall is up to 90 feet long, 30 feet high, and 1 inch thick, or a sphere up to 30 feet in diameter. The wall has seven layers, each with a different color and effect."
+  },
+  {
+    name: "Psychic Scream",
+    level: 9,
+    school: "Enchantment",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "S",
+    duration: "Instantaneous",
+    classes: ["Bard", "Sorcerer", "Warlock", "Wizard"],
+    description: "You unleash the power of your mind to blast the intellect of up to ten creatures of your choice that you can see within range. Each target must make an Intelligence saving throw, taking 14d6 psychic damage on a failure, or half on a success. If the save fails, the target is also stunned."
+  },
+  {
+    name: "Shapechange",
+    level: 9,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V, S, M (a jade circlet worth at least 1,500 gp, which you must place on your head before you cast the spell)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Wizard"],
+    description: "You assume the form of a different creature for the duration. The new form can be of any creature with a challenge rating equal to your level or lower. Your game statistics are replaced by the statistics of the chosen creature, though you retain your alignment, personality, Intelligence, Wisdom, and Charisma."
+  },
+  {
+    name: "Storm of Vengeance",
+    level: 9,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "Sight",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Druid"],
+    description: "A churning storm cloud forms centered on a point you can see, spreading to a radius of 360 feet. Each round, the storm produces additional effects: thunder damage, acid rain, lightning bolts, hailstones, and freezing rain and wind, each affecting creatures in the area."
+  },
+  {
+    name: "Time Stop",
+    level: 9,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "V",
+    duration: "Instantaneous",
+    classes: ["Sorcerer", "Wizard"],
+    description: "You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use actions and move as normal. The spell ends if an action you take during this period affects a creature other than you."
+  },
+  {
+    name: "True Polymorph",
+    level: 9,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "30 feet",
+    components: "V, S, M (a drop of mercury, a dollop of gum arabic, and a wisp of smoke)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Bard", "Warlock", "Wizard"],
+    description: "Choose one creature or nonmagical object that you can see within range. You transform the creature into a different creature, the creature into an object, or the object into a creature. If you concentrate on this spell for the full duration, the transformation becomes permanent."
   },
   {
     name: "True Resurrection",
@@ -1468,7 +4603,18 @@ export const SPELLS_DB = [
     components: "V, S, M (a sprinkle of holy water and diamonds worth at least 25,000 gp, which the spell consumes)",
     duration: "Instantaneous",
     classes: ["Cleric", "Druid"],
-    description: "You touch a creature that has been dead for no longer than 200 years and that died for any reason except old age. The creature is restored to life with all its hit points. The spell even provides a new body if the original no longer exists."
+    description: "You touch a creature that has been dead for no longer than 200 years and that died for any reason except old age. The creature is restored to life with all its hit points. The spell closes all wounds, neutralizes any poison, cures all diseases, and restores any missing body parts. It can even provide a new body if the original no longer exists."
+  },
+  {
+    name: "Weird",
+    level: 9,
+    school: "Illusion",
+    castingTime: "1 action",
+    range: "120 feet",
+    components: "V, S",
+    duration: "Concentration, up to 1 minute",
+    classes: ["Wizard"],
+    description: "Drawing on the deepest fears of a group of creatures, you create illusory creatures in their minds. Each creature in a 30-foot-radius sphere centered on a point of your choice within range must make a Wisdom saving throw. On a failure, a creature becomes frightened and takes 4d10 psychic damage at the end of each of its turns."
   },
   {
     name: "Wish",
@@ -1479,6 +4625,6 @@ export const SPELLS_DB = [
     components: "V",
     duration: "Instantaneous",
     classes: ["Sorcerer", "Wizard"],
-    description: "Wish is the mightiest spell a mortal creature can cast. By simply speaking aloud, you can alter the very foundations of reality in accord with your desires. The most common use is to duplicate any other spell of 8th level or lower without needing components."
+    description: "Wish is the mightiest spell a mortal creature can cast. By simply speaking aloud, you can alter the very foundations of reality in accord with your desires. The basic use of this spell is to duplicate any other spell of 8th level or lower without needing components. You can also create other effects at the DM's discretion, but greater wishes carry a risk of never being able to cast this spell again."
   }
 ];
