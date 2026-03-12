@@ -1,7 +1,7 @@
 import { profBonus, mod, XPByLevel } from "../hooks/useCharacters";
 import { CLASSES } from "../data/classes";
 
-export default function CharacterHeader({ activeChar, setModal, deleteCharacter }) {
+export default function CharacterHeader({ activeChar, updateChar, setModal, deleteCharacter }) {
   const pb = profBonus(activeChar?.level || 1);
   const stats = activeChar?.stats || {};
 
@@ -10,9 +10,9 @@ export default function CharacterHeader({ activeChar, setModal, deleteCharacter 
   const spellSaveDC = spellcastingAbility ? 8 + pb + mod(stats[spellcastingAbility] || 10) : null;
   const spellAttackBonus = spellcastingAbility ? pb + mod(stats[spellcastingAbility] || 10) : null;
 
-  const xpToNext = XPByLevel[(activeChar?.level || 1)] || 999999;
-  const xpCurrent = XPByLevel[(activeChar?.level || 1) - 1] || 0;
-  const xpPct = Math.min(100, (((activeChar?.xp || 0) - xpCurrent) / (xpToNext - xpCurrent)) * 100);
+  const lvl = activeChar?.level || 1;
+  const xpNeeded = (XPByLevel[lvl] || 0) - (XPByLevel[lvl - 1] || 0);
+  const xpPct = xpNeeded > 0 ? Math.min(100, ((activeChar?.xp || 0) / xpNeeded) * 100) : 0;
 
   if (!activeChar) return null;
 
@@ -34,19 +34,29 @@ export default function CharacterHeader({ activeChar, setModal, deleteCharacter 
         <div style={{ fontSize: 11, color: "var(--text-muted)", fontStyle: "italic" }}>{activeChar.alignment}</div>
       </div>
       <div className="xp-bar-container" style={{ maxWidth: 180 }}>
-        <div className="xp-label">XP: {activeChar.xp?.toLocaleString()} / {xpToNext?.toLocaleString()}</div>
+        <div className="xp-label">XP: {(activeChar.xp || 0).toLocaleString()} / {xpNeeded.toLocaleString()}</div>
         <div className="xp-bar"><div className="xp-fill" style={{ width: `${xpPct}%` }} /></div>
       </div>
       {spellSaveDC && (
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1 }}>SAVE DC</div>
+          <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>SAVE DC</div>
           <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--blue-bright)", fontWeight: 700 }}>{spellSaveDC}</div>
-          <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)" }}>ATK +{spellAttackBonus}</div>
+          <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)" }}>ATK +{spellAttackBonus}</div>
         </div>
       )}
       <div style={{ textAlign: "center" }}>
-        <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1 }}>PROF</div>
-        <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--gold)", fontWeight: 700 }}>+{pb}</div>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>PROF</div>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--gold-bright)", fontWeight: 700 }}>+{pb}</div>
+        {spellSaveDC && <div style={{ fontSize: 8, visibility: "hidden" }}>&nbsp;</div>}
+      </div>
+      <div style={{ textAlign: "center", cursor: "pointer", userSelect: "none" }}
+        onClick={() => updateChar({ inspiration: !activeChar.inspiration })}
+        title={activeChar.inspiration ? "Click to remove Inspiration" : "Click to grant Inspiration"}>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>INSPIRATION</div>
+        <div style={{ fontSize: 22, filter: activeChar.inspiration ? "none" : "opacity(0.45)", color: activeChar.inspiration ? undefined : "#e8d5a3", transition: "all 0.2s" }}>
+          {activeChar.inspiration ? "⭐" : "☆"}
+        </div>
+        {spellSaveDC && <div style={{ fontSize: 8, visibility: "hidden" }}>&nbsp;</div>}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
         <button className="btn small" onClick={() => setModal({ type: "addxp" })}>+ XP</button>

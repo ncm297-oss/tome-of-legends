@@ -1,12 +1,54 @@
-import { useState } from "react";
-import { modStr, mod, profBonus } from "../../hooks/useCharacters";
+import { useState, useRef } from "react";
+import { modStr, mod, profBonus, XPByLevel } from "../../hooks/useCharacters";
 import { CLASSES } from "../../data/classes";
 import { RACES } from "../../data/races";
 import { BACKGROUNDS } from "../../data/backgrounds";
-import { CONDITIONS } from "../../data/conditions";
+import { CONDITIONS, DAMAGE_TYPES } from "../../data/conditions";
 import { FEATS_DB } from "../../data/feats";
 import { COMMON_SUMMONS } from "../../data/summons";
 import { SPELL_SLOTS_BY_LEVEL } from "../../data/skills";
+import { buildClassResources } from "../../data/classResources";
+
+// Number input that allows empty while typing, selects all on focus
+function NumInput({ value, onChange, className = "form-input", min, max, style, autoFocus }) {
+  const [display, setDisplay] = useState(() => String(value ?? 0));
+  const ref = useRef(null);
+  const committed = value ?? 0;
+  // Sync display when external value changes (e.g. parent reset)
+  const lastCommitted = useRef(committed);
+  if (committed !== lastCommitted.current) {
+    lastCommitted.current = committed;
+    if (document.activeElement !== ref.current) {
+      // Only sync if not focused (user might be typing)
+    }
+  }
+  return (
+    <input
+      ref={ref}
+      className={className}
+      type="number"
+      style={style}
+      min={min}
+      max={max}
+      autoFocus={autoFocus}
+      value={document.activeElement === ref.current ? display : String(committed)}
+      onFocus={e => { setDisplay(String(committed)); setTimeout(() => e.target.select(), 0); }}
+      onChange={e => {
+        const raw = e.target.value;
+        setDisplay(raw);
+        if (raw === "" || raw === "-") return;
+        const parsed = raw.includes(".") ? parseFloat(raw) : parseInt(raw, 10);
+        if (!isNaN(parsed)) onChange(parsed);
+      }}
+      onBlur={() => {
+        const parsed = display === "" ? 0 : (display.includes(".") ? parseFloat(display) : parseInt(display, 10));
+        const final = isNaN(parsed) ? 0 : parsed;
+        onChange(final);
+        setDisplay(String(final));
+      }}
+    />
+  );
+}
 
 function M({ title, children, onClose }) {
   return (
@@ -22,7 +64,7 @@ function M({ title, children, onClose }) {
   );
 }
 
-export default function ModalRouter({ modal, onClose, activeChar, updateChar, updateCharDeep, applyFeatEffects, setCharacters }) {
+export default function ModalRouter({ modal, onClose, setModal, activeChar, updateChar, updateCharDeep, applyFeatEffects, setCharacters }) {
   const pb = profBonus(activeChar?.level || 1);
 
   if (modal.type === "editstat") {
@@ -32,7 +74,7 @@ export default function ModalRouter({ modal, onClose, activeChar, updateChar, up
     return <EditNameModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
   }
   if (modal.type === "addxp") {
-    return <AddXPModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+    return <AddXPModal onClose={onClose} setModal={setModal} activeChar={activeChar} updateChar={updateChar} />;
   }
   if (modal.type === "additem") {
     return <AddItemModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
@@ -68,7 +110,7 @@ export default function ModalRouter({ modal, onClose, activeChar, updateChar, up
     return <AddConditionModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
   }
   if (modal.type === "levelup") {
-    return <LevelUpModal onClose={onClose} activeChar={activeChar} setCharacters={setCharacters} />;
+    return <LevelUpModal onClose={onClose} setModal={setModal} activeChar={activeChar} setCharacters={setCharacters} />;
   }
   if (modal.type === "portrait") {
     return <PortraitModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
@@ -87,6 +129,21 @@ export default function ModalRouter({ modal, onClose, activeChar, updateChar, up
   }
   if (modal.type === "viewclassfeature") {
     return <ViewClassFeatureModal modal={modal} onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "castspell") {
+    return <CastSpellModal modal={modal} onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "shortrest") {
+    return <ShortRestModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "longrest") {
+    return <LongRestModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "editproficiencies") {
+    return <EditProficienciesModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "adddefense") {
+    return <AddDefenseModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
   }
   return null;
 }
@@ -127,13 +184,49 @@ function EditNameModal({ onClose, activeChar, updateChar }) {
   );
 }
 
-function AddXPModal({ onClose, activeChar, updateChar }) {
+function AddXPModal({ onClose, setModal, activeChar, updateChar }) {
+  const [mode, setMode] = useState("add");
   const [xp, setXp] = useState(0);
+  const currentLevel = activeChar?.level || 1;
+  const currentXp = activeChar?.xp || 0;
+  const xpNeeded = (XPByLevel[currentLevel] || 0) - (XPByLevel[currentLevel - 1] || 0);
+  const resultXp = mode === "add" ? currentXp + xp : mode === "remove" ? Math.max(0, currentXp - xp) : xp;
+  const willLevelUp = xpNeeded > 0 && resultXp >= xpNeeded && currentLevel < 20;
+  const labels = { add: "XP to Add", remove: "XP to Remove", set: "Set Total XP" };
   return (
-    <M title="Add Experience" onClose={onClose}>
-      <label className="modal-label">XP to Add</label>
-      <input className="form-input" type="number" value={xp} onChange={e => setXp(parseInt(e.target.value) || 0)} />
-      <button className="btn mt-2" onClick={() => { updateChar({ xp: (activeChar?.xp || 0) + xp }); onClose(); }}>Add XP</button>
+    <M title="Experience Points" onClose={onClose}>
+      <div style={{ textAlign: "center", marginBottom: 8, fontFamily: "Cinzel, serif", fontSize: 11, color: "var(--gold)", letterSpacing: 0.5 }}>
+        Current: {currentXp.toLocaleString()} / {xpNeeded.toLocaleString()} XP
+      </div>
+      <div className="tabs" style={{ marginBottom: 8 }}>
+        {["add", "remove", "set"].map(m => (
+          <div key={m} className={`tab ${mode === m ? "active" : ""}`}
+            onClick={() => { setMode(m); setXp(0); }}
+            style={{ flex: 1, textAlign: "center" }}>
+            {m === "add" ? "+ ADD" : m === "remove" ? "− REMOVE" : "SET"}
+          </div>
+        ))}
+      </div>
+      <label className="modal-label">{labels[mode]}</label>
+      <NumInput key={mode} value={xp} onChange={setXp} autoFocus />
+      {mode !== "set" && (
+        <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 4 }}>
+          Result: {resultXp.toLocaleString()} XP
+        </div>
+      )}
+      {willLevelUp && (
+        <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(240,192,64,0.12)", border: "1px solid rgba(240,192,64,0.3)", borderRadius: 4, fontSize: 11, color: "var(--gold-bright)", textAlign: "center" }}>
+          ✦ Enough XP to level up! ✦
+        </div>
+      )}
+      <button className="btn mt-2" onClick={() => {
+        updateChar({ xp: resultXp });
+        if (willLevelUp) {
+          setModal({ type: "levelup" });
+        } else {
+          onClose();
+        }
+      }}>{willLevelUp ? "Apply & Level Up" : mode === "add" ? "Add XP" : mode === "remove" ? "Remove XP" : "Set XP"}</button>
     </M>
   );
 }
@@ -144,10 +237,10 @@ function AddItemModal({ onClose, activeChar, updateChar }) {
     <M title="Add Item" onClose={onClose}>
       <div className="form-row form-row-2">
         <div><label className="modal-label">Item Name</label><input className="form-input" value={item.name} onChange={e => setItem({ ...item, name: e.target.value })} /></div>
-        <div><label className="modal-label">Quantity</label><input className="form-input" type="number" value={item.qty} onChange={e => setItem({ ...item, qty: parseInt(e.target.value) || 1 })} /></div>
+        <div><label className="modal-label">Quantity</label><NumInput value={item.qty} onChange={v => setItem({ ...item, qty: Math.max(1, v) })} /></div>
       </div>
       <div className="form-row form-row-2">
-        <div><label className="modal-label">Weight (lbs)</label><input className="form-input" type="number" value={item.weight} onChange={e => setItem({ ...item, weight: parseFloat(e.target.value) || 0 })} /></div>
+        <div><label className="modal-label">Weight (lbs)</label><NumInput value={item.weight} onChange={v => setItem({ ...item, weight: v })} /></div>
         <div><label className="modal-label">Type</label>
           <select className="form-select" value={item.type || ""} onChange={e => setItem({ ...item, type: e.target.value })}>
             <option value="">General</option>
@@ -182,7 +275,7 @@ function ViewItemModal({ modal, onClose, activeChar, updateChar }) {
         <>
           <div className="form-row form-row-2">
             <div><label className="modal-label">Name</label><input className="form-input" value={item.name} onChange={e => setItem({ ...item, name: e.target.value })} /></div>
-            <div><label className="modal-label">Qty</label><input className="form-input" type="number" value={item.qty} onChange={e => setItem({ ...item, qty: parseInt(e.target.value) || 1 })} /></div>
+            <div><label className="modal-label">Qty</label><NumInput value={item.qty} onChange={v => setItem({ ...item, qty: Math.max(1, v) })} /></div>
           </div>
           <div><label className="modal-label">Description</label><textarea className="form-textarea" value={item.description} onChange={e => setItem({ ...item, description: e.target.value })} /></div>
           <button className="btn mt-2" onClick={() => {
@@ -272,7 +365,7 @@ function AddCustomSpellModal({ onClose, activeChar, updateChar }) {
     <M title="Create Custom Spell" onClose={onClose}>
       <div className="form-row form-row-2">
         <div><label className="modal-label">Name</label><input className="form-input" value={sp.name} onChange={e => setSp({ ...sp, name: e.target.value })} /></div>
-        <div><label className="modal-label">Level (0=Cantrip)</label><input className="form-input" type="number" min={0} max={9} value={sp.level} onChange={e => setSp({ ...sp, level: parseInt(e.target.value) || 0 })} /></div>
+        <div><label className="modal-label">Level (0=Cantrip)</label><NumInput value={sp.level} min={0} max={9} onChange={v => setSp({ ...sp, level: v })} /></div>
       </div>
       <div className="form-row form-row-2">
         <div><label className="modal-label">School</label>
@@ -347,7 +440,7 @@ function AddCustomFeatModal({ onClose, activeChar, applyFeatEffects, setCharacte
           <select className="form-select" style={{ flex: 1 }} value={effectKey} onChange={e => setEffectKey(e.target.value)}>
             {["str","dex","con","int","wis","cha","ac","speed","initiative"].map(k => <option key={k}>{k}</option>)}
           </select>
-          <input className="form-input" type="number" style={{ width: 60 }} value={effectVal} onChange={e => setEffectVal(parseInt(e.target.value) || 0)} />
+          <NumInput style={{ width: 60 }} value={effectVal} onChange={setEffectVal} />
           <button className="btn small" onClick={() => setFeat({ ...feat, effects: { ...feat.effects, [effectKey]: effectVal } })}>+ Add</button>
         </div>
         {Object.entries(feat.effects).map(([k, v]) => (
@@ -391,7 +484,7 @@ function AddClassFeatureModal({ onClose, activeChar, updateChar }) {
     <M title="Add Class Feature" onClose={onClose}>
       <div className="form-row form-row-2">
         <div><label className="modal-label">Feature Name</label><input className="form-input" value={feat.name} onChange={e => setFeat({ ...feat, name: e.target.value })} /></div>
-        <div><label className="modal-label">Level Gained</label><input className="form-input" type="number" min={1} max={20} value={feat.level} onChange={e => setFeat({ ...feat, level: parseInt(e.target.value) || 1 })} /></div>
+        <div><label className="modal-label">Level Gained</label><NumInput value={feat.level} min={1} max={20} onChange={v => setFeat({ ...feat, level: v })} /></div>
       </div>
       <div><label className="modal-label">Description</label><textarea className="form-textarea" value={feat.description} onChange={e => setFeat({ ...feat, description: e.target.value })} /></div>
       <button className="btn mt-2" onClick={() => {
@@ -440,14 +533,14 @@ function AddCustomSummonModal({ onClose, activeChar, updateChar }) {
         <div><label className="modal-label">Linked Spell</label><input className="form-input" value={s.linkedSpell} onChange={e => setS({ ...s, linkedSpell: e.target.value })} placeholder="e.g. Conjure Animals" /></div>
       </div>
       <div className="form-row form-row-3">
-        <div><label className="modal-label">HP</label><input className="form-input" type="number" value={s.maxHp} onChange={e => setS({ ...s, maxHp: parseInt(e.target.value) || 1, hp: parseInt(e.target.value) || 1 })} /></div>
-        <div><label className="modal-label">AC</label><input className="form-input" type="number" value={s.ac} onChange={e => setS({ ...s, ac: parseInt(e.target.value) || 10 })} /></div>
+        <div><label className="modal-label">HP</label><NumInput value={s.maxHp} onChange={v => setS({ ...s, maxHp: Math.max(1, v), hp: Math.max(1, v) })} /></div>
+        <div><label className="modal-label">AC</label><NumInput value={s.ac} onChange={v => setS({ ...s, ac: v })} /></div>
         <div><label className="modal-label">CR</label><input className="form-input" value={s.cr} onChange={e => setS({ ...s, cr: e.target.value })} /></div>
       </div>
       <div><label className="modal-label">Speed</label><input className="form-input" value={s.speed} onChange={e => setS({ ...s, speed: e.target.value })} /></div>
       <div className="form-row" style={{ gridTemplateColumns: "repeat(6,1fr)", gap: 6 }}>
         {["str","dex","con","int","wis","cha"].map(stat => (
-          <div key={stat}><label className="modal-label">{stat.toUpperCase()}</label><input className="form-input" type="number" value={s[stat]} onChange={e => setS({ ...s, [stat]: parseInt(e.target.value) || 10 })} /></div>
+          <div key={stat}><label className="modal-label">{stat.toUpperCase()}</label><NumInput value={s[stat]} onChange={v => setS({ ...s, [stat]: v })} /></div>
         ))}
       </div>
       <div className="mt-2">
@@ -487,11 +580,18 @@ function AddConditionModal({ onClose, activeChar, updateChar }) {
   );
 }
 
-function LevelUpModal({ onClose, activeChar, setCharacters }) {
+function LevelUpModal({ onClose, setModal, activeChar, setCharacters }) {
   const cls = CLASSES.find(c => c.name === activeChar?.class);
   const newLevel = (activeChar?.level || 1) + 1;
   const newFeatures = cls?.features?.[newLevel] || [];
   const [hpRoll, setHpRoll] = useState(cls ? Math.floor(cls.hitDie / 2) + 1 : 5);
+  // Calculate overflow XP after level-up: subtract the per-level XP needed
+  const currentLevel = activeChar?.level || 1;
+  const xpNeededThisLevel = (XPByLevel[currentLevel] || 0) - (XPByLevel[currentLevel - 1] || 0);
+  const overflowXp = Math.max(0, (activeChar?.xp || 0) - xpNeededThisLevel);
+  // Check if overflow XP is enough for yet another level-up
+  const xpNeededForNext = (XPByLevel[newLevel] || 0) - (XPByLevel[newLevel - 1] || 0);
+  const anotherLevelUp = xpNeededForNext > 0 && overflowXp >= xpNeededForNext && newLevel < 20;
   return (
     <M title={`Level Up to ${newLevel}!`} onClose={onClose}>
       <div style={{ textAlign: "center", marginBottom: 16 }}>
@@ -507,22 +607,42 @@ function LevelUpModal({ onClose, activeChar, setCharacters }) {
       <div className="mb-2">
         <label className="modal-label">HP Increase (roll d{cls?.hitDie} + CON modifier)</label>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input className="form-input" type="number" value={hpRoll} onChange={e => setHpRoll(parseInt(e.target.value) || 1)} style={{ flex: 1 }} />
+          <NumInput value={hpRoll} onChange={v => setHpRoll(Math.max(1, v))} style={{ flex: 1 }} />
           <button className="btn small" onClick={() => setHpRoll(Math.floor(Math.random() * (cls?.hitDie || 8)) + 1 + mod(activeChar?.stats.con || 10))}>Roll</button>
         </div>
         <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 4 }}>CON modifier: {modStr(activeChar?.stats.con || 10)}</div>
       </div>
+      {anotherLevelUp && (
+        <div style={{ marginBottom: 8, padding: "6px 10px", background: "rgba(240,192,64,0.12)", border: "1px solid rgba(240,192,64,0.3)", borderRadius: 4, fontSize: 11, color: "var(--gold-bright)", textAlign: "center" }}>
+          ✦ You have enough XP to continue leveling! ✦
+        </div>
+      )}
       <button className="btn" onClick={() => {
         const newSpellSlots = cls?.spellcaster ? [...(SPELL_SLOTS_BY_LEVEL[Math.min(20, newLevel)] || Array(9).fill(0))] : (activeChar?.spellSlots || Array(9).fill(0));
         const newClassFeatures = [...(activeChar?.classFeatures || []), ...newFeatures.map(f => ({ name: f, description: "", level: newLevel, custom: false }))];
+        const currentHitDice = activeChar?.hitDice || { current: activeChar?.level || 1, max: activeChar?.level || 1, die: cls?.hitDie || 8 };
+        const newClassResources = buildClassResources(activeChar?.class, newLevel, activeChar?.stats);
+        // Preserve current usage — only update max values
+        const mergedResources = {};
+        Object.entries(newClassResources).forEach(([name, res]) => {
+          const old = activeChar?.classResources?.[name];
+          mergedResources[name] = old ? { ...res, current: Math.min(old.current, res.max) } : res;
+        });
         setCharacters(prev => prev.map(c => c.id === activeChar.id ? {
           ...c, level: newLevel,
+          xp: overflowXp,
           hp: { ...c.hp, max: c.hp.max + Math.max(1, hpRoll), current: c.hp.current + Math.max(1, hpRoll) },
           spellSlots: newSpellSlots,
           classFeatures: newClassFeatures,
+          hitDice: { ...currentHitDice, max: newLevel, current: currentHitDice.current + 1, die: cls?.hitDie || currentHitDice.die },
+          classResources: mergedResources,
         } : c));
-        onClose();
-      }}>Confirm Level Up</button>
+        if (anotherLevelUp) {
+          setModal({ type: "levelup" });
+        } else {
+          onClose();
+        }
+      }}>{anotherLevelUp ? "Confirm & Continue Leveling" : "Confirm Level Up"}</button>
     </M>
   );
 }
@@ -692,6 +812,8 @@ const CLASS_FEATURE_DESCS = {
   "Pact Boon": "Your otherworldly patron bestows a gift upon you for your loyal service — a Pact of the Chain (familiar), Pact of the Blade (weapon), or Pact of the Tome (cantrips).",
   "Arcane Recovery": "Once per day during a short rest, you can recover expended spell slots with a combined level equal to or less than half your wizard level (rounded up).",
   "Wild Shape": "You can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice per short or long rest.",
+  "Wild Shape Improvement": "You can now transform into beasts with a challenge rating as high as 1/2 (no flying speed). You can also stay in Wild Shape for a number of hours equal to half your druid level.",
+  "Wild Shape CR 1": "You can now transform into beasts with a challenge rating as high as 1. At this level you may also choose beasts with a swimming speed.",
   "Druidic": "You know Druidic, the secret language of druids. You can use it to leave hidden messages and automatically spot such messages left by other druids.",
   "Favored Enemy": "You have significant experience studying, tracking, hunting, and even talking to a certain type of enemy. You gain advantage on Survival checks to track and Intelligence checks to recall information about them.",
   "Natural Explorer": "You are a master of navigating the natural world. You gain benefits when traveling through your favored terrain, including improved tracking, foraging, and awareness of threats.",
@@ -733,6 +855,299 @@ function ViewClassFeatureModal({ modal, onClose, activeChar, updateChar }) {
         updateChar({ classFeatures: activeChar.classFeatures.filter((_, j) => j !== modal.index) });
         onClose();
       }}>Remove Feature</button>
+    </M>
+  );
+}
+
+// ============================================================
+// CAST SPELL MODAL
+// ============================================================
+function CastSpellModal({ modal, onClose, activeChar, updateChar }) {
+  const sp = modal.spell;
+  const isConc = (sp.duration || "").toLowerCase().startsWith("concentration");
+  const [selectedLevel, setSelectedLevel] = useState(sp.level);
+
+  const availableLevels = [];
+  for (let i = (sp.level || 1) - 1; i < 9; i++) {
+    const total = activeChar?.spellSlots?.[i] || 0;
+    const used = activeChar?.spellSlotsUsed?.[i] || 0;
+    if (total > 0 && used < total) {
+      availableLevels.push({ level: i + 1, remaining: total - used });
+    }
+  }
+
+  const castSpell = () => {
+    const slotIndex = selectedLevel - 1;
+    const usedArr = [...(activeChar?.spellSlotsUsed || Array(9).fill(0))];
+    usedArr[slotIndex] = (usedArr[slotIndex] || 0) + 1;
+    const updates = { spellSlotsUsed: usedArr };
+    if (isConc) updates.concentrating = sp.name;
+    updateChar(updates);
+    onClose();
+  };
+
+  return (
+    <M title={`Cast ${sp.name}`} onClose={onClose}>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+        <span className="tag tag-blue">Level {sp.level}</span>
+        <span className="tag tag-gold">{sp.school}</span>
+        {isConc && <span className="tag tag-gold">Concentration</span>}
+        {sp.castingTime && <span style={{ fontSize: 9, color: "var(--text-muted)" }}>{sp.castingTime}</span>}
+        {sp.range && <span style={{ fontSize: 9, color: "var(--text-muted)" }}>· {sp.range}</span>}
+      </div>
+      <p style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: 12, maxHeight: 120, overflowY: "auto" }}>{sp.description}</p>
+
+      {isConc && activeChar?.concentrating && (
+        <div style={{ padding: "6px 8px", background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.3)", borderRadius: 3, marginBottom: 10, fontSize: 11, color: "var(--red-bright)" }}>
+          ⚠ Casting this will end concentration on <strong>{activeChar.concentrating}</strong>.
+        </div>
+      )}
+
+      {availableLevels.length > 0 ? (
+        <>
+          <div className="modal-label">Cast at Level</div>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 12 }}>
+            {availableLevels.map(({ level, remaining }) => (
+              <button key={level}
+                className={`btn small ${selectedLevel === level ? "success" : ""}`}
+                style={{ fontSize: 9 }}
+                onClick={() => setSelectedLevel(level)}>
+                Lvl {level} ({remaining} left)
+              </button>
+            ))}
+          </div>
+          {selectedLevel > sp.level && (
+            <div style={{ fontSize: 10, color: "var(--blue-bright)", marginBottom: 8, fontStyle: "italic" }}>
+              Upcasting at level {selectedLevel} (base level {sp.level})
+            </div>
+          )}
+          <button className="btn success" onClick={castSpell}>⚡ Cast Spell</button>
+        </>
+      ) : (
+        <div className="empty-state" style={{ fontSize: 11, color: "var(--red-bright)" }}>
+          No spell slots available at level {sp.level} or above.
+        </div>
+      )}
+    </M>
+  );
+}
+
+// ============================================================
+// SHORT REST MODAL
+// ============================================================
+function ShortRestModal({ onClose, activeChar, updateChar }) {
+  const [diceSpent, setDiceSpent] = useState(0);
+  const [healedHP, setHealedHP] = useState(0);
+  const [rolls, setRolls] = useState([]);
+  const hitDice = activeChar?.hitDice || { current: activeChar?.level || 1, max: activeChar?.level || 1, die: 8 };
+  const conMod = mod(activeChar?.stats?.con || 10);
+
+  const rollHitDie = () => {
+    if (diceSpent >= hitDice.current) return;
+    const roll = Math.floor(Math.random() * hitDice.die) + 1;
+    const healed = Math.max(1, roll + conMod);
+    setDiceSpent(d => d + 1);
+    setHealedHP(hp => hp + healed);
+    setRolls(prev => [...prev, { roll, healed }]);
+  };
+
+  const confirmRest = () => {
+    const updates = {
+      hp: { ...activeChar.hp, current: Math.min(activeChar.hp.max, activeChar.hp.current + healedHP) },
+      hitDice: { ...hitDice, current: hitDice.current - diceSpent },
+    };
+    // Reset short-rest class resources
+    const newResources = {};
+    Object.entries(activeChar?.classResources || {}).forEach(([name, res]) => {
+      newResources[name] = res.resetOn === "short" ? { ...res, current: res.max } : res;
+    });
+    updates.classResources = newResources;
+    updateChar(updates);
+    onClose();
+  };
+
+  const shortRestResources = Object.entries(activeChar?.classResources || {}).filter(([, r]) => r.resetOn === "short" && r.current < r.max);
+
+  return (
+    <M title="⏳ Short Rest" onClose={onClose}>
+      <div style={{ textAlign: "center", marginBottom: 12 }}>
+        <div className="modal-label">Hit Dice Available</div>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 28, color: "var(--gold)" }}>
+          {hitDice.current - diceSpent}d{hitDice.die}
+        </div>
+        <div style={{ fontSize: 10, color: "var(--text-muted)" }}>
+          CON modifier: {conMod >= 0 ? "+" : ""}{conMod} · Per die: 1d{hitDice.die} {conMod >= 0 ? "+" : ""}{conMod}
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center", marginBottom: 12 }}>
+        <button className="btn" onClick={rollHitDie}
+          disabled={diceSpent >= hitDice.current}
+          style={{ opacity: diceSpent >= hitDice.current ? 0.4 : 1 }}>
+          Spend Hit Die
+        </button>
+      </div>
+
+      {rolls.length > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div className="modal-label">Rolls</div>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            {rolls.map((r, i) => (
+              <span key={i} className="tag tag-green" style={{ fontSize: 9 }}>
+                d{hitDice.die}({r.roll}) + {conMod} = +{r.healed} HP
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div style={{ textAlign: "center", marginBottom: 12 }}>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--green-bright)" }}>
+          HP to Restore: +{healedHP}
+        </div>
+        <div style={{ fontSize: 10, color: "var(--text-muted)" }}>
+          {activeChar?.hp?.current || 0} → {Math.min(activeChar?.hp?.max || 0, (activeChar?.hp?.current || 0) + healedHP)} / {activeChar?.hp?.max || 0}
+        </div>
+      </div>
+
+      {shortRestResources.length > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div className="modal-label">Resources Restored</div>
+          {shortRestResources.map(([name, r]) => (
+            <div key={name} style={{ fontSize: 11, color: "var(--text-secondary)", padding: "2px 0" }}>
+              {name}: {r.current} → {r.max}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <button className="btn success" onClick={confirmRest}>Finish Short Rest</button>
+    </M>
+  );
+}
+
+// ============================================================
+// LONG REST MODAL
+// ============================================================
+function LongRestModal({ onClose, activeChar, updateChar }) {
+  const hitDice = activeChar?.hitDice || { current: activeChar?.level || 1, max: activeChar?.level || 1, die: 8 };
+  const regainDice = Math.max(1, Math.floor(hitDice.max / 2));
+  const newDiceCurrent = Math.min(hitDice.max, hitDice.current + regainDice);
+
+  const allResources = Object.entries(activeChar?.classResources || {}).filter(([, r]) => r.current < r.max);
+
+  const confirmRest = () => {
+    const newResources = {};
+    Object.entries(activeChar?.classResources || {}).forEach(([name, res]) => {
+      newResources[name] = { ...res, current: res.max };
+    });
+    updateChar({
+      hp: { ...activeChar.hp, current: activeChar.hp.max, temp: 0 },
+      spellSlotsUsed: Array(9).fill(0),
+      hitDice: { ...hitDice, current: newDiceCurrent },
+      deathSaves: { successes: 0, failures: 0 },
+      concentrating: null,
+      classResources: newResources,
+    });
+    onClose();
+  };
+
+  return (
+    <M title="🌙 Long Rest" onClose={onClose}>
+      <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 16 }}>
+        <div className="modal-label">The following will be restored:</div>
+        <div style={{ paddingLeft: 8 }}>
+          <div>✦ HP restored to maximum ({activeChar?.hp?.max})</div>
+          {(activeChar?.hp?.temp || 0) > 0 && <div>✦ Temporary HP cleared</div>}
+          <div>✦ All spell slots restored</div>
+          <div>✦ Hit dice regained: +{regainDice} ({hitDice.current} → {newDiceCurrent}/{hitDice.max})</div>
+          {allResources.length > 0 && <div>✦ All class resources restored</div>}
+          {(activeChar?.deathSaves?.successes > 0 || activeChar?.deathSaves?.failures > 0) && <div>✦ Death saves cleared</div>}
+          {activeChar?.concentrating && <div>✦ Concentration on {activeChar.concentrating} ended</div>}
+        </div>
+      </div>
+
+      {allResources.length > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div className="modal-label">Resources Restored</div>
+          {allResources.map(([name, r]) => (
+            <div key={name} style={{ fontSize: 11, color: "var(--text-secondary)", padding: "2px 0" }}>
+              {name}: {r.current} → {r.max}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <button className="btn success" onClick={confirmRest}>Confirm Long Rest</button>
+    </M>
+  );
+}
+
+// ============================================================
+// EDIT PROFICIENCIES MODAL
+// ============================================================
+function EditProficienciesModal({ onClose, activeChar, updateChar }) {
+  const [profs, setProfs] = useState({
+    weapons: (activeChar?.proficiencies?.weapons || []).join(", "),
+    armor: (activeChar?.proficiencies?.armor || []).join(", "),
+    tools: (activeChar?.proficiencies?.tools || []).join(", "),
+    languages: (activeChar?.proficiencies?.languages || []).join(", "),
+  });
+
+  const save = () => {
+    updateChar({
+      proficiencies: {
+        weapons: profs.weapons.split(",").map(s => s.trim()).filter(Boolean),
+        armor: profs.armor.split(",").map(s => s.trim()).filter(Boolean),
+        tools: profs.tools.split(",").map(s => s.trim()).filter(Boolean),
+        languages: profs.languages.split(",").map(s => s.trim()).filter(Boolean),
+      }
+    });
+    onClose();
+  };
+
+  return (
+    <M title="Edit Proficiencies" onClose={onClose}>
+      {[["Weapons", "weapons"], ["Armor", "armor"], ["Tools", "tools"], ["Languages", "languages"]].map(([label, key]) => (
+        <div key={key} className="mb-2">
+          <label className="modal-label">{label}</label>
+          <input className="form-input" value={profs[key]}
+            onChange={e => setProfs({ ...profs, [key]: e.target.value })}
+            placeholder={`Comma-separated (e.g. ${key === "languages" ? "Common, Elvish, Dwarvish" : key === "weapons" ? "Simple weapons, Martial weapons" : key === "armor" ? "Light armor, Medium armor, Shields" : "Thieves' tools, Herbalism kit"})`} />
+        </div>
+      ))}
+      <button className="btn mt-2" onClick={save}>Save Proficiencies</button>
+    </M>
+  );
+}
+
+// ============================================================
+// ADD DEFENSE MODAL (Resistances / Immunities / Vulnerabilities)
+// ============================================================
+function AddDefenseModal({ onClose, activeChar, updateChar }) {
+  const [tab, setTab] = useState("resistance");
+  const fieldMap = { resistance: "resistances", immunity: "immunities", vulnerability: "vulnerabilities" };
+  const field = fieldMap[tab];
+  const current = activeChar?.[field] || [];
+
+  return (
+    <M title="Add Defense" onClose={onClose}>
+      <div className="tabs" style={{ marginBottom: 10 }}>
+        {[["resistance", "RESIST"], ["immunity", "IMMUNE"], ["vulnerability", "VULN"]].map(([t, label]) => (
+          <div key={t} className={`tab ${tab === t ? "active" : ""}`} onClick={() => setTab(t)}>{label}</div>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+        {DAMAGE_TYPES.filter(d => !current.includes(d)).map(d => (
+          <button key={d} className="btn small" style={{ fontSize: 9 }} onClick={() => {
+            updateChar({ [field]: [...current, d] });
+            onClose();
+          }}>{d}</button>
+        ))}
+        {DAMAGE_TYPES.filter(d => !current.includes(d)).length === 0 && (
+          <div className="empty-state" style={{ fontSize: 11 }}>All damage types already added for this category.</div>
+        )}
+      </div>
     </M>
   );
 }

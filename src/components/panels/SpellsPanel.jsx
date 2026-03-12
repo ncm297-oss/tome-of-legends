@@ -76,6 +76,27 @@ export default function SpellsPanel({ activeChar, updateChar, setModal }) {
         )}
       </div>
       <div className="panel-body" style={{ flex: 1, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+        {/* Concentration Banner */}
+        {activeChar?.concentrating && (
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "3px 8px", background: "rgba(184,134,11,0.15)",
+            border: "1px solid rgba(184,134,11,0.4)", borderRadius: 3,
+            marginBottom: 4, flexShrink: 0
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: "var(--gold-bright)", fontSize: 11 }}>✦</span>
+              <span style={{ fontFamily: "Cinzel, serif", fontSize: 9, color: "var(--gold)", letterSpacing: 0.5 }}>
+                CONCENTRATING: {activeChar.concentrating}
+              </span>
+            </div>
+            <button className="btn small danger" style={{ fontSize: 7, padding: "1px 5px" }}
+              onClick={() => updateChar({ concentrating: null })}>
+              Drop
+            </button>
+          </div>
+        )}
+
         <div className="tabs" style={{ flexShrink: 0 }}>
           {["slots", "known", "lookup"].map(t => (
             <div key={t} className={`tab ${spellTab === t ? "active" : ""}`} onClick={() => setSpellTab(t)}>
@@ -117,8 +138,13 @@ export default function SpellsPanel({ activeChar, updateChar, setModal }) {
                   </div>
                   {(knownByLevel[i + 1] || []).filter(sp => sp.prepared).map((sp, si) => (
                     <div key={si} className="spell-card" style={{ marginLeft: 28, marginBottom: 2, display: "flex", alignItems: "center", justifyContent: "space-between" }}
-                      onClick={() => setModal({ type: "viewspell", spell: sp })}>
-                      <div className="spell-card-name" style={{ fontSize: 10 }}>{sp.name}</div>
+                      onClick={() => setModal({ type: "castspell", spell: sp })}>
+                      <div className="spell-card-name" style={{ fontSize: 10 }}>
+                        {sp.name}
+                        {(sp.duration || "").toLowerCase().startsWith("concentration") && (
+                          <span style={{ fontSize: 7, color: "var(--gold)", marginLeft: 4 }}>C</span>
+                        )}
+                      </div>
                       <span style={{ color: "var(--red-bright)", cursor: "pointer", fontSize: 12, padding: "0 4px" }}
                         onClick={e => { e.stopPropagation(); prepareSpell(sp); }} title="Unprepare">×</span>
                     </div>
@@ -136,7 +162,7 @@ export default function SpellsPanel({ activeChar, updateChar, setModal }) {
                   ))}
                 </div>
               )}
-              <button className="btn small mt-2 w-full" onClick={() => updateChar({ spellSlotsUsed: Array(9).fill(0) })}>Long Rest — Restore All</button>
+              {/* Rest buttons are in CombatPanel */}
             </div>
           )}
 

@@ -151,7 +151,11 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
             {[["weapon", "Weapon"], ["offhand", "Off-Hand"], ["armor", "Armor"]].map(([slot, label]) => (
               <div key={slot} className="equipped-slot" onClick={() => {
                 if (equipped[slot]) {
-                  equipItem({ name: equipped[slot] }, slot);
+                  // Find the full item data from inventory or DB
+                  const invItem = inventory.find(i => i.name === equipped[slot]);
+                  const dbItem = ALL_ITEMS.find(i => i.name === equipped[slot]);
+                  const item = invItem || dbItem || { name: equipped[slot] };
+                  setModal({ type: "viewitem", item, index: inventory.indexOf(invItem), equipItem, equippedSlot: slot });
                 } else {
                   setEquipSlot(slot);
                   setShowFullInv(true);
@@ -159,7 +163,6 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
               }}>
                 <div className="equipped-slot-label">{label}</div>
                 <div className="equipped-slot-name">{equipped[slot] || "—"}</div>
-                {equipped[slot] && <div className="equipped-slot-unequip" title="Unequip">×</div>}
               </div>
             ))}
           </div>
@@ -199,14 +202,13 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
             </div>
 
             {/* Inventory List */}
-            <div className="inv-list">
+            <div className="inv-list" style={{ maxHeight: 340, overflowY: "auto", scrollbarWidth: "thin", scrollbarColor: "var(--gold) transparent" }}>
               {filteredInv.map((item, i) => {
                 const realIndex = inventory.indexOf(item);
                 const isEquipped = Object.values(equipped).includes(item.name);
                 const canEquipWeapon = item.type === "Weapon";
                 const isShield = item.type === "Shield" || item.name === "Shield";
                 const isBodyArmor = item.type === "Armor" && !isShield;
-                const canEquip = canEquipWeapon || isBodyArmor || isShield;
                 const stackable = isStackable(item);
                 const icon = ITEM_ICONS[item.type] || ITEM_ICONS.default;
 
@@ -267,6 +269,17 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
                           }}>Unequip</button>
                       )}
                     </div>
+
+                    {/* Quick remove button */}
+                    <div className="inv-list-remove" onClick={e => {
+                      e.stopPropagation();
+                      // Unequip first if equipped
+                      if (isEquipped) {
+                        const slot = Object.entries(equipped).find(([, v]) => v === item.name)?.[0];
+                        if (slot) equipItem(item, slot);
+                      }
+                      updateChar({ inventory: inventory.filter((_, j) => j !== realIndex) });
+                    }} title="Remove item">×</div>
                   </div>
                 );
               })}

@@ -3,6 +3,7 @@ import { RACES } from "../data/races";
 import { CLASSES } from "../data/classes";
 import { SPELL_SLOTS_BY_LEVEL } from "../data/skills";
 import { BACKGROUNDS } from "../data/backgrounds";
+import { buildClassResources } from "../data/classResources";
 
 // ============================================================
 // HELPERS
@@ -48,6 +49,15 @@ export const defaultCharacter = () => ({
   currency: { pp: 0, gp: 10, ep: 0, sp: 0, cp: 0 },
   customSpells: [],
   customFeats: [],
+  // New fields
+  inspiration: false,
+  hitDice: { current: 1, max: 1, die: 10 },
+  classResources: {},
+  concentrating: null,
+  proficiencies: { weapons: [], armor: [], tools: [], languages: ["Common"] },
+  resistances: [],
+  immunities: [],
+  vulnerabilities: [],
 });
 
 // ============================================================
@@ -143,6 +153,19 @@ export function useCharacters() {
         .filter(([lvl]) => parseInt(lvl) <= 1)
         .flatMap(([, feats]) => feats.map(f => ({ name: f, description: "", level: 1, custom: false }))),
       notes: { personality: "", ideals: "", bonds: "", flaws: "", backstory: "", pages: [] },
+      // Auto-populated new fields
+      hitDice: { current: 1, max: 1, die: cls.hitDie },
+      classResources: buildClassResources(data.class, 1, finalStats),
+      proficiencies: {
+        weapons: cls.weaponProficiencies ? cls.weaponProficiencies.split(", ").map(s => s.trim()) : [],
+        armor: cls.armorProficiencies ? cls.armorProficiencies.split(", ").map(s => s.trim()) : [],
+        tools: [],
+        languages: ["Common"],
+      },
+      resistances: (() => {
+        const raceRes = { Tiefling: ["Fire"], "Dwarf (Hill)": ["Poison"], "Dwarf (Mountain)": ["Poison"] };
+        return raceRes[data.race] || [];
+      })(),
     };
     setCharacters(prev => [...prev, newChar]);
     setActiveCharId(newChar.id);

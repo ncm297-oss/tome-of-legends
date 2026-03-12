@@ -31,6 +31,37 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
           <span className="prof-val">+{pb}</span>
         </div>
 
+        {/* Proficiencies & Languages */}
+        <div style={{ marginBottom: 6 }}>
+          <div className="ability-header-combined">
+            <div className="ability-header-left" onClick={() => toggleCollapse("proficiencies")}>
+              <span className="ability-header-collapse">{collapsed.proficiencies ? "▸" : "▾"}</span>
+              <span className="ability-header-name">PROF & LANG</span>
+            </div>
+            <button className="btn small" style={{ fontSize: 7, padding: "1px 5px" }}
+              onClick={(e) => { e.stopPropagation(); setModal({ type: "editproficiencies" }); }}>
+              Edit
+            </button>
+          </div>
+          {!collapsed.proficiencies && (
+            <div style={{ paddingLeft: 16, fontSize: 10, color: "var(--text-secondary)", lineHeight: 1.8 }}>
+              {[["Armor", "armor"], ["Weapons", "weapons"], ["Tools", "tools"], ["Languages", "languages"]].map(([label, key]) => {
+                const items = activeChar?.proficiencies?.[key] || [];
+                if (items.length === 0) return null;
+                return (
+                  <div key={key}>
+                    <span style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1 }}>{label}: </span>
+                    {items.join(", ")}
+                  </div>
+                );
+              })}
+              {(!activeChar?.proficiencies || Object.values(activeChar.proficiencies).every(v => !v || v.length === 0)) && (
+                <div style={{ fontSize: 9, color: "var(--text-muted)", fontStyle: "italic" }}>Click Edit to add proficiencies</div>
+              )}
+            </div>
+          )}
+        </div>
+
         {statOrder.map(stat => {
           const isProf = activeChar?.savingThrowProficiencies?.includes(stat);
           const saveVal = mod(stats[stat] || 10) + (isProf ? pb : 0);

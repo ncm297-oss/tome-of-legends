@@ -53,6 +53,7 @@ export default function App() {
         characters={characters}
         activeCharId={activeCharId}
         setActiveCharId={setActiveCharId}
+        setCharacters={setCharacters}
       />
 
       <div className="hud-layout">
@@ -60,6 +61,7 @@ export default function App() {
         {activeChar && (
           <CharacterHeader
             activeChar={activeChar}
+            updateChar={updateChar}
             setModal={setModal}
             deleteCharacter={deleteCharacter}
           />
@@ -99,7 +101,7 @@ export default function App() {
       <div style={{
         display: "grid",
         gridTemplateColumns: summonsExpanded ? "1fr 1fr 1fr 1fr" : "1fr 1fr 44px 1fr",
-        gap: 6, padding: "0 6px 6px", height: 200, flexShrink: 0
+        gap: 6, padding: "0 6px 6px", height: 240, flexShrink: 0
       }}>
         <InventoryPanel
           activeChar={activeChar}
@@ -131,6 +133,7 @@ export default function App() {
         <ModalRouter
           modal={modal}
           onClose={() => setModal(null)}
+          setModal={setModal}
           activeChar={activeChar}
           updateChar={updateChar}
           updateCharDeep={updateCharDeep}

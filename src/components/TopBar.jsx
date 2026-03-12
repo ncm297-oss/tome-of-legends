@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 
-export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId }) {
+import { defaultCharacter } from "../hooks/useCharacters";
+
+export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId, setCharacters }) {
   const [diceResult, setDiceResult] = useState(null);
   const [showParty, setShowParty] = useState(false);
   const partyRef = useRef(null);
@@ -65,6 +67,42 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
         </div>
         <button className="btn small" onClick={() => setShowWizard(true)}>+ New</button>
         <button className="btn small success" onClick={() => setModal({ type: "levelup" })}>Level Up</button>
+        <div style={{ width: 1, height: 24, background: "rgba(212,160,23,0.3)" }} />
+        <button className="btn small" onClick={() => {
+          const activeChar = characters.find(c => c.id === activeCharId);
+          if (!activeChar) return;
+          const blob = new Blob([JSON.stringify(activeChar, null, 2)], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${activeChar.name.replace(/[^a-zA-Z0-9]/g, "_")}_level${activeChar.level}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        }} title="Export character as JSON">Export</button>
+        <label className="btn small" style={{ cursor: "pointer" }} title="Import character from JSON">
+          Import
+          <input type="file" accept=".json" style={{ display: "none" }} onChange={e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              try {
+                const data = JSON.parse(ev.target.result);
+                if (!data.name || !data.class || !data.race || !data.stats) {
+                  alert("Invalid character file: missing required fields.");
+                  return;
+                }
+                const imported = { ...defaultCharacter(), ...data, id: Date.now() };
+                setCharacters(prev => [...prev, imported]);
+                setActiveCharId(imported.id);
+              } catch {
+                alert("Failed to parse character file.");
+              }
+            };
+            reader.readAsText(file);
+            e.target.value = "";
+          }} />
+        </label>
       </div>
     </div>
   );
