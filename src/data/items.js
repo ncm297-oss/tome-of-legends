@@ -392,6 +392,74 @@ export const MAGIC_ITEMS = [
   { name: "Potion of Water Breathing", rarity: "Uncommon", attunement: false, description: "You can breathe underwater for 1 hour after drinking this potion. Its cloudy green fluid smells of the sea.", weight: 0.5, type: "Potion" },
 ];
 
+// GEMSTONES & VALUABLES
+// ============================================================
+export const GEMSTONES = [
+  // 10 gp Gemstones
+  { name: "Azurite", value: "10 gp", weight: 0, description: "Opaque mottled deep blue gemstone.", rarity: "Common" },
+  { name: "Banded Agate", value: "10 gp", weight: 0, description: "Translucent striped brown, blue, white, or red gemstone.", rarity: "Common" },
+  { name: "Blue Quartz", value: "10 gp", weight: 0, description: "Transparent pale blue gemstone.", rarity: "Common" },
+  { name: "Eye Agate", value: "10 gp", weight: 0, description: "Translucent circles of gray, white, brown, blue, or green.", rarity: "Common" },
+  { name: "Hematite", value: "10 gp", weight: 0, description: "Opaque gray-black metallic gemstone.", rarity: "Common" },
+  { name: "Lapis Lazuli", value: "10 gp", weight: 0, description: "Opaque light and dark blue with yellow flecks.", rarity: "Common" },
+  { name: "Malachite", value: "10 gp", weight: 0, description: "Opaque striated light and dark green gemstone.", rarity: "Common" },
+  { name: "Moss Agate", value: "10 gp", weight: 0, description: "Translucent pink or yellow-white with mossy gray or green markings.", rarity: "Common" },
+  { name: "Obsidian", value: "10 gp", weight: 0, description: "Opaque black volcanic glass.", rarity: "Common" },
+  { name: "Rhodochrosite", value: "10 gp", weight: 0, description: "Opaque light pink gemstone.", rarity: "Common" },
+  { name: "Tiger Eye", value: "10 gp", weight: 0, description: "Translucent brown with golden center.", rarity: "Common" },
+  { name: "Turquoise", value: "10 gp", weight: 0, description: "Opaque light blue-green gemstone.", rarity: "Common" },
+
+  // 50 gp Gemstones
+  { name: "Bloodstone", value: "50 gp", weight: 0, description: "Opaque dark gray with red flecks.", rarity: "Common" },
+  { name: "Carnelian", value: "50 gp", weight: 0, description: "Translucent orange to red-brown gemstone.", rarity: "Common" },
+  { name: "Chalcedony", value: "50 gp", weight: 0, description: "Opaque white gemstone.", rarity: "Common" },
+  { name: "Chrysoprase", value: "50 gp", weight: 0, description: "Translucent green gemstone.", rarity: "Common" },
+  { name: "Citrine", value: "50 gp", weight: 0, description: "Transparent pale yellow-brown gemstone.", rarity: "Common" },
+  { name: "Jasper", value: "50 gp", weight: 0, description: "Opaque blue, black, or brown gemstone.", rarity: "Common" },
+  { name: "Moonstone", value: "50 gp", weight: 0, description: "Translucent white with pale blue glow.", rarity: "Common" },
+  { name: "Onyx", value: "50 gp", weight: 0, description: "Opaque bands of black and white.", rarity: "Common" },
+  { name: "Quartz", value: "50 gp", weight: 0, description: "Transparent white, smoky gray, or yellow.", rarity: "Common" },
+  { name: "Sardonyx", value: "50 gp", weight: 0, description: "Opaque bands of red and white.", rarity: "Common" },
+  { name: "Star Rose Quartz", value: "50 gp", weight: 0, description: "Translucent rosy stone with white star-shaped center.", rarity: "Common" },
+  { name: "Zircon", value: "50 gp", weight: 0, description: "Transparent pale blue-green gemstone.", rarity: "Common" },
+
+  // 100 gp Gemstones
+  { name: "Amber", value: "100 gp", weight: 0, description: "Transparent watery gold to rich gold gemstone.", rarity: "Uncommon" },
+  { name: "Amethyst", value: "100 gp", weight: 0, description: "Transparent deep purple gemstone.", rarity: "Uncommon" },
+  { name: "Chrysoberyl", value: "100 gp", weight: 0, description: "Transparent yellow-green to pale green.", rarity: "Uncommon" },
+  { name: "Coral", value: "100 gp", weight: 0, description: "Opaque crimson gemstone.", rarity: "Uncommon" },
+  { name: "Garnet", value: "100 gp", weight: 0, description: "Transparent red, brown-green, or violet.", rarity: "Uncommon" },
+  { name: "Jade", value: "100 gp", weight: 0, description: "Translucent light green, deep green, or white.", rarity: "Uncommon" },
+  { name: "Jet", value: "100 gp", weight: 0, description: "Opaque deep black gemstone.", rarity: "Uncommon" },
+  { name: "Pearl", value: "100 gp", weight: 0, description: "Opaque lustrous white, yellow, or pink. Often used as a material component for spells.", rarity: "Uncommon" },
+  { name: "Spinel", value: "100 gp", weight: 0, description: "Transparent red, red-brown, or deep green.", rarity: "Uncommon" },
+  { name: "Tourmaline", value: "100 gp", weight: 0, description: "Transparent pale green, blue, brown, or red.", rarity: "Uncommon" },
+
+  // 500 gp Gemstones
+  { name: "Alexandrite", value: "500 gp", weight: 0, description: "Transparent dark green gemstone.", rarity: "Rare" },
+  { name: "Aquamarine", value: "500 gp", weight: 0, description: "Transparent pale blue-green gemstone.", rarity: "Rare" },
+  { name: "Black Pearl", value: "500 gp", weight: 0, description: "Opaque pure black with dark sheen.", rarity: "Rare" },
+  { name: "Blue Spinel", value: "500 gp", weight: 0, description: "Transparent deep blue gemstone.", rarity: "Rare" },
+  { name: "Peridot", value: "500 gp", weight: 0, description: "Transparent rich olive green gemstone.", rarity: "Rare" },
+  { name: "Topaz", value: "500 gp", weight: 0, description: "Transparent golden yellow gemstone.", rarity: "Rare" },
+
+  // 1,000 gp Gemstones
+  { name: "Black Opal", value: "1,000 gp", weight: 0, description: "Translucent dark green with black mottling and golden flecks.", rarity: "Very Rare" },
+  { name: "Blue Sapphire", value: "1,000 gp", weight: 0, description: "Transparent blue-white to medium blue.", rarity: "Very Rare" },
+  { name: "Emerald", value: "1,000 gp", weight: 0, description: "Transparent deep bright green gemstone.", rarity: "Very Rare" },
+  { name: "Fire Opal", value: "1,000 gp", weight: 0, description: "Transparent fiery red gemstone.", rarity: "Very Rare" },
+  { name: "Opal", value: "1,000 gp", weight: 0, description: "Translucent pale blue with green and golden mottling.", rarity: "Very Rare" },
+  { name: "Star Ruby", value: "1,000 gp", weight: 0, description: "Translucent ruby with white star-shaped center.", rarity: "Very Rare" },
+  { name: "Star Sapphire", value: "1,000 gp", weight: 0, description: "Translucent blue sapphire with white star-shaped center.", rarity: "Very Rare" },
+  { name: "Yellow Sapphire", value: "1,000 gp", weight: 0, description: "Transparent fiery yellow or yellow-green.", rarity: "Very Rare" },
+
+  // 5,000 gp Gemstones
+  { name: "Black Sapphire", value: "5,000 gp", weight: 0, description: "Translucent lustrous black with glowing highlights.", rarity: "Legendary" },
+  { name: "Diamond", value: "5,000 gp", weight: 0, description: "Transparent blue-white, canary, pink, brown, or blue. Used as a material component for powerful spells.", rarity: "Legendary" },
+  { name: "Jacinth", value: "5,000 gp", weight: 0, description: "Transparent fiery orange gemstone.", rarity: "Legendary" },
+  { name: "Ruby", value: "5,000 gp", weight: 0, description: "Transparent clear red to deep crimson.", rarity: "Legendary" },
+];
+
 // STARTING EQUIPMENT (Default choices per class)
 // ============================================================
 export const STARTING_EQUIPMENT = [

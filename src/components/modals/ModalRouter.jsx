@@ -152,7 +152,7 @@ function AddItemModal({ onClose, activeChar, updateChar }) {
           <select className="form-select" value={item.type || ""} onChange={e => setItem({ ...item, type: e.target.value })}>
             <option value="">General</option>
             <option>Weapon</option><option>Armor</option><option>Shield</option><option>Potion</option>
-            <option>Magic Item</option><option>Tool</option><option>Currency</option>
+            <option>Magic Item</option><option>Tool</option><option>Gemstone</option><option>Consumable</option><option>Currency</option>
           </select>
         </div>
       </div>

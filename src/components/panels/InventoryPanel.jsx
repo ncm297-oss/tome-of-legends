@@ -1,14 +1,22 @@
 import { useState, useEffect, useRef } from "react";
-import { WEAPONS, ARMOR, ADVENTURING_GEAR, MAGIC_ITEMS } from "../../data/items";
+import { WEAPONS, ARMOR, ADVENTURING_GEAR, MAGIC_ITEMS, GEMSTONES } from "../../data/items";
 
 const ITEM_ICONS = {
-  Weapon: "⚔️", Armor: "🛡️", Potion: "🧪", "Magic Item": "✨", Tool: "🔧", Shield: "🛡️", default: "📦"
+  Weapon: "⚔️", Armor: "🛡️", Potion: "🧪", "Magic Item": "✨", Tool: "🔧",
+  Shield: "🛡️", Gear: "📦", Gemstone: "💎", Wand: "🪄", Ring: "💍",
+  Wondrous: "✨", Scroll: "📜", Consumable: "🧪", default: "📦"
 };
 
-const ALL_ITEMS = [...WEAPONS.map(w => ({ ...w, type: "Weapon", description: `${w.damage} ${w.damageType}. ${w.properties?.join(", ") || ""}` })),
+// Types that are stackable / show qty controls in the inventory list
+const STACKABLE_TYPES = ["Potion", "Consumable", "Gear", "Gemstone", "Scroll"];
+
+const ALL_ITEMS = [
+  ...WEAPONS.map(w => ({ ...w, type: "Weapon", description: `${w.damage} ${w.damageType}. ${w.properties?.join(", ") || ""}` })),
   ...ARMOR.map(a => ({ ...a, type: a.category === "Shield" ? "Shield" : "Armor", description: `AC: ${a.ac}${a.stealthDisadvantage ? ". Stealth disadvantage" : ""}${a.strengthReq ? `. Requires STR ${a.strengthReq}` : ""}` })),
   ...ADVENTURING_GEAR.map(g => ({ ...g, type: "Gear" })),
-  ...MAGIC_ITEMS.map(m => ({ ...m, type: m.type || "Magic Item" }))];
+  ...MAGIC_ITEMS.map(m => ({ ...m, type: m.type || "Magic Item" })),
+  ...GEMSTONES.map(g => ({ ...g, type: "Gemstone", cost: g.value })),
+];
 
 function ItemTooltip({ item, pos }) {
   if (!item || !pos) return null;
@@ -18,8 +26,8 @@ function ItemTooltip({ item, pos }) {
       {item.damage && <div className="item-tooltip-stat">Damage: {item.damage} {item.damageType}</div>}
       {item.ac && <div className="item-tooltip-stat">AC: {item.ac}</div>}
       {item.properties && <div className="item-tooltip-stat">Properties: {item.properties.join(", ")}</div>}
-      {item.weight && <div className="item-tooltip-stat">Weight: {item.weight} lb</div>}
-      {item.cost && <div className="item-tooltip-stat">Cost: {item.cost}</div>}
+      {item.weight > 0 && <div className="item-tooltip-stat">Weight: {item.weight} lb</div>}
+      {(item.cost || item.value) && <div className="item-tooltip-stat">Value: {item.cost || item.value}</div>}
       {item.rarity && <div className="item-tooltip-stat">Rarity: {item.rarity}</div>}
       {item.attunement && <div className="item-tooltip-stat">Requires Attunement</div>}
       {item.description && <div className="item-tooltip-desc">{item.description}</div>}
@@ -106,12 +114,26 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
     }
   };
 
+  const updateItemQty = (index, delta) => {
+    const newInv = [...inventory];
+    const newQty = Math.max(0, (newInv[index].qty || 1) + delta);
+    if (newQty === 0) {
+      newInv.splice(index, 1);
+    } else {
+      newInv[index] = { ...newInv[index], qty: newQty };
+    }
+    updateChar({ inventory: newInv });
+  };
+
+  const isStackable = (item) => STACKABLE_TYPES.includes(item.type);
+
   const filteredInv = invTab === "all" ? inventory :
     inventory.filter(i => {
       if (invTab === "weapons") return i.type === "Weapon";
       if (invTab === "armor") return i.type === "Armor" || i.type === "Shield";
       if (invTab === "consumables") return i.type === "Potion" || i.type === "Consumable";
-      return i.type !== "Weapon" && i.type !== "Armor" && i.type !== "Shield" && i.type !== "Potion";
+      if (invTab === "valuables") return i.type === "Gemstone";
+      return i.type !== "Weapon" && i.type !== "Armor" && i.type !== "Shield" && i.type !== "Potion" && i.type !== "Gemstone";
     });
 
   const filteredDbItems = ALL_ITEMS.filter(i => i.name.toLowerCase().includes(addSearch.toLowerCase()));
@@ -170,75 +192,110 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
               </div>
             </div>
             <div className="tabs">
-              {[["all","ALL"],["weapons","WEAPONS"],["armor","ARMOR"],["consumables","CONSUMABLES"],["misc","MISC"]].map(([k,l]) => (
+              {[["all","ALL"],["weapons","WEAPONS"],["armor","ARMOR"],["consumables","CONSUMABLES"],["valuables","VALUABLES"],["misc","MISC"]].map(([k,l]) => (
                 <div key={k} className={`tab ${invTab === k ? "active" : ""}`} onClick={() => setInvTab(k)}>{l}</div>
               ))}
               <div className="tab" onClick={() => setModal({ type: "additem" })}>+ ADD</div>
             </div>
-            <div className="inventory-grid">
+
+            {/* Inventory List */}
+            <div className="inv-list">
               {filteredInv.map((item, i) => {
+                const realIndex = inventory.indexOf(item);
                 const isEquipped = Object.values(equipped).includes(item.name);
                 const canEquipWeapon = item.type === "Weapon";
                 const isShield = item.type === "Shield" || item.name === "Shield";
                 const isBodyArmor = item.type === "Armor" && !isShield;
                 const canEquip = canEquipWeapon || isBodyArmor || isShield;
+                const stackable = isStackable(item);
+                const icon = ITEM_ICONS[item.type] || ITEM_ICONS.default;
+
                 return (
-                  <div key={i} className={`inv-grid-item ${isEquipped ? "equipped" : ""}`}
+                  <div key={i} className={`inv-list-row ${isEquipped ? "equipped" : ""}`}
                     onMouseEnter={e => handleMouseEnter(item, e)} onMouseLeave={handleMouseLeave}
-                    onClick={() => setModal({ type: "viewitem", item, index: i, equipItem })}>
-                    <div className="inv-grid-item-icon">{ITEM_ICONS[item.type] || ITEM_ICONS.default}</div>
-                    <div className="inv-grid-item-name">{item.name}</div>
-                    <div className="inv-grid-item-meta">
-                      {item.qty > 1 && `×${item.qty} · `}{item.weight ? `${item.weight}lb` : ""}
+                    onClick={() => setModal({ type: "viewitem", item, index: realIndex, equipItem })}>
+                    <div className="inv-list-icon">{icon}</div>
+                    <div className="inv-list-info">
+                      <div className="inv-list-name">
+                        {item.name}
+                        {isEquipped && <span className="tag tag-green" style={{ marginLeft: 6 }}>Equipped</span>}
+                      </div>
+                      <div className="inv-list-meta">
+                        {item.type && <span>{item.type}</span>}
+                        {item.weight > 0 && <span>{(item.weight * (item.qty || 1)).toFixed(1)} lb</span>}
+                        {(item.cost || item.value) && <span>{item.cost || item.value}</span>}
+                      </div>
                     </div>
-                    {isEquipped && <span className="tag tag-green" style={{ marginTop: 4 }}>Equipped</span>}
-                    {!isEquipped && canEquip && (
-                      <div style={{ display: "flex", gap: 3, marginTop: 4, flexWrap: "wrap" }}>
-                        {canEquipWeapon && (
-                          <>
-                            <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
-                              onClick={e => { e.stopPropagation(); equipItem(item, "weapon"); }}>Main Hand</button>
-                            <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
-                              onClick={e => { e.stopPropagation(); equipItem(item, "offhand"); }}>Off Hand</button>
-                          </>
-                        )}
-                        {isShield && (
-                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
-                            onClick={e => { e.stopPropagation(); equipItem(item, "offhand"); }}>Equip Shield</button>
-                        )}
-                        {isBodyArmor && (
-                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
-                            onClick={e => { e.stopPropagation(); equipItem(item, "armor"); }}>Equip Armor</button>
-                        )}
+
+                    {/* Quantity controls for stackable items */}
+                    {stackable && (
+                      <div className="inv-list-qty" onClick={e => e.stopPropagation()}>
+                        <button className="qty-btn" onClick={() => updateItemQty(realIndex, -1)}>−</button>
+                        <span className="qty-val">{item.qty || 1}</span>
+                        <button className="qty-btn" onClick={() => updateItemQty(realIndex, 1)}>+</button>
                       </div>
                     )}
-                    {isEquipped && (
-                      <button className="btn small danger" style={{ fontSize: 7, padding: "1px 4px", marginTop: 2 }}
-                        onClick={e => {
-                          e.stopPropagation();
-                          const slot = Object.entries(equipped).find(([, v]) => v === item.name)?.[0];
-                          if (slot) equipItem(item, slot);
-                        }}>Unequip</button>
+
+                    {/* Non-stackable qty display */}
+                    {!stackable && (item.qty || 1) > 1 && (
+                      <div className="inv-list-qty-label">×{item.qty}</div>
                     )}
+
+                    {/* Equip buttons */}
+                    <div className="inv-list-actions" onClick={e => e.stopPropagation()}>
+                      {!isEquipped && canEquipWeapon && (
+                        <>
+                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                            onClick={() => equipItem(item, "weapon")}>Main</button>
+                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                            onClick={() => equipItem(item, "offhand")}>Off</button>
+                        </>
+                      )}
+                      {!isEquipped && isShield && (
+                        <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                          onClick={() => equipItem(item, "offhand")}>Equip</button>
+                      )}
+                      {!isEquipped && isBodyArmor && (
+                        <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                          onClick={() => equipItem(item, "armor")}>Equip</button>
+                      )}
+                      {isEquipped && (
+                        <button className="btn small danger" style={{ fontSize: 7, padding: "1px 4px" }}
+                          onClick={() => {
+                            const slot = Object.entries(equipped).find(([, v]) => v === item.name)?.[0];
+                            if (slot) equipItem(item, slot);
+                          }}>Unequip</button>
+                      )}
+                    </div>
                   </div>
                 );
               })}
-              {filteredInv.length === 0 && <div className="empty-state" style={{ gridColumn: "1/-1" }}>No items in this category.</div>}
+              {filteredInv.length === 0 && <div className="empty-state">No items in this category.</div>}
             </div>
 
             {/* Quick add from database */}
             <div style={{ marginTop: 16, borderTop: "1px solid rgba(160,120,60,0.25)", paddingTop: 12 }}>
               <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--gold)", letterSpacing: 1, marginBottom: 6 }}>ADD FROM DATABASE</div>
-              <input className="search-input" placeholder="Search weapons, armor, gear..." value={addSearch} onChange={e => setAddSearch(e.target.value)} />
+              <input className="search-input" placeholder="Search weapons, armor, gear, gemstones..." value={addSearch} onChange={e => setAddSearch(e.target.value)} />
               {addSearch && (
                 <div style={{ maxHeight: 150, overflowY: "auto" }}>
                   {filteredDbItems.slice(0, 20).map((item, i) => (
                     <div key={i} className="inventory-item" onClick={() => {
-                      updateChar({ inventory: [...inventory, { name: item.name, qty: 1, weight: item.weight || 0, description: item.description || "", type: item.type, equipped: false }] });
+                      // Check if stackable item already exists in inventory
+                      if (STACKABLE_TYPES.includes(item.type)) {
+                        const existingIdx = inventory.findIndex(inv => inv.name === item.name);
+                        if (existingIdx >= 0) {
+                          const newInv = [...inventory];
+                          newInv[existingIdx] = { ...newInv[existingIdx], qty: (newInv[existingIdx].qty || 1) + 1 };
+                          updateChar({ inventory: newInv });
+                          return;
+                        }
+                      }
+                      updateChar({ inventory: [...inventory, { name: item.name, qty: 1, weight: item.weight || 0, description: item.description || "", type: item.type, cost: item.cost || item.value || "", equipped: false }] });
                     }}>
                       <span style={{ fontSize: 12 }}>{ITEM_ICONS[item.type] || ITEM_ICONS.default}</span>
                       <span className="item-name">{item.name}</span>
-                      {item.cost && <span className="item-weight">{item.cost}</span>}
+                      {(item.cost || item.value) && <span className="item-weight">{item.cost || item.value}</span>}
                       <span style={{ color: "var(--green)", fontSize: 12, marginLeft: 4 }}>+</span>
                     </div>
                   ))}
