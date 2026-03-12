@@ -265,6 +265,17 @@ export const SPELLS_DB = [
     description: "A minor magical trick used for practice by spellcasters. You create a small sensory effect, light or snuff a small flame, clean or soil an object, chill or warm material, or create a small trinket or illusory image."
   },
   {
+    name: "Primal Savagery",
+    level: 0,
+    school: "Transmutation",
+    castingTime: "1 action",
+    range: "Self",
+    components: "S",
+    duration: "Instantaneous",
+    classes: ["Druid"],
+    description: "You channel primal magic to cause your teeth or fingernails to sharpen, ready to deliver a corrosive attack. Make a melee spell attack against one creature within 5 feet of you. On a hit, the target takes 1d10 acid damage. After you make the attack, your teeth or fingernails return to normal. The damage increases by 1d10 at 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
+  },
+  {
     name: "Produce Flame",
     level: 0,
     school: "Conjuration",
@@ -1941,6 +1952,17 @@ export const SPELLS_DB = [
     description: "You suggest a course of activity to a creature you can see within range that can hear and understand you. The suggestion must be worded to sound reasonable. The target must make a Wisdom saving throw. On a failure, it pursues the course of action you described."
   },
   {
+    name: "Summon Beast",
+    level: 2,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger"],
+    description: "You call forth a bestial spirit. It manifests in an unoccupied space that you can see within range. Choose an environment: Air, Land, or Water. The creature resembles an animal native to the chosen environment. It is an ally that shares your initiative and acts after you, obeying your verbal commands. It makes Rend attacks (1d8 + 4 + spell level piercing) equal to half the spell's level (rounded down). At higher levels, use the higher level wherever the spell's level appears in the stat block."
+  },
+  {
     name: "Warding Bond",
     level: 2,
     school: "Abjuration",
@@ -1972,6 +1994,17 @@ export const SPELLS_DB = [
     duration: "Concentration, up to 1 hour",
     classes: ["Sorcerer", "Wizard"],
     description: "You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube and are difficult terrain. Each creature that starts its turn in the webs or enters them must make a Dexterity saving throw or be restrained."
+  },
+  {
+    name: "Wither and Bloom",
+    level: 2,
+    school: "Necromancy",
+    castingTime: "1 action",
+    range: "60 feet",
+    components: "V, S, M (a withered vine twisted into a loop)",
+    duration: "Instantaneous",
+    classes: ["Druid", "Sorcerer", "Wizard"],
+    description: "You invoke both death and life upon a 10-foot-radius sphere centered on a point within range. Each creature of your choice in that area must make a Constitution saving throw, taking 2d6 necrotic damage on a failed save, or half as much on a success. Nonmagical vegetation in the area withers. In addition, one creature of your choice in that area can spend and roll one of its unspent Hit Dice and regain hit points equal to the roll plus your spellcasting ability modifier. At higher levels, the damage increases by 1d6 and the number of Hit Dice that can be spent increases by one for each slot level above 2nd."
   },
   {
     name: "Zone of Truth",
@@ -2513,6 +2546,17 @@ export const SPELLS_DB = [
     duration: "Concentration, up to 1 hour",
     classes: ["Warlock", "Wizard"],
     description: "You utter foul words, summoning demons from the chaos of the Abyss. Roll on a table to determine what appears. The demons are hostile to all creatures, including you. They disappear when they drop to 0 hit points or when the spell ends."
+  },
+  {
+    name: "Summon Fey",
+    level: 3,
+    school: "Conjuration",
+    castingTime: "1 action",
+    range: "90 feet",
+    components: "V, S, M (a gilded flower worth at least 300 gp)",
+    duration: "Concentration, up to 1 hour",
+    classes: ["Druid", "Ranger", "Warlock", "Wizard"],
+    description: "You call forth a fey spirit. It manifests in an unoccupied space that you can see within range. Choose a mood: Fuming, Mirthful, or Tricksy. The creature is an ally that shares your initiative and acts after you, obeying your verbal commands. It can use Fey Step as a bonus action to teleport 30 feet and trigger a mood effect: Fuming grants advantage on its next attack, Mirthful can charm a creature within 10 feet (WIS save), and Tricksy fills a 5-foot cube with magical darkness. At higher levels, use the higher level wherever the spell's level appears in the stat block."
   },
   {
     name: "Thunder Step",
