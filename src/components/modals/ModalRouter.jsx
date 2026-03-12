@@ -151,7 +151,7 @@ function AddItemModal({ onClose, activeChar, updateChar }) {
         <div><label className="modal-label">Type</label>
           <select className="form-select" value={item.type || ""} onChange={e => setItem({ ...item, type: e.target.value })}>
             <option value="">General</option>
-            <option>Weapon</option><option>Armor</option><option>Potion</option>
+            <option>Weapon</option><option>Armor</option><option>Shield</option><option>Potion</option>
             <option>Magic Item</option><option>Tool</option><option>Currency</option>
           </select>
         </div>
@@ -173,7 +173,8 @@ function ViewItemModal({ modal, onClose, activeChar, updateChar }) {
   const isEquipped = Object.values(equipped).includes(item.name);
   const equippedSlot = Object.entries(equipped).find(([, v]) => v === item.name)?.[0];
   const canEquipWeapon = item.type === "Weapon";
-  const canEquipArmor = item.type === "Armor" || item.type === "Shield" || item.name === "Shield";
+  const isShield = item.type === "Shield" || item.name === "Shield";
+  const isBodyArmor = item.type === "Armor" && !isShield;
   const doEquip = modal.equipItem || (() => {});
   return (
     <M title={editing ? "Edit Item" : item.name} onClose={onClose}>
@@ -201,7 +202,7 @@ function ViewItemModal({ modal, onClose, activeChar, updateChar }) {
               <button className="btn small" onClick={() => { doEquip(item, equippedSlot); onClose(); }}>Unequip</button>
             </div>
           )}
-          {!isEquipped && (canEquipWeapon || canEquipArmor) && (
+          {!isEquipped && (canEquipWeapon || isBodyArmor || isShield) && (
             <div style={{ marginTop: 8, display: "flex", gap: 6, flexWrap: "wrap" }}>
               {canEquipWeapon && (
                 <>
@@ -209,10 +210,10 @@ function ViewItemModal({ modal, onClose, activeChar, updateChar }) {
                   <button className="btn small" onClick={() => { doEquip(item, "offhand"); onClose(); }}>Equip Off Hand</button>
                 </>
               )}
-              {canEquipArmor && item.name === "Shield" && (
-                <button className="btn small" onClick={() => { doEquip(item, "offhand"); onClose(); }}>Equip Shield</button>
+              {isShield && (
+                <button className="btn small" onClick={() => { doEquip(item, "offhand"); onClose(); }}>Equip Shield (Off Hand)</button>
               )}
-              {canEquipArmor && item.name !== "Shield" && (
+              {isBodyArmor && (
                 <button className="btn small" onClick={() => { doEquip(item, "armor"); onClose(); }}>Equip Armor</button>
               )}
             </div>

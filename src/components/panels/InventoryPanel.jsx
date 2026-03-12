@@ -6,9 +6,9 @@ const ITEM_ICONS = {
 };
 
 const ALL_ITEMS = [...WEAPONS.map(w => ({ ...w, type: "Weapon", description: `${w.damage} ${w.damageType}. ${w.properties?.join(", ") || ""}` })),
-  ...ARMOR.map(a => ({ ...a, type: "Armor", description: `AC: ${a.ac}${a.stealthDisadvantage ? ". Stealth disadvantage" : ""}${a.strengthReq ? `. Requires STR ${a.strengthReq}` : ""}` })),
+  ...ARMOR.map(a => ({ ...a, type: a.category === "Shield" ? "Shield" : "Armor", description: `AC: ${a.ac}${a.stealthDisadvantage ? ". Stealth disadvantage" : ""}${a.strengthReq ? `. Requires STR ${a.strengthReq}` : ""}` })),
   ...ADVENTURING_GEAR.map(g => ({ ...g, type: "Gear" })),
-  ...MAGIC_ITEMS.map(m => ({ ...m, type: "Magic Item" }))];
+  ...MAGIC_ITEMS.map(m => ({ ...m, type: m.type || "Magic Item" }))];
 
 function ItemTooltip({ item, pos }) {
   if (!item || !pos) return null;
@@ -86,8 +86,10 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
     updateChar({ equippedSlots: newSlots });
     // Auto-update AC if armor/shield changed
     if (slot === "armor" || slot === "offhand") {
-      const armorData = ARMOR.find(a => a.name === newSlots.armor);
-      const shieldData = ARMOR.find(a => a.name === newSlots.offhand && a.name === "Shield");
+      const armorData = ARMOR.find(a => a.name === newSlots.armor && a.category !== "Shield");
+      // Look for shield in both ARMOR and MAGIC_ITEMS
+      const shieldData = ARMOR.find(a => a.name === newSlots.offhand && a.category === "Shield")
+        || MAGIC_ITEMS.find(m => m.name === newSlots.offhand && m.type === "Shield");
       let newAC = 10 + Math.floor(((stats.dex || 10) - 10) / 2);
       if (armorData) {
         const acStr = armorData.ac;
@@ -99,7 +101,7 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
           newAC = parseInt(acStr) || 10;
         }
       }
-      if (shieldData) newAC += 2;
+      if (shieldData) newAC += parseInt(shieldData.ac) || 2;
       updateChar({ ac: newAC, equippedSlots: newSlots });
     }
   };
@@ -177,8 +179,9 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
               {filteredInv.map((item, i) => {
                 const isEquipped = Object.values(equipped).includes(item.name);
                 const canEquipWeapon = item.type === "Weapon";
-                const canEquipArmor = item.type === "Armor" || item.type === "Shield" || item.name === "Shield";
-                const canEquip = canEquipWeapon || canEquipArmor;
+                const isShield = item.type === "Shield" || item.name === "Shield";
+                const isBodyArmor = item.type === "Armor" && !isShield;
+                const canEquip = canEquipWeapon || isBodyArmor || isShield;
                 return (
                   <div key={i} className={`inv-grid-item ${isEquipped ? "equipped" : ""}`}
                     onMouseEnter={e => handleMouseEnter(item, e)} onMouseLeave={handleMouseLeave}
@@ -199,11 +202,11 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
                               onClick={e => { e.stopPropagation(); equipItem(item, "offhand"); }}>Off Hand</button>
                           </>
                         )}
-                        {canEquipArmor && item.name === "Shield" && (
+                        {isShield && (
                           <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
                             onClick={e => { e.stopPropagation(); equipItem(item, "offhand"); }}>Equip Shield</button>
                         )}
-                        {canEquipArmor && item.name !== "Shield" && (
+                        {isBodyArmor && (
                           <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
                             onClick={e => { e.stopPropagation(); equipItem(item, "armor"); }}>Equip Armor</button>
                         )}

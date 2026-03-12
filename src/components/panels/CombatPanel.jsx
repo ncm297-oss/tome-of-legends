@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { modStr, mod, profBonus } from "../../hooks/useCharacters";
 import { SKILLS_LIST } from "../../data/skills";
-import { WEAPONS } from "../../data/items";
+import { WEAPONS, ARMOR, MAGIC_ITEMS } from "../../data/items";
 import { CLASS_ATTACK_ABILITIES } from "../../data/classAbilities";
 
 // Buffered number input — uses local state while focused, syncs on blur
@@ -117,6 +117,20 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
             <div className="combat-label">AC</div>
             <BufferedNumberInput className="combat-input" style={{ width: 40 }} value={activeChar?.ac || 10}
               onChange={v => updateChar({ ac: v })} />
+            {(() => {
+              const offhand = activeChar?.equippedSlots?.offhand;
+              const shieldData = offhand && (
+                ARMOR.find(a => a.name === offhand && a.category === "Shield")
+                || MAGIC_ITEMS.find(m => m.name === offhand && m.type === "Shield")
+              );
+              if (!shieldData) return null;
+              const bonus = parseInt(shieldData.ac) || 2;
+              return (
+                <div style={{ fontSize: 8, color: "var(--blue-bright)", marginTop: 2, whiteSpace: "nowrap" }}>
+                  🛡️ +{bonus} shield
+                </div>
+              );
+            })()}
           </div>
           {/* Initiative */}
           <div className="combat-box green">
