@@ -4,8 +4,8 @@
   --parchment-dark: #e8d5a3;
   --ink: #1e1008;
   --ink-light: #352010;
-  --gold: #b8860b;
-  --gold-bright: #d4a017;
+  --gold: #9a7209;
+  --gold-bright: #b8900e;
   --red: #8b1a1a;
   --red-bright: #c0392b;
   --green: #2d5a27;
@@ -18,7 +18,7 @@
   --text-primary: #1e1008;
   --text-secondary: #352010;
   --text-muted: #5c4025;
-  --ornament: #b8860b;
+  --ornament: #9a7209;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
