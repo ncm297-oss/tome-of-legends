@@ -29,7 +29,7 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
         {/* DICE ROLLER INLINE */}
         <div className="dice-roller" style={{ gap: 3 }}>
           {[4, 6, 8, 10, 12, 20, 100].map(d => (
-            <button key={d} className="dice-btn" style={{ width: 30, height: 30, fontSize: 8 }} onClick={() => rollDice(d)}>
+            <button key={d} className="dice-btn" style={{ width: 30, height: 30, fontSize: 10 }} onClick={() => rollDice(d)}>
               d{d}
             </button>
           ))}
@@ -47,7 +47,7 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
           </button>
           {showParty && (
             <div className="party-dropdown">
-              <div style={{ fontFamily: "Cinzel, serif", fontSize: 9, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>PARTY</div>
+              <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>PARTY</div>
               {(characters || []).map(c => (
                 <div key={c.id}
                   className={`party-dropdown-item ${c.id === activeCharId ? "active" : ""}`}
@@ -60,7 +60,7 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
                   <div className="party-dropdown-hp">{c.hp.current}/{c.hp.max}</div>
                 </div>
               ))}
-              <button className="btn small w-full" style={{ marginTop: 6, fontSize: 9 }}
+              <button className="btn small w-full" style={{ marginTop: 6, fontSize: 10 }}
                 onClick={() => { setShowWizard(true); setShowParty(false); }}>+ Add Character</button>
             </div>
           )}

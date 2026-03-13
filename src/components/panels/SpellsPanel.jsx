@@ -85,11 +85,11 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <span style={{ color: "var(--gold-bright)", fontSize: 11 }}>✦</span>
-              <span style={{ fontFamily: "Cinzel, serif", fontSize: 9, color: "var(--gold)", letterSpacing: 0.5 }}>
+              <span style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--gold)", letterSpacing: 0.5 }}>
                 CONCENTRATING: {activeChar.concentrating}
               </span>
             </div>
-            <button className="btn small danger" style={{ fontSize: 7, padding: "1px 5px" }}
+            <button className="btn small danger" style={{ fontSize: 10, padding: "1px 5px" }}
               onClick={() => updateChar({ concentrating: null })}>
               Drop
             </button>
@@ -116,7 +116,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
               )}
               {(knownByLevel[0] || []).length > 0 && (
                 <div style={{ marginBottom: 6 }}>
-                  <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>CANTRIPS</div>
+                  <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>CANTRIPS</div>
                   {knownByLevel[0].map((sp, i) => (
                     <div key={i} className="spell-card" onClick={() => setModal({ type: "viewspell", spell: sp })}>
                       <div className="spell-card-name" style={{ fontSize: 10 }}>{sp.name}</div>
@@ -143,7 +143,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                         );
                       })}
                     </div>
-                    <div style={{ fontSize: 9, color: "var(--text-muted)" }}>
+                    <div style={{ fontSize: 10, color: "var(--text-muted)" }}>
                       {slots - (activeChar?.spellSlotsUsed?.[i] || 0)}/{slots}
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                       <div className="spell-card-name" style={{ fontSize: 10 }}>
                         {sp.name}
                         {(sp.duration || "").toLowerCase().startsWith("concentration") && (
-                          <span style={{ fontSize: 7, color: "var(--gold)", marginLeft: 4 }}>C</span>
+                          <span style={{ fontSize: 10, color: "var(--gold)", marginLeft: 4 }}>C</span>
                         )}
                       </div>
                       <span style={{ color: "var(--red-bright)", cursor: "pointer", fontSize: 12, padding: "0 4px" }}
@@ -165,7 +165,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
 
               {/* ACTIONS SECTION */}
               <div style={{ marginTop: 8, borderTop: "1px solid rgba(160,120,60,0.2)", paddingTop: 6 }}>
-                <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>ACTIONS</div>
+                <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>ACTIONS</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {/* Weapon Attacks */}
                   {(() => {
@@ -217,12 +217,12 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                       if (res.max > 10) {
                         return (
                           <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 3 }}>
-                            <button className="btn small" style={{ fontSize: 8, padding: "1px 4px", lineHeight: 1 }}
+                            <button className="btn small" style={{ fontSize: 10, padding: "1px 4px", lineHeight: 1 }}
                               onClick={() => { if (res.current <= 0) return; updateChar({ classResources: { ...activeChar.classResources, [resName]: { ...res, current: res.current - 1 } } }); }}>−</button>
                             <span style={{ fontFamily: "Cinzel, serif", fontSize: 11, color: "var(--gold)", minWidth: 32, textAlign: "center" }}>{res.current}/{res.max}</span>
-                            <button className="btn small" style={{ fontSize: 8, padding: "1px 4px", lineHeight: 1 }}
+                            <button className="btn small" style={{ fontSize: 10, padding: "1px 4px", lineHeight: 1 }}
                               onClick={() => { if (res.current >= res.max) return; updateChar({ classResources: { ...activeChar.classResources, [resName]: { ...res, current: res.current + 1 } } }); }}>+</button>
-                            <span style={{ fontSize: 7, color: res.resetOn === "short" ? "var(--blue-bright)" : "var(--gold)" }}>{res.resetOn === "short" ? "SR" : "LR"}</span>
+                            <span style={{ fontSize: 10, color: res.resetOn === "short" ? "var(--blue-bright)" : "var(--gold)" }}>{res.resetOn === "short" ? "SR" : "LR"}</span>
                           </div>
                         );
                       }
@@ -238,9 +238,9 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                                 }} />
                             ))}
                           </div>
-                          <span style={{ fontSize: 9, color: "var(--text-muted)" }}>
+                          <span style={{ fontSize: 10, color: "var(--text-muted)" }}>
                             {res.current}/{res.max}
-                            <span style={{ fontSize: 7, marginLeft: 3, color: res.resetOn === "short" ? "var(--blue-bright)" : "var(--gold)" }}>{res.resetOn === "short" ? "SR" : "LR"}</span>
+                            <span style={{ fontSize: 10, marginLeft: 3, color: res.resetOn === "short" ? "var(--blue-bright)" : "var(--gold)" }}>{res.resetOn === "short" ? "SR" : "LR"}</span>
                           </span>
                         </div>
                       );
@@ -258,7 +258,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                               <div className="action-desc">{a.description}</div>
                               {res && (
                                 <div style={{ borderTop: "1px solid rgba(139,109,71,0.12)", paddingTop: 3, marginTop: 3 }}>
-                                  {resName !== a.name && <div style={{ fontSize: 8, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5 }}>{resName}</div>}
+                                  {resName !== a.name && <div style={{ fontSize: 10, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5 }}>{resName}</div>}
                                   {renderPips(resName, res)}
                                 </div>
                               )}
@@ -285,7 +285,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                     const hasAbilities = CLASS_ATTACK_ABILITIES.some(a => a.className === activeChar?.class && a.minLevel <= (activeChar?.level || 1));
                     const hasResources = Object.keys(activeChar?.classResources || {}).length > 0;
                     if (!hasWeapons && !hasAbilities && !hasResources) return (
-                      <div style={{ fontSize: 9, color: "var(--text-muted)", fontStyle: "italic", textAlign: "center", padding: 4 }}>
+                      <div style={{ fontSize: 10, color: "var(--text-muted)", fontStyle: "italic", textAlign: "center", padding: 4 }}>
                         Equip weapons or level up to see actions
                       </div>
                     );
@@ -324,12 +324,12 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                     <div key={lvl} style={{ marginBottom: 4 }}>
                       <div className="spell-level-header" onClick={() => toggleLevel(lvl)}>
                         <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                          <span style={{ fontSize: 9, color: "var(--text-muted)", width: 10 }}>{collapsedLevels[lvl] ? "▸" : "▾"}</span>
+                          <span style={{ fontSize: 10, color: "var(--text-muted)", width: 10 }}>{collapsedLevels[lvl] ? "▸" : "▾"}</span>
                           <span style={{ fontFamily: "Cinzel, serif", fontSize: 10, fontWeight: 700, letterSpacing: 1, color: "var(--text-primary)" }}>
                             {isCantrip ? "CANTRIPS" : `LEVEL ${lvl}`}
                           </span>
                         </div>
-                        <span style={{ fontSize: 9, color: "var(--text-muted)" }}>{filtered.length}</span>
+                        <span style={{ fontSize: 10, color: "var(--text-muted)" }}>{filtered.length}</span>
                       </div>
                       {!collapsedLevels[lvl] && filtered.map((sp, i) => {
                         const known = isKnown(sp.name);
@@ -339,18 +339,18 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                             <div style={{ flex: 1, minWidth: 0, cursor: "pointer" }}
                               onClick={() => setModal({ type: "viewspell", spell: sp, canAdd: !known })}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: "var(--text-secondary)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{sp.name}</div>
-                              <div style={{ fontSize: 8, color: "var(--text-muted)" }}>{sp.school} · {sp.castingTime}</div>
+                              <div style={{ fontSize: 10, color: "var(--text-muted)" }}>{sp.school} · {sp.castingTime}</div>
                             </div>
                             {isCantrip ? (
                               known
-                                ? <span className="tag tag-green" style={{ fontSize: 7 }}>Known</span>
-                                : <button className="btn small" style={{ fontSize: 7, padding: "1px 6px" }}
+                                ? <span className="tag tag-green" style={{ fontSize: 10 }}>Known</span>
+                                : <button className="btn small" style={{ fontSize: 10, padding: "1px 6px" }}
                                     onClick={() => addSpellKnown(sp)}>+ Add</button>
                             ) : (
                               <div style={{ display: "flex", gap: 3, alignItems: "center" }}>
-                                {known && !prepared && <span className="tag tag-blue" style={{ fontSize: 7 }}>Known</span>}
+                                {known && !prepared && <span className="tag tag-blue" style={{ fontSize: 10 }}>Known</span>}
                                 <button className={`btn small ${prepared ? "success" : ""}`}
-                                  style={{ fontSize: 7, padding: "1px 6px" }}
+                                  style={{ fontSize: 10, padding: "1px 6px" }}
                                   onClick={() => prepareSpell(sp)}>
                                   {prepared ? "✓ Prep" : "Prepare"}
                                 </button>
@@ -371,7 +371,7 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
               <input className="search-input" placeholder="Search all spells..." value={spellSearch}
                 onChange={e => setSpellSearch(e.target.value)} style={{ marginBottom: 6 }} />
               {!spellSearch && (
-                <div style={{ fontSize: 9, color: "var(--text-muted)", marginBottom: 6, fontStyle: "italic" }}>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", marginBottom: 6, fontStyle: "italic" }}>
                   Type to search all spells across all classes and levels
                 </div>
               )}
@@ -389,17 +389,17 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                           <span className="tag tag-gold">{sp.school}</span>
                         </div>
                       </div>
-                      <div style={{ fontSize: 8, color: "var(--text-muted)", marginTop: 1 }}>
+                      <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 1 }}>
                         {sp.castingTime} · {sp.range} · {(sp.classes || []).join(", ")}
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0, marginLeft: 6 }}>
                       {known ? (
                         <>
-                          <span className="tag tag-green" style={{ fontSize: 7 }}>Known</span>
+                          <span className="tag tag-green" style={{ fontSize: 10 }}>Known</span>
                           {sp.level > 0 && (
                             <button className={`btn small ${prepared ? "success" : ""}`}
-                              style={{ fontSize: 7, padding: "1px 6px" }}
+                              style={{ fontSize: 10, padding: "1px 6px" }}
                               onClick={() => prepareSpell(sp)}>
                               {prepared ? "✓" : "Prep"}
                             </button>
@@ -407,10 +407,10 @@ export default function SpellsPanel({ activeChar, updateChar, updateCharDeep, se
                         </>
                       ) : (
                         <>
-                          <button className="btn small" style={{ fontSize: 7, padding: "1px 6px" }}
+                          <button className="btn small" style={{ fontSize: 10, padding: "1px 6px" }}
                             onClick={() => addSpellKnown(sp)}>+ Known</button>
                           {sp.level > 0 && (
-                            <button className="btn small success" style={{ fontSize: 7, padding: "1px 6px" }}
+                            <button className="btn small success" style={{ fontSize: 10, padding: "1px 6px" }}
                               onClick={() => addSpellKnown(sp, true)}>+ Prep</button>
                           )}
                         </>

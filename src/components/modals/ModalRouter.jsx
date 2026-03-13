@@ -332,7 +332,7 @@ function ViewSpellModal({ modal, onClose, activeChar, updateChar }) {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 10 }}>
         {[["Casting Time", sp.castingTime], ["Range", sp.range], ["Components", sp.components], ["Duration", sp.duration]].map(([l, v]) => (
-          <div key={l}><div style={{ fontSize: 8, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>{l}</div><div style={{ fontSize: 12, color: "var(--text-secondary)" }}>{v}</div></div>
+          <div key={l}><div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>{l}</div><div style={{ fontSize: 12, color: "var(--text-secondary)" }}>{v}</div></div>
         ))}
       </div>
       <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, borderTop: "1px solid rgba(212,160,23,0.15)", paddingTop: 10 }}>{sp.description}</div>
@@ -466,7 +466,7 @@ function ViewFeatModal({ modal, onClose, activeChar, updateChar }) {
       <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7 }}>{feat.description}</div>
       {Object.keys(feat.effects || {}).length > 0 && (
         <div style={{ marginTop: 8 }}>
-          <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>APPLIED EFFECTS</div>
+          <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>APPLIED EFFECTS</div>
           {Object.entries(feat.effects).map(([k, v]) => <span key={k} className="tag tag-green">+{v} {k.toUpperCase()}</span>)}
         </div>
       )}
@@ -675,7 +675,7 @@ function InfoRaceModal({ onClose, activeChar }) {
       </div>
       {race.traits.length > 0 && (
         <>
-          <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>RACIAL TRAITS</div>
+          <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>RACIAL TRAITS</div>
           {race.traits.map(t => (
             <div key={t} style={{ marginBottom: 8 }}>
               <strong style={{ fontSize: 12 }}>{t}</strong>
@@ -697,18 +697,18 @@ function InfoClassModal({ onClose, activeChar }) {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 12 }}>
         {[["Hit Die", `d${cls.hitDie}`], ["Primary Stat", cls.primaryStat.toUpperCase()], ["Saving Throws", cls.savingThrows.map(s => s.toUpperCase()).join(", ")], ["Armor", cls.armorProficiencies || "None"], ["Weapons", cls.weaponProficiencies || "None"]].map(([l, v]) => (
           <div key={l}>
-            <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>{l.toUpperCase()}</div>
+            <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>{l.toUpperCase()}</div>
             <div style={{ fontSize: 12, color: "var(--text-secondary)" }}>{v}</div>
           </div>
         ))}
         {cls.spellcaster && (
           <div>
-            <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>SPELLCASTING</div>
+            <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1 }}>SPELLCASTING</div>
             <div style={{ fontSize: 12, color: "var(--text-secondary)" }}>{cls.spellcastingAbility.toUpperCase()}</div>
           </div>
         )}
       </div>
-      <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>CLASS FEATURES BY LEVEL</div>
+      <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>CLASS FEATURES BY LEVEL</div>
       {Object.entries(cls.features).filter(([, feats]) => feats.length > 0).sort(([a], [b]) => Number(a) - Number(b)).map(([lvl, feats]) => (
         <div key={lvl} style={{ marginBottom: 6 }}>
           <strong style={{ fontSize: 11, color: "var(--gold)" }}>Level {lvl}:</strong>{" "}
@@ -732,7 +732,7 @@ function InfoSubclassModal({ onClose, activeChar }) {
       <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: 12 }}>{sc.description}</p>
       {sc.features && (
         <>
-          <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>SUBCLASS FEATURES</div>
+          <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>SUBCLASS FEATURES</div>
           {Object.entries(sc.features).sort(([a], [b]) => Number(a) - Number(b)).map(([lvl, feats]) => (
             <div key={lvl} style={{ marginBottom: 10 }}>
               <div style={{ fontFamily: "Cinzel, serif", fontSize: 11, color: "var(--gold)", fontWeight: 600, marginBottom: 4 }}>Level {lvl}</div>
@@ -758,13 +758,13 @@ function InfoBackgroundModal({ onClose, activeChar }) {
       </div>
       {bg.feature && (
         <div style={{ marginBottom: 10 }}>
-          <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>FEATURE: {bg.feature.toUpperCase()}</div>
+          <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>FEATURE: {bg.feature.toUpperCase()}</div>
           <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.5 }}>{bg.featureDescription}</p>
         </div>
       )}
       {bg.personalityTraits && bg.personalityTraits.length > 0 && (
         <div>
-          <div style={{ fontSize: 9, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>PERSONALITY TRAITS</div>
+          <div style={{ fontSize: 10, fontFamily: "Cinzel, serif", color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>PERSONALITY TRAITS</div>
           <ul style={{ paddingLeft: 16, margin: 0 }}>
             {bg.personalityTraits.map((t, i) => <li key={i} style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: 4 }}>{t}</li>)}
           </ul>
@@ -892,8 +892,8 @@ function CastSpellModal({ modal, onClose, activeChar, updateChar }) {
         <span className="tag tag-blue">Level {sp.level}</span>
         <span className="tag tag-gold">{sp.school}</span>
         {isConc && <span className="tag tag-gold">Concentration</span>}
-        {sp.castingTime && <span style={{ fontSize: 9, color: "var(--text-muted)" }}>{sp.castingTime}</span>}
-        {sp.range && <span style={{ fontSize: 9, color: "var(--text-muted)" }}>· {sp.range}</span>}
+        {sp.castingTime && <span style={{ fontSize: 10, color: "var(--text-muted)" }}>{sp.castingTime}</span>}
+        {sp.range && <span style={{ fontSize: 10, color: "var(--text-muted)" }}>· {sp.range}</span>}
       </div>
       <p style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: 12, maxHeight: 120, overflowY: "auto" }}>{sp.description}</p>
 
@@ -910,7 +910,7 @@ function CastSpellModal({ modal, onClose, activeChar, updateChar }) {
             {availableLevels.map(({ level, remaining }) => (
               <button key={level}
                 className={`btn small ${selectedLevel === level ? "success" : ""}`}
-                style={{ fontSize: 9 }}
+                style={{ fontSize: 10 }}
                 onClick={() => setSelectedLevel(level)}>
                 Lvl {level} ({remaining} left)
               </button>
@@ -993,7 +993,7 @@ function ShortRestModal({ onClose, activeChar, updateChar }) {
           <div className="modal-label">Rolls</div>
           <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
             {rolls.map((r, i) => (
-              <span key={i} className="tag tag-green" style={{ fontSize: 9 }}>
+              <span key={i} className="tag tag-green" style={{ fontSize: 10 }}>
                 d{hitDice.die}({r.roll}) + {conMod} = +{r.healed} HP
               </span>
             ))}
@@ -1139,7 +1139,7 @@ function AddDefenseModal({ onClose, activeChar, updateChar }) {
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
         {DAMAGE_TYPES.filter(d => !current.includes(d)).map(d => (
-          <button key={d} className="btn small" style={{ fontSize: 9 }} onClick={() => {
+          <button key={d} className="btn small" style={{ fontSize: 10 }} onClick={() => {
             updateChar({ [field]: [...current, d] });
             onClose();
           }}>{d}</button>

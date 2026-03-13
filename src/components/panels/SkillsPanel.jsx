@@ -38,7 +38,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
               <span className="ability-header-collapse">{groupCollapsed.proficiencies ? "▸" : "▾"}</span>
               <span className="ability-header-name">PROF & LANG</span>
             </div>
-            <button className="btn small" style={{ fontSize: 7, padding: "1px 5px" }}
+            <button className="btn small" style={{ fontSize: 10, padding: "1px 5px" }}
               onClick={(e) => { e.stopPropagation(); setModal({ type: "editproficiencies" }); }}>
               Edit
             </button>
@@ -50,13 +50,13 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
                 if (items.length === 0) return null;
                 return (
                   <div key={key}>
-                    <span style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1 }}>{label}: </span>
+                    <span style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1 }}>{label}: </span>
                     {items.join(", ")}
                   </div>
                 );
               })}
               {(!activeChar?.proficiencies || Object.values(activeChar.proficiencies).every(v => !v || v.length === 0)) && (
-                <div style={{ fontSize: 9, color: "var(--text-muted)", fontStyle: "italic" }}>Click Edit to add proficiencies</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", fontStyle: "italic" }}>Click Edit to add proficiencies</div>
               )}
             </div>
           )}
@@ -117,7 +117,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
                 );
               })}
               {!groupCollapsed[stat] && grouped[stat].length === 0 && (
-                <div style={{ paddingLeft: 16, fontSize: 9, color: "var(--text-muted)", fontStyle: "italic", padding: "2px 0 2px 16px" }}>No skills</div>
+                <div style={{ paddingLeft: 16, fontSize: 10, color: "var(--text-muted)", fontStyle: "italic", padding: "2px 0 2px 16px" }}>No skills</div>
               )}
             </div>
           );

@@ -55,7 +55,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
         {hasSummons && (
           <div style={{ fontSize: 10, color: "var(--gold-bright)", fontWeight: 700, fontFamily: "Cinzel, serif", marginTop: 2 }}>{summons.length}</div>
         )}
-        <div style={{ fontSize: 7, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5, marginTop: 2, writingMode: "vertical-rl", textOrientation: "mixed" }}>SUMMONS</div>
+        <div style={{ fontSize: 10, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5, marginTop: 2, writingMode: "vertical-rl", textOrientation: "mixed" }}>SUMMONS</div>
       </div>
     );
   }
@@ -65,16 +65,16 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
     <CollapsiblePanel title="SUMMONS" ornament="🐾"
       collapsed={collapsed} onToggle={onToggle}
       headerRight={<>
-        {hasSummons && <span style={{ fontSize: 8, color: "var(--text-muted)" }}>{summons.length}</span>}
+        {hasSummons && <span style={{ fontSize: 10, color: "var(--text-muted)" }}>{summons.length}</span>}
         <span style={{ cursor: "pointer", fontSize: 10, color: "var(--text-muted)", marginLeft: 4 }}
           onClick={(e) => { e.stopPropagation(); setExpanded(false); }} title="Minimize">◀</span>
       </>}>
 
       {/* Sub-tabs */}
       <div style={{ display: "flex", gap: 4, padding: "4px 6px 0" }}>
-        <button className={`btn small ${subTab === "active" ? "" : "muted"}`} style={{ fontSize: 8, flex: 1 }}
+        <button className={`btn small ${subTab === "active" ? "" : "muted"}`} style={{ fontSize: 10, flex: 1 }}
           onClick={() => setSubTab("active")}>ACTIVE</button>
-        <button className={`btn small ${subTab === "browse" ? "" : "muted"}`} style={{ fontSize: 8, flex: 1 }}
+        <button className={`btn small ${subTab === "browse" ? "" : "muted"}`} style={{ fontSize: 10, flex: 1 }}
           onClick={() => setSubTab("browse")}>BROWSE</button>
       </div>
 
@@ -92,7 +92,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
               <div key={si} className="summon-card">
                 <div className="summon-header" onClick={() => toggleCard(si)}>
                   <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ fontSize: 8, color: "var(--text-muted)" }}>{expandedCards[si] ? "▾" : "▸"}</span>
+                    <span style={{ fontSize: 10, color: "var(--text-muted)" }}>{expandedCards[si] ? "▾" : "▸"}</span>
                     <div className="summon-name">{s.name}</div>
                   </div>
                   <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
@@ -108,7 +108,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                 {expandedCards[si] && (
                   <div className="summon-body">
                     <div className="summon-hp-row">
-                      <span style={{ fontSize: 9, color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>HP</span>
+                      <span style={{ fontSize: 10, color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>HP</span>
                       <input style={{ width: 35, background: "transparent", border: "none", borderBottom: "1px solid var(--red-bright)", color: "var(--red)", fontFamily: "Cinzel, serif", fontSize: 13, textAlign: "center", outline: "none" }}
                         type="number" value={s.hp}
                         onChange={e => {
@@ -116,7 +116,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                           sums[si] = { ...s, hp: parseInt(e.target.value) || 0 };
                           updateChar({ summons: sums });
                         }} />
-                      <span style={{ fontSize: 9, color: "var(--text-muted)" }}>/ {s.maxHp}</span>
+                      <span style={{ fontSize: 10, color: "var(--text-muted)" }}>/ {s.maxHp}</span>
                       <div style={{ flex: 1 }}>
                         <div className="hp-bar"><div className="hp-fill" style={{ width: `${Math.max(0, Math.min(100, (s.hp / s.maxHp) * 100))}%`, background: "var(--red-bright)" }} /></div>
                       </div>
@@ -127,7 +127,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                       <span>CR <span className="summon-stat-val">{s.cr}</span></span>
                     </div>
                     {s.str && (
-                      <div style={{ display: "flex", gap: 6, fontSize: 9, color: "var(--text-muted)", marginBottom: 4, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", gap: 6, fontSize: 10, color: "var(--text-muted)", marginBottom: 4, flexWrap: "wrap" }}>
                         {["str","dex","con","int","wis","cha"].map(st => (
                           <span key={st}>{st.toUpperCase()} <span className="summon-stat-val">{s[st]}</span></span>
                         ))}
@@ -145,11 +145,11 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                           }}>
                           <div className={`action-pip ${a.used ? "used" : ""}`} />
                           <span style={{ color: "var(--text-secondary)", fontSize: 10 }}>{a.name}</span>
-                          {a.description && <span style={{ fontSize: 9, color: "var(--text-muted)", marginLeft: 4 }}>— {resolveFormula(a.description).substring(0, 50)}</span>}
+                          {a.description && <span style={{ fontSize: 10, color: "var(--text-muted)", marginLeft: 4 }}>— {resolveFormula(a.description).substring(0, 50)}</span>}
                         </div>
                       ))}
                     </div>
-                    <button className="btn small mt-1" style={{ fontSize: 7 }} onClick={() => {
+                    <button className="btn small mt-1" style={{ fontSize: 10 }} onClick={() => {
                       const sums = [...activeChar.summons];
                       sums[si] = { ...s, actions: s.actions.map(a => ({ ...a, used: false })) };
                       updateChar({ summons: sums });
@@ -171,12 +171,12 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
             <input type="text" className="spell-search" placeholder="Search summons..."
               value={browseFilter} onChange={e => setBrowseFilter(e.target.value)}
               style={{ width: "100%", marginBottom: 4, fontSize: 10, padding: "3px 6px" }} />
-            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 9, color: "var(--text-muted)", marginBottom: 4, cursor: "pointer" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 10, color: "var(--text-muted)", marginBottom: 4, cursor: "pointer" }}>
               <input type="checkbox" checked={showAll} onChange={e => setShowAll(e.target.checked)} />
               Show all (not just known spells)
             </label>
             {browseSummons.length === 0 && (
-              <div style={{ fontSize: 9, color: "var(--text-muted)", fontStyle: "italic", textAlign: "center", padding: 8 }}>
+              <div style={{ fontSize: 10, color: "var(--text-muted)", fontStyle: "italic", textAlign: "center", padding: 8 }}>
                 No matching summons found
               </div>
             )}
@@ -185,12 +185,12 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div>
                     <div className="summon-name">{creature.name}</div>
-                    <div style={{ fontSize: 8, color: "var(--text-muted)" }}>
+                    <div style={{ fontSize: 10, color: "var(--text-muted)" }}>
                       CR {creature.cr} | AC {creature.ac} | HP {creature.maxHp}
                       {creature.linkedSpell && <span> | {creature.linkedSpell}</span>}
                     </div>
                   </div>
-                  <button className="btn small" style={{ fontSize: 8 }}
+                  <button className="btn small" style={{ fontSize: 10 }}
                     onClick={() => addSummonFromBrowse(creature)}>Summon</button>
                 </div>
               </div>

@@ -65,7 +65,7 @@ export default function NotesPanel({ activeChar, updateCharDeep, collapsed, onTo
             <div key={i} className={`journal-tab ${activeTab === i ? "active" : ""}`}
               onClick={() => setActiveTab(i)}>
               {p.name}
-              <span style={{ marginLeft: 4, fontSize: 7, opacity: 0.5, cursor: "pointer" }}
+              <span style={{ marginLeft: 4, fontSize: 10, opacity: 0.5, cursor: "pointer" }}
                 onClick={e => { e.stopPropagation(); deletePage(i); }}>×</span>
             </div>
           ))}
@@ -87,7 +87,7 @@ export default function NotesPanel({ activeChar, updateCharDeep, collapsed, onTo
           <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
             {[["personality", "Personality"], ["ideals", "Ideals"], ["bonds", "Bonds"], ["flaws", "Flaws"]].map(([key, label]) => (
               <div key={key}>
-                <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 2 }}>{label.toUpperCase()}</div>
+                <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 2 }}>{label.toUpperCase()}</div>
                 <BufferedTextarea className="notes-textarea" style={{ minHeight: 28, height: 28 }}
                   value={activeChar?.notes?.[key] || ""}
                   onChange={v => updateCharDeep(`notes.${key}`, v)}

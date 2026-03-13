@@ -45,24 +45,24 @@ export default function CharacterHeader({ activeChar, updateChar, setModal, dele
         <div className="char-header-stats">
           {spellSaveDC && (
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>SAVE DC</div>
+              <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>SAVE DC</div>
               <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--blue-bright)", fontWeight: 700 }}>{spellSaveDC}</div>
-              <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)" }}>ATK +{spellAttackBonus}</div>
+              <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "rgba(232,213,163,0.6)" }}>ATK +{spellAttackBonus}</div>
             </div>
           )}
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>PROF</div>
+            <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>PROF</div>
             <div style={{ fontFamily: "Cinzel, serif", fontSize: 20, color: "var(--gold-bright)", fontWeight: 700 }}>+{pb}</div>
-            {spellSaveDC && <div style={{ fontSize: 8, visibility: "hidden" }}>&nbsp;</div>}
+            {spellSaveDC && <div style={{ fontSize: 10, visibility: "hidden" }}>&nbsp;</div>}
           </div>
           <div style={{ textAlign: "center", cursor: "pointer", userSelect: "none" }}
             onClick={() => updateChar({ inspiration: !activeChar.inspiration })}
             title={activeChar.inspiration ? "Click to remove Inspiration" : "Click to grant Inspiration"}>
-            <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>INSPIRATION</div>
+            <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "rgba(232,213,163,0.6)", letterSpacing: 1 }}>INSPIRATION</div>
             <div style={{ fontSize: 22, filter: activeChar.inspiration ? "none" : "opacity(0.45)", color: activeChar.inspiration ? undefined : "#e8d5a3", transition: "all 0.2s" }}>
               {activeChar.inspiration ? "⭐" : "☆"}
             </div>
-            {spellSaveDC && <div style={{ fontSize: 8, visibility: "hidden" }}>&nbsp;</div>}
+            {spellSaveDC && <div style={{ fontSize: 10, visibility: "hidden" }}>&nbsp;</div>}
           </div>
         </div>
       </div>

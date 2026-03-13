@@ -23,7 +23,7 @@ export default function StatsPanel({ activeChar, updateChar, updateCharDeep, set
             <span className="prof-val">+{pb}</span>
           </div>
           <div className="saving-throws">
-            <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 3 }}>SAVING THROWS</div>
+            <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 3 }}>SAVING THROWS</div>
             {["str", "dex", "con", "int", "wis", "cha"].map(s => {
               const isProf = activeChar?.savingThrowProficiencies?.includes(s);
               const val = mod(stats[s] || 10) + (isProf ? pb : 0);

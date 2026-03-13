@@ -246,22 +246,22 @@ export default function InventoryPanel({ activeChar, updateChar, updateCharDeep,
                     <div className="inv-list-actions" onClick={e => e.stopPropagation()}>
                       {!isEquipped && canEquipWeapon && (
                         <>
-                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                          <button className="btn small" style={{ fontSize: 10, padding: "1px 4px" }}
                             onClick={() => equipItem(item, "weapon")}>Main</button>
-                          <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                          <button className="btn small" style={{ fontSize: 10, padding: "1px 4px" }}
                             onClick={() => equipItem(item, "offhand")}>Off</button>
                         </>
                       )}
                       {!isEquipped && isShield && (
-                        <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                        <button className="btn small" style={{ fontSize: 10, padding: "1px 4px" }}
                           onClick={() => equipItem(item, "offhand")}>Equip</button>
                       )}
                       {!isEquipped && isBodyArmor && (
-                        <button className="btn small" style={{ fontSize: 7, padding: "1px 4px" }}
+                        <button className="btn small" style={{ fontSize: 10, padding: "1px 4px" }}
                           onClick={() => equipItem(item, "armor")}>Equip</button>
                       )}
                       {isEquipped && (
-                        <button className="btn small danger" style={{ fontSize: 7, padding: "1px 4px" }}
+                        <button className="btn small danger" style={{ fontSize: 10, padding: "1px 4px" }}
                           onClick={() => {
                             const slot = Object.entries(equipped).find(([, v]) => v === item.name)?.[0];
                             if (slot) equipItem(item, slot);

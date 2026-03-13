@@ -124,7 +124,7 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
               if (!shieldData) return null;
               const bonus = parseInt(shieldData.ac) || 2;
               return (
-                <div style={{ fontSize: 8, color: "var(--blue-bright)", marginTop: 2, whiteSpace: "nowrap" }}>
+                <div style={{ fontSize: 10, color: "var(--blue-bright)", marginTop: 2, whiteSpace: "nowrap" }}>
                   🛡️ +{bonus} shield
                 </div>
               );
@@ -208,24 +208,24 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
         {/* Hit Dice & Rest Buttons */}
         <div style={{ display: "flex", gap: 6, marginBottom: 8, alignItems: "center" }}>
           <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "3px 6px", background: "rgba(0,0,0,0.04)", borderRadius: 3 }}>
-            <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1 }}>HIT DICE</div>
+            <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1 }}>HIT DICE</div>
             <div style={{ fontFamily: "Cinzel, serif", fontSize: 13, color: "var(--gold)", fontWeight: 700 }}>
               {activeChar?.hitDice?.current ?? activeChar?.level ?? 1}d{activeChar?.hitDice?.die || 8}
             </div>
-            <div style={{ fontSize: 9, color: "var(--text-muted)" }}>
+            <div style={{ fontSize: 10, color: "var(--text-muted)" }}>
               / {activeChar?.hitDice?.max ?? activeChar?.level ?? 1}
             </div>
           </div>
-          <button className="btn small" style={{ fontSize: 8, padding: "3px 8px" }} onClick={() => setModal({ type: "shortrest" })}>Short Rest</button>
-          <button className="btn small success" style={{ fontSize: 8, padding: "3px 8px" }} onClick={() => setModal({ type: "longrest" })}>Long Rest</button>
+          <button className="btn small" style={{ fontSize: 10, padding: "3px 8px" }} onClick={() => setModal({ type: "shortrest" })}>Short Rest</button>
+          <button className="btn small success" style={{ fontSize: 10, padding: "3px 8px" }} onClick={() => setModal({ type: "longrest" })}>Long Rest</button>
         </div>
 
         {/* Death Saves */}
         <div style={{ marginBottom: 8 }}>
-          <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4, textAlign: "center" }}>DEATH SAVES</div>
+          <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4, textAlign: "center" }}>DEATH SAVES</div>
           <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
-              <div style={{ fontSize: 9, color: "var(--green-bright)", fontFamily: "Cinzel, serif" }}>SUCCESS</div>
+              <div style={{ fontSize: 10, color: "var(--green-bright)", fontFamily: "Cinzel, serif" }}>SUCCESS</div>
               <div className="death-saves">
                 {[0, 1, 2].map(i => (
                   <div key={i} className={`save-pip success ${(activeChar?.deathSaves.successes || 0) > i ? "filled" : ""}`}
@@ -234,7 +234,7 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
-              <div style={{ fontSize: 9, color: "var(--red-bright)", fontFamily: "Cinzel, serif" }}>FAILURE</div>
+              <div style={{ fontSize: 10, color: "var(--red-bright)", fontFamily: "Cinzel, serif" }}>FAILURE</div>
               <div className="death-saves">
                 {[0, 1, 2].map(i => (
                   <div key={i} className={`save-pip failure ${(activeChar?.deathSaves.failures || 0) > i ? "filled" : ""}`}

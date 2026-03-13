@@ -31,9 +31,9 @@ export default function FeatsPanel({ activeChar, updateChar, setModal, collapsed
     <CollapsiblePanel title="FEATS & FEATURES" ornament="★" collapsed={collapsed} onToggle={onToggle}>
       <div className="panel-body">
         <div className="tabs" style={{ marginBottom: 4 }}>
-          <div className="tab active" style={{ fontSize: 7 }}>FEATS</div>
-          <div className="tab" style={{ fontSize: 7 }} onClick={() => setModal({ type: "addfeat" })}>+ ADD FEAT</div>
-          <div className="tab" style={{ fontSize: 7 }} onClick={() => setModal({ type: "addcustomfeat" })}>+ CUSTOM</div>
+          <div className="tab active" style={{ fontSize: 10 }}>FEATS</div>
+          <div className="tab" style={{ fontSize: 10 }} onClick={() => setModal({ type: "addfeat" })}>+ ADD FEAT</div>
+          <div className="tab" style={{ fontSize: 10 }} onClick={() => setModal({ type: "addcustomfeat" })}>+ CUSTOM</div>
         </div>
         {(activeChar?.feats || []).length === 0 && <div className="empty-state">No feats yet.</div>}
         {(activeChar?.feats || []).map((feat, i) => {
@@ -43,26 +43,26 @@ export default function FeatsPanel({ activeChar, updateChar, setModal, collapsed
               style={{ opacity: status === "inactive" ? 0.5 : 1 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div className="feat-card-name">{feat.name}</div>
-                {status === "inactive" && <span className="tag tag-red" style={{ fontSize: 7 }}>Inactive</span>}
+                {status === "inactive" && <span className="tag tag-red" style={{ fontSize: 10 }}>Inactive</span>}
                 {status === "active" && Object.keys(feat.effects || {}).length > 0 && (
-                  <span className="tag tag-green" style={{ fontSize: 7 }}>Active</span>
+                  <span className="tag tag-green" style={{ fontSize: 10 }}>Active</span>
                 )}
               </div>
               <div className="feat-card-desc">{feat.description?.substring(0, 80)}{feat.description?.length > 80 ? "..." : ""}</div>
               {status === "inactive" && feat.name === "Dual Wielder" && (
-                <div style={{ fontSize: 8, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires two weapons equipped</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires two weapons equipped</div>
               )}
               {status === "inactive" && feat.name === "Heavy Armor Master" && (
-                <div style={{ fontSize: 8, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires heavy armor equipped</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires heavy armor equipped</div>
               )}
               {status === "inactive" && feat.name === "Shield Master" && (
-                <div style={{ fontSize: 8, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires shield equipped</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2, fontStyle: "italic" }}>Requires shield equipped</div>
               )}
             </div>
           );
         })}
         <hr className="section-divider" />
-        <div style={{ fontFamily: "Cinzel, serif", fontSize: 8, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>CLASS FEATURES</div>
+        <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 4 }}>CLASS FEATURES</div>
         {(activeChar?.classFeatures || []).map((f, i) => (
           <div key={i} className="feat-card" style={{ borderColor: "rgba(40,116,166,0.25)", cursor: "pointer" }}
             onClick={() => setModal({ type: "viewclassfeature", feature: f, index: i })}>
