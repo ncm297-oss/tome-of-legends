@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { defaultCharacter } from "../hooks/useCharacters";
 import { THEMES } from "../hooks/useTheme";
 
-export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId, setCharacters, theme, setTheme }) {
+export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId, setCharacters, theme, setTheme, themeExtras }) {
   const [diceResult, setDiceResult] = useState(null);
   const [showParty, setShowParty] = useState(false);
   const [showThemes, setShowThemes] = useState(false);
@@ -105,6 +105,43 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
                   {t.id === theme && <span style={{ color: "var(--bar-text)", fontSize: 12 }}>&#x2713;</span>}
                 </div>
               ))}
+              {themeExtras?.customThemes?.length > 0 && (
+                <>
+                  <div style={{ height: 1, background: "rgba(255,255,255,0.1)", margin: "6px 0" }} />
+                  <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>CUSTOM</div>
+                  {themeExtras.customThemes.map(t => (
+                    <div key={t.id}
+                      className={`party-dropdown-item ${t.id === theme ? "active" : ""}`}
+                      style={{ position: "relative" }}>
+                      <div style={{ display: "flex", gap: 2, cursor: "pointer" }} onClick={() => { setTheme(t.id); setShowThemes(false); }}>
+                        {[t.colors.background, t.colors.text, t.colors.accent].map((c, i) => (
+                          <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: c, border: "1px solid rgba(255,255,255,0.2)" }} />
+                        ))}
+                      </div>
+                      <div style={{ flex: 1, fontFamily: "Cinzel, serif", fontSize: 10, fontWeight: 600, color: "var(--bar-text)", letterSpacing: 0.5, cursor: "pointer" }}
+                        onClick={() => { setTheme(t.id); setShowThemes(false); }}>
+                        {t.label}
+                      </div>
+                      <button style={{ background: "none", border: "none", color: "var(--bar-btn-text)", cursor: "pointer", fontSize: 10, padding: "0 2px", opacity: 0.6 }}
+                        title="Edit theme"
+                        onClick={(e) => { e.stopPropagation(); setShowThemes(false); setModal({ type: "theme-editor", editId: t.id }); }}>
+                        &#x270E;
+                      </button>
+                      <button style={{ background: "none", border: "none", color: "var(--red-bright)", cursor: "pointer", fontSize: 10, padding: "0 2px", opacity: 0.6 }}
+                        title="Delete theme"
+                        onClick={(e) => { e.stopPropagation(); themeExtras.deleteCustomTheme(t.id); }}>
+                        &#x2715;
+                      </button>
+                      {t.id === theme && <span style={{ color: "var(--bar-text)", fontSize: 12 }}>&#x2713;</span>}
+                    </div>
+                  ))}
+                </>
+              )}
+              <div style={{ height: 1, background: "rgba(255,255,255,0.1)", margin: "6px 0" }} />
+              <button className="btn small w-full" style={{ fontSize: 10 }}
+                onClick={() => { setShowThemes(false); setModal({ type: "theme-editor" }); }}>
+                + Custom Theme
+              </button>
             </div>
           )}
         </div>

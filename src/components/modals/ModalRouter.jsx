@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { modStr, mod, profBonus, XPByLevel } from "../../hooks/useCharacters";
 import { CLASSES } from "../../data/classes";
 import { RACES } from "../../data/races";
@@ -64,7 +64,7 @@ function M({ title, children, onClose }) {
   );
 }
 
-export default function ModalRouter({ modal, onClose, setModal, activeChar, updateChar, updateCharDeep, applyFeatEffects, setCharacters }) {
+export default function ModalRouter({ modal, onClose, setModal, activeChar, updateChar, updateCharDeep, applyFeatEffects, setCharacters, themeExtras }) {
   const pb = profBonus(activeChar?.level || 1);
 
   if (modal.type === "editstat") {
@@ -144,6 +144,9 @@ export default function ModalRouter({ modal, onClose, setModal, activeChar, upda
   }
   if (modal.type === "adddefense") {
     return <AddDefenseModal onClose={onClose} activeChar={activeChar} updateChar={updateChar} />;
+  }
+  if (modal.type === "theme-editor") {
+    return <ThemeEditorModal modal={modal} onClose={onClose} themeExtras={themeExtras} />;
   }
   return null;
 }
@@ -819,6 +822,21 @@ const CLASS_FEATURE_DESCS = {
   "Natural Explorer": "You are a master of navigating the natural world. You gain benefits when traveling through your favored terrain, including improved tracking, foraging, and awareness of threats.",
   "Primeval Awareness": "You can use an action and expend one spell slot to sense whether certain creature types are present within 1 mile (or 6 miles in favored terrain).",
   "ASI": "Ability Score Improvement: You can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. Alternatively, you can take a feat.",
+  "Primal Path": "At 3rd level, you choose a path that shapes the nature of your rage. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.",
+  "Bard College": "At 3rd level, you join a college of bards that grants you additional features. Your choice gives you features at 3rd level and again at 6th and 14th levels.",
+  "Bardic Inspiration d8": "Your Bardic Inspiration die increases to a d8, allowing you to grant a more powerful bonus to your allies' ability checks, attack rolls, or saving throws.",
+  "Divine Domain": "At 1st level, you choose a divine domain related to your deity, granting you domain spells and additional features at 1st, 2nd, 6th, 8th, and 17th levels.",
+  "Divine Domain Feature": "You gain a feature granted by your Divine Domain. This feature is determined by the domain you chose at 1st level.",
+  "Destroy Undead CR 1/2": "When an undead of CR 1/2 or lower fails its saving throw against your Turn Undead feature, it is instantly destroyed.",
+  "Druid Circle": "At 2nd level, you choose a circle of druids that grants you additional features. Your choice gives you features at 2nd, 6th, 10th, and 14th levels.",
+  "Martial Archetype": "At 3rd level, you choose an archetype that you strive to emulate in your combat styles and techniques. Your choice grants you features at 3rd, 7th, 10th, 15th, and 18th levels.",
+  "Monastic Tradition": "At 3rd level, you commit yourself to a monastic tradition that grants you additional features. Your choice gives you features at 3rd, 6th, 11th, and 17th levels.",
+  "Sacred Oath": "At 3rd level, you swear the oath that binds you as a paladin forever. Your choice grants you oath spells and additional features at 3rd, 7th, 15th, and 20th levels.",
+  "Ranger Archetype": "At 3rd level, you choose an archetype that you strive to emulate. Your choice grants you features at 3rd, 7th, 11th, and 15th levels.",
+  "Roguish Archetype": "At 3rd level, you choose an archetype that you emulate in the exercise of your rogue abilities. Your choice grants you features at 3rd, 9th, 13th, and 17th levels.",
+  "Sorcerous Origin": "At 1st level, you choose a sorcerous origin which describes the source of your innate magical power. Your choice grants you features at 1st, 6th, 14th, and 18th levels.",
+  "Otherworldly Patron": "At 1st level, you have struck a bargain with an otherworldly being. Your choice grants you patron spells and additional features at 1st, 6th, 10th, and 14th levels.",
+  "Arcane Tradition": "At 2nd level, you choose an arcane tradition that shapes your practice of magic. Your choice grants you features at 2nd, 6th, 10th, and 14th levels.",
 };
 
 function ViewClassFeatureModal({ modal, onClose, activeChar, updateChar }) {
@@ -1149,5 +1167,124 @@ function AddDefenseModal({ onClose, activeChar, updateChar }) {
         )}
       </div>
     </M>
+  );
+}
+
+// ─── THEME EDITOR ───
+function ThemeEditorModal({ modal, onClose, themeExtras }) {
+  const { saveCustomTheme, previewThemeVars, revertPreview, customThemes, getActiveColors } = themeExtras;
+  const editing = modal.editId ? customThemes.find(t => t.id === modal.editId) : null;
+
+  const [label, setLabel] = useState(editing?.label || "");
+  const [colors, setColors] = useState(() => editing?.colors ? { ...editing.colors } : { ...getActiveColors() });
+
+  // Drag state
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const dragRef = useRef(null);
+  const dragging = useRef(false);
+  const dragStart = useRef({ x: 0, y: 0 });
+
+  const onMouseDown = (e) => {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") return;
+    dragging.current = true;
+    dragStart.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      if (!dragging.current) return;
+      setPos({ x: e.clientX - dragStart.current.x, y: e.clientY - dragStart.current.y });
+    };
+    const onMouseUp = () => { dragging.current = false; };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => { window.removeEventListener("mousemove", onMouseMove); window.removeEventListener("mouseup", onMouseUp); };
+  }, []);
+
+  const setColor = (key, value) => {
+    const next = { ...colors, [key]: value };
+    setColors(next);
+    previewThemeVars(next);
+  };
+
+  // Apply live preview on mount (header color ensures it matches built-in themes)
+  useState(() => { previewThemeVars(colors); });
+
+  const handleSave = () => {
+    if (!label.trim()) return;
+    saveCustomTheme({ id: editing?.id, label: label.trim(), colors });
+    onClose();
+  };
+
+  const handleCancel = () => {
+    revertPreview();
+    onClose();
+  };
+
+  const colorFields = [
+    { key: "background", label: "Background" },
+    { key: "text", label: "Text" },
+    { key: "accent", label: "Accent" },
+    { key: "header", label: "Header" },
+    { key: "red", label: "Danger" },
+    { key: "green", label: "Success" },
+    { key: "blue", label: "Info" },
+  ];
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 1000, pointerEvents: "none" }}>
+      <div ref={dragRef} className="modal" onMouseDown={onMouseDown} style={{
+        maxWidth: 380, position: "absolute", top: `calc(50% + ${pos.y}px)`, left: `calc(50% + ${pos.x}px)`,
+        transform: "translate(-50%, -50%)", cursor: "grab", pointerEvents: "auto",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--panel-border)"
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div className="modal-title" style={{ margin: 0, fontSize: 16 }}>{editing ? "Edit Theme" : "Create Theme"}</div>
+          <button className="btn small danger" onClick={handleCancel}>✕ CLOSE</button>
+        </div>
+
+        <div style={{ marginBottom: 12 }}>
+          <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "var(--text-muted)", display: "block", marginBottom: 4 }}>THEME NAME</label>
+          <input
+            className="form-input"
+            value={label}
+            onChange={e => setLabel(e.target.value)}
+            placeholder="My Custom Theme"
+            style={{ width: "100%" }}
+            autoFocus
+          />
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 12px", marginBottom: 16 }}>
+          {colorFields.map(f => (
+            <div key={f.key}>
+              <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "var(--text-muted)", display: "block", marginBottom: 4 }}>{f.label.toUpperCase()}</label>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <input
+                  type="color"
+                  value={colors[f.key]}
+                  onChange={e => setColor(f.key, e.target.value)}
+                  style={{ width: 36, height: 28, border: "1px solid var(--panel-border)", borderRadius: 4, cursor: "pointer", padding: 0, background: "none" }}
+                />
+                <input
+                  className="form-input"
+                  value={colors[f.key]}
+                  onChange={e => { if (/^#[0-9a-fA-F]{0,6}$/.test(e.target.value)) setColor(f.key, e.target.value); }}
+                  style={{ flex: 1, fontSize: 11, fontFamily: "monospace" }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+          <button className="btn small" onClick={handleCancel}>Cancel</button>
+          <button className="btn small success" onClick={handleSave} disabled={!label.trim()}>
+            {editing ? "Save Changes" : "Save Theme"}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

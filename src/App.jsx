@@ -26,7 +26,7 @@ export default function App() {
     applyFeatEffects,
   } = useCharacters();
 
-  const [theme, setTheme] = useTheme();
+  const [theme, setTheme, themeExtras] = useTheme();
   const [showWizard, setShowWizard] = useState(false);
   const [modal, setModal] = useState(null);
   const [summonsExpanded, setSummonsExpanded] = useState(false);
@@ -98,11 +98,12 @@ export default function App() {
         setCharacters={setCharacters}
         theme={theme}
         setTheme={setTheme}
+        themeExtras={themeExtras}
       />
 
       {/* CHARACTER HEADER — outside grid so it's always full width */}
       {activeChar && (
-        <div style={{ padding: "6px 6px 0" }}>
+        <div style={{ padding: "4px 6px 0" }}>
           <CharacterHeader
             activeChar={activeChar}
             updateChar={updateChar}
@@ -155,7 +156,7 @@ export default function App() {
       <div style={{
         display: "grid",
         gridTemplateColumns: bottomCols,
-        gap: 6, padding: "0 6px 6px", height: 240, flexShrink: 0
+        gap: 6, padding: "0 6px 6px", height: 270, flexShrink: 0
       }}>
         <InventoryPanel
           activeChar={activeChar}
@@ -201,6 +202,7 @@ export default function App() {
           updateCharDeep={updateCharDeep}
           applyFeatEffects={applyFeatEffects}
           setCharacters={setCharacters}
+          themeExtras={themeExtras}
         />
       )}
     </div>

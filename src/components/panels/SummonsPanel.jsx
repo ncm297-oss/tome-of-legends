@@ -152,7 +152,7 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
                           }}>
                           <div className={`action-pip ${a.used ? "used" : ""}`} />
                           <span style={{ color: "var(--text-secondary)", fontSize: 10 }}>{a.name}</span>
-                          {a.description && <span style={{ fontSize: 10, color: "var(--text-muted)", marginLeft: 4 }}>— {resolveFormula(a.description).substring(0, 50)}</span>}
+                          {a.description && <span style={{ fontSize: 10, color: "var(--text-muted)", marginLeft: 4 }}>— {resolveFormula(a.description)}</span>}
                         </div>
                       ))}
                     </div>

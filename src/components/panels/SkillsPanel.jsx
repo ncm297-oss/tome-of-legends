@@ -6,9 +6,7 @@ import CollapsiblePanel from "../CollapsiblePanel";
 export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, setModal, collapsed, onToggle, wide }) {
   const stats = activeChar?.stats || {};
   const pb = profBonus(activeChar?.level || 1);
-  const [groupCollapsed, setGroupCollapsed] = useState({});
-
-  const toggleCollapse = (stat) => setGroupCollapsed(prev => ({ ...prev, [stat]: !prev[stat] }));
+  const [profCollapsed, setProfCollapsed] = useState(false);
 
   const getSkillBonus = (skill) => {
     const base = mod(stats[skill.stat] || 10);
@@ -17,7 +15,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
     return base + (isExp ? pb * 2 : isProf ? pb : 0);
   };
 
-  const statOrder = ["str", "dex", "con", "int", "wis", "cha"];
+  const statOrder = ["str", "dex", "int", "wis", "cha", "con"];
   const statNames = { str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" };
   const grouped = {};
   statOrder.forEach(s => { grouped[s] = SKILLS_LIST.filter(sk => sk.stat === s); });
@@ -34,8 +32,8 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
         {/* Proficiencies & Languages */}
         <div style={{ marginBottom: 6 }}>
           <div className="ability-header-combined">
-            <div className="ability-header-left" onClick={() => toggleCollapse("proficiencies")}>
-              <span className="ability-header-collapse">{groupCollapsed.proficiencies ? "▸" : "▾"}</span>
+            <div className="ability-header-left" onClick={() => setProfCollapsed(p => !p)}>
+              <span className="ability-header-collapse">{profCollapsed ? "▸" : "▾"}</span>
               <span className="ability-header-name">PROF & LANG</span>
             </div>
             <button className="btn small" style={{ fontSize: 10, padding: "1px 5px" }}
@@ -43,7 +41,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
               Edit
             </button>
           </div>
-          {!groupCollapsed.proficiencies && (
+          {!profCollapsed && (
             <div style={{ paddingLeft: 16, fontSize: 10, color: "var(--text-secondary)", lineHeight: 1.8 }}>
               {[["Armor", "armor"], ["Weapons", "weapons"], ["Tools", "tools"], ["Languages", "languages"]].map(([label, key]) => {
                 const items = activeChar?.proficiencies?.[key] || [];
@@ -62,7 +60,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
           )}
         </div>
 
-        <div style={wide ? { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 12px" } : undefined}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 12px" }}>
         {statOrder.map(stat => {
           const isProf = activeChar?.savingThrowProficiencies?.includes(stat);
           const saveVal = mod(stats[stat] || 10) + (isProf ? pb : 0);
@@ -71,8 +69,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
             <div key={stat}>
               {/* Ability header with score, modifier, and edit */}
               <div className="ability-header-combined">
-                <div className="ability-header-left" onClick={() => toggleCollapse(stat)}>
-                  <span className="ability-header-collapse">{groupCollapsed[stat] ? "▸" : "▾"}</span>
+                <div className="ability-header-left">
                   <span className="ability-header-name">{stat.toUpperCase()}</span>
                 </div>
                 <div className="ability-header-right">
@@ -94,7 +91,7 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
               </div>
 
               {/* Skills under this ability */}
-              {!groupCollapsed[stat] && grouped[stat].map(skill => {
+              {grouped[stat].length > 0 && grouped[stat].map(skill => {
                 const isSkillProf = activeChar?.skillProficiencies?.includes(skill.name);
                 const isExp = activeChar?.skillExpertise?.includes(skill.name);
                 const val = getSkillBonus(skill);
@@ -116,9 +113,6 @@ export default function SkillsPanel({ activeChar, updateChar, updateCharDeep, se
                   </div>
                 );
               })}
-              {!groupCollapsed[stat] && grouped[stat].length === 0 && (
-                <div style={{ paddingLeft: 16, fontSize: 10, color: "var(--text-muted)", fontStyle: "italic", padding: "2px 0 2px 16px" }}>No skills</div>
-              )}
             </div>
           );
         })}
