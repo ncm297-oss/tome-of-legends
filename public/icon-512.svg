@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#4a2e12"/>
+  <rect x="16" y="16" width="480" height="480" rx="52" fill="#5c3d1e" stroke="#b8900e" stroke-width="6"/>
+  <text x="256" y="300" text-anchor="middle" font-family="serif" font-size="260" font-weight="bold" fill="#f0c040">T</text>
+  <text x="256" y="420" text-anchor="middle" font-family="serif" font-size="72" font-weight="600" fill="#e8d5a3" letter-spacing="10">TOME</text>
+</svg>
