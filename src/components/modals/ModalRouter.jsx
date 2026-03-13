@@ -1234,24 +1234,25 @@ function ThemeEditorModal({ modal, onClose, themeExtras }) {
 
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 1000, pointerEvents: "none" }}>
-      <div ref={dragRef} className="modal" onMouseDown={onMouseDown} style={{
+      <div ref={dragRef} onMouseDown={onMouseDown} style={{
         maxWidth: 380, position: "absolute", top: `calc(50% + ${pos.y}px)`, left: `calc(50% + ${pos.x}px)`,
         transform: "translate(-50%, -50%)", cursor: "grab", pointerEvents: "auto",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--panel-border)"
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(180,160,140,0.3)",
+        background: "linear-gradient(180deg, #f5f0e8 0%, #e8e0d4 100%)", color: "#2a1e10",
+        borderRadius: 10, padding: "18px 22px", fontFamily: "Cinzel, serif",
       }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <div className="modal-title" style={{ margin: 0, fontSize: 16 }}>{editing ? "Edit Theme" : "Create Theme"}</div>
-          <button className="btn small danger" onClick={handleCancel}>✕ CLOSE</button>
+          <div style={{ margin: 0, fontSize: 16, fontFamily: "Cinzel, serif", fontWeight: 700, letterSpacing: 2, color: "#2a1e10" }}>{editing ? "Edit Theme" : "Create Theme"}</div>
+          <button style={{ background: "rgba(180,50,50,0.15)", border: "1px solid rgba(180,50,50,0.3)", color: "#8b2020", borderRadius: 4, padding: "3px 8px", fontSize: 11, cursor: "pointer", fontFamily: "Cinzel, serif" }} onClick={handleCancel}>✕ CLOSE</button>
         </div>
 
         <div style={{ marginBottom: 12 }}>
-          <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "var(--text-muted)", display: "block", marginBottom: 4 }}>THEME NAME</label>
+          <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "#8a7a68", display: "block", marginBottom: 4 }}>THEME NAME</label>
           <input
-            className="form-input"
             value={label}
             onChange={e => setLabel(e.target.value)}
             placeholder="My Custom Theme"
-            style={{ width: "100%" }}
+            style={{ width: "100%", background: "rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.15)", borderRadius: 4, padding: "6px 8px", fontSize: 12, color: "#2a1e10", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }}
             autoFocus
           />
         </div>
@@ -1259,19 +1260,18 @@ function ThemeEditorModal({ modal, onClose, themeExtras }) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 12px", marginBottom: 16 }}>
           {colorFields.map(f => (
             <div key={f.key}>
-              <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "var(--text-muted)", display: "block", marginBottom: 4 }}>{f.label.toUpperCase()}</label>
+              <label style={{ fontSize: 10, fontFamily: "Cinzel, serif", letterSpacing: 1, color: "#8a7a68", display: "block", marginBottom: 4 }}>{f.label.toUpperCase()}</label>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <input
                   type="color"
                   value={colors[f.key]}
                   onChange={e => setColor(f.key, e.target.value)}
-                  style={{ width: 36, height: 28, border: "1px solid var(--panel-border)", borderRadius: 4, cursor: "pointer", padding: 0, background: "none" }}
+                  style={{ width: 36, height: 28, border: "1px solid rgba(0,0,0,0.15)", borderRadius: 4, cursor: "pointer", padding: 0, background: "none" }}
                 />
                 <input
-                  className="form-input"
                   value={colors[f.key]}
                   onChange={e => { if (/^#[0-9a-fA-F]{0,6}$/.test(e.target.value)) setColor(f.key, e.target.value); }}
-                  style={{ flex: 1, fontSize: 11, fontFamily: "monospace" }}
+                  style={{ flex: 1, fontSize: 11, fontFamily: "monospace", background: "rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.15)", borderRadius: 4, padding: "4px 6px", color: "#2a1e10", outline: "none" }}
                 />
               </div>
             </div>
@@ -1279,8 +1279,8 @@ function ThemeEditorModal({ modal, onClose, themeExtras }) {
         </div>
 
         <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
-          <button className="btn small" onClick={handleCancel}>Cancel</button>
-          <button className="btn small success" onClick={handleSave} disabled={!label.trim()}>
+          <button style={{ background: "rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.15)", color: "#2a1e10", borderRadius: 4, padding: "5px 14px", fontSize: 11, cursor: "pointer", fontFamily: "Cinzel, serif" }} onClick={handleCancel}>Cancel</button>
+          <button style={{ background: "rgba(40,120,40,0.15)", border: "1px solid rgba(40,120,40,0.3)", color: "#2a6a2a", borderRadius: 4, padding: "5px 14px", fontSize: 11, cursor: "pointer", fontFamily: "Cinzel, serif" }} onClick={handleSave} disabled={!label.trim()}>
             {editing ? "Save Changes" : "Save Theme"}
           </button>
         </div>
