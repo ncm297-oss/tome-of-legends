@@ -12,7 +12,7 @@ export default function CollapsiblePanel({ title, ornament, headerRight, childre
         style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1, ...style }}>
         <div style={{ fontSize: 16 }}>{ornament}</div>
         <div style={{
-          fontSize: 7, color: "var(--text-muted)", fontFamily: "Cinzel, serif",
+          fontSize: 8, color: "var(--text-secondary)", fontFamily: "Cinzel, serif",
           letterSpacing: 0.5, marginTop: 4, writingMode: "vertical-rl", textOrientation: "mixed"
         }}>{title}</div>
       </div>

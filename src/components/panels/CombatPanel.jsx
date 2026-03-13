@@ -151,34 +151,33 @@ export default function CombatPanel({ activeChar, updateChar, updateCharDeep, se
             <div className="combat-label">Passive Perc.</div>
             <div className="combat-val small">{10 + getSkillBonus({ name: "Perception", stat: "wis" })}</div>
           </div>
-          {/* Conditions & Defenses */}
-          <div style={{ gridColumn: "span 2", display: "flex", flexDirection: "column", gap: 4, justifyContent: "center" }}>
-            <div className="condition-chips">
-              {(activeChar?.conditions || []).map(c => (
-                <div key={c} className="condition-chip" onClick={() => updateChar({ conditions: activeChar.conditions.filter(x => x !== c) })} title="Click to remove">{c}</div>
-              ))}
-              <div className="condition-chip" style={{ cursor: "pointer", borderStyle: "dashed" }} onClick={() => setModal({ type: "addcondition" })}>+ Condition</div>
-              {(activeChar?.resistances || []).map(r => (
-                <div key={`res-${r}`} className="condition-chip" style={{ background: "rgba(61,122,53,0.12)", borderColor: "rgba(61,122,53,0.35)", color: "var(--green-bright)" }}
-                  onClick={() => updateChar({ resistances: activeChar.resistances.filter(x => x !== r) })} title="Click to remove">
-                  Resist {r}
-                </div>
-              ))}
-              {(activeChar?.immunities || []).map(r => (
-                <div key={`imm-${r}`} className="condition-chip" style={{ background: "rgba(40,116,166,0.12)", borderColor: "rgba(40,116,166,0.35)", color: "var(--blue-bright)" }}
-                  onClick={() => updateChar({ immunities: activeChar.immunities.filter(x => x !== r) })} title="Click to remove">
-                  Immune {r}
-                </div>
-              ))}
-              {(activeChar?.vulnerabilities || []).map(r => (
-                <div key={`vul-${r}`} className="condition-chip" style={{ background: "rgba(192,57,43,0.12)", borderColor: "rgba(192,57,43,0.35)", color: "var(--red-bright)" }}
-                  onClick={() => updateChar({ vulnerabilities: activeChar.vulnerabilities.filter(x => x !== r) })} title="Click to remove">
-                  Vuln {r}
-                </div>
-              ))}
-              <div className="condition-chip" style={{ cursor: "pointer", borderStyle: "dashed" }} onClick={() => setModal({ type: "adddefense" })}>+ Resistance</div>
+        </div>
+
+        {/* Conditions & Resistances — inline chips */}
+        <div className="condition-chips" style={{ marginBottom: 6 }}>
+          {(activeChar?.conditions || []).map(c => (
+            <div key={c} className="condition-chip" onClick={() => updateChar({ conditions: activeChar.conditions.filter(x => x !== c) })} title="Click to remove">{c}</div>
+          ))}
+          {(activeChar?.resistances || []).map(r => (
+            <div key={`res-${r}`} className="condition-chip" style={{ background: "rgba(61,122,53,0.12)", borderColor: "rgba(61,122,53,0.35)", color: "var(--green-bright)" }}
+              onClick={() => updateChar({ resistances: activeChar.resistances.filter(x => x !== r) })} title="Click to remove">
+              Resist {r}
             </div>
-          </div>
+          ))}
+          {(activeChar?.immunities || []).map(r => (
+            <div key={`imm-${r}`} className="condition-chip" style={{ background: "rgba(40,116,166,0.12)", borderColor: "rgba(40,116,166,0.35)", color: "var(--blue-bright)" }}
+              onClick={() => updateChar({ immunities: activeChar.immunities.filter(x => x !== r) })} title="Click to remove">
+              Immune {r}
+            </div>
+          ))}
+          {(activeChar?.vulnerabilities || []).map(r => (
+            <div key={`vul-${r}`} className="condition-chip" style={{ background: "rgba(192,57,43,0.12)", borderColor: "rgba(192,57,43,0.35)", color: "var(--red-bright)" }}
+              onClick={() => updateChar({ vulnerabilities: activeChar.vulnerabilities.filter(x => x !== r) })} title="Click to remove">
+              Vuln {r}
+            </div>
+          ))}
+          <div className="condition-chip" style={{ cursor: "pointer", borderStyle: "dashed" }} onClick={() => setModal({ type: "addcondition" })}>+ Conditions</div>
+          <div className="condition-chip" style={{ cursor: "pointer", borderStyle: "dashed" }} onClick={() => setModal({ type: "adddefense" })}>+ Resistances</div>
         </div>
 
         {/* HP Quick Adjust */}
