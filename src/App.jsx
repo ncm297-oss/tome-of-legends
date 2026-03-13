@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCharacters, profBonus, mod } from "./hooks/useCharacters";
+import useTheme from "./hooks/useTheme";
 import { CLASSES } from "./data/classes";
 import TopBar from "./components/TopBar";
 import CharacterHeader from "./components/CharacterHeader";
@@ -25,6 +26,7 @@ export default function App() {
     applyFeatEffects,
   } = useCharacters();
 
+  const [theme, setTheme] = useTheme();
   const [showWizard, setShowWizard] = useState(false);
   const [modal, setModal] = useState(null);
   const [summonsExpanded, setSummonsExpanded] = useState(false);
@@ -94,6 +96,8 @@ export default function App() {
         activeCharId={activeCharId}
         setActiveCharId={setActiveCharId}
         setCharacters={setCharacters}
+        theme={theme}
+        setTheme={setTheme}
       />
 
       {/* CHARACTER HEADER — outside grid so it's always full width */}

@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 
 import { defaultCharacter } from "../hooks/useCharacters";
+import { THEMES } from "../hooks/useTheme";
 
-export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId, setCharacters }) {
+export default function TopBar({ setShowWizard, setModal, characters, activeCharId, setActiveCharId, setCharacters, theme, setTheme }) {
   const [diceResult, setDiceResult] = useState(null);
   const [showParty, setShowParty] = useState(false);
+  const [showThemes, setShowThemes] = useState(false);
   const partyRef = useRef(null);
+  const themeRef = useRef(null);
 
   const rollDice = (sides) => {
     const result = Math.floor(Math.random() * sides) + 1;
@@ -21,6 +24,16 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [showParty]);
+
+  // Close theme dropdown on click outside
+  useEffect(() => {
+    if (!showThemes) return;
+    const handler = (e) => {
+      if (themeRef.current && !themeRef.current.contains(e.target)) setShowThemes(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [showThemes]);
 
   return (
     <div className="top-bar">
@@ -68,6 +81,33 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
         <button className="btn small" onClick={() => setShowWizard(true)}>+ New</button>
         <button className="btn small success" onClick={() => setModal({ type: "levelup" })}>Level Up</button>
         <div style={{ width: 1, height: 24, background: "rgba(212,160,23,0.3)" }} />
+        {/* THEME PICKER */}
+        <div ref={themeRef} style={{ position: "relative" }}>
+          <button className="btn small" onClick={() => setShowThemes(p => !p)} title="Change Theme"
+            style={{ fontSize: 14, padding: "2px 6px", lineHeight: 1 }}>
+            <span role="img" aria-label="theme">&#x1f3a8;</span>
+          </button>
+          {showThemes && (
+            <div className="party-dropdown" style={{ minWidth: 180, right: 0 }}>
+              <div style={{ fontFamily: "Cinzel, serif", fontSize: 10, color: "var(--text-muted)", letterSpacing: 1, marginBottom: 6 }}>THEME</div>
+              {THEMES.map(t => (
+                <div key={t.id}
+                  className={`party-dropdown-item ${t.id === theme ? "active" : ""}`}
+                  onClick={() => { setTheme(t.id); setShowThemes(false); }}>
+                  <div style={{ display: "flex", gap: 2 }}>
+                    {t.swatches.map((c, i) => (
+                      <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: c, border: "1px solid rgba(255,255,255,0.2)" }} />
+                    ))}
+                  </div>
+                  <div style={{ flex: 1, fontFamily: "Cinzel, serif", fontSize: 10, fontWeight: 600, color: "var(--bar-text)", letterSpacing: 0.5 }}>
+                    {t.label}
+                  </div>
+                  {t.id === theme && <span style={{ color: "var(--bar-text)", fontSize: 12 }}>&#x2713;</span>}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         <button className="btn small" onClick={() => {
           const activeChar = characters.find(c => c.id === activeCharId);
           if (!activeChar) return;

@@ -1,0 +1,243 @@
+/* ═══════════════════════════════════════════════════
+   THEME OVERRIDES
+   Each theme overrides CSS custom properties on [data-theme]
+   ═══════════════════════════════════════════════════ */
+
+/* ─── HIGH VISIBILITY ─── */
+[data-theme="highvis"] {
+  --parchment: #1a1a2e;
+  --parchment-light: #222240;
+  --parchment-dark: #141425;
+  --ink: #ffffff;
+  --ink-light: #e0e0e0;
+  --gold: #ffd700;
+  --gold-bright: #ffea00;
+  --red: #ff4444;
+  --red-bright: #ff6666;
+  --green: #44ff44;
+  --green-bright: #66ff66;
+  --blue: #4488ff;
+  --blue-bright: #66aaff;
+  --panel-bg: rgba(30, 30, 55, 0.95);
+  --panel-border: rgba(255, 215, 0, 0.4);
+  --panel-shadow: 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #aaaacc;
+  --ornament: #ffd700;
+  --bar-bg: linear-gradient(180deg, #0a0a1a 0%, #000010 100%);
+  --bar-text: #ffd700;
+  --bar-accent: rgba(255, 215, 0, 0.5);
+  --bar-btn-text: #ffffff;
+  --body-bg: #141425;
+  --app-bg: #1a1a2e;
+  --modal-bg: linear-gradient(180deg, #1a1a2e 0%, #141425 100%);
+  --tooltip-bg: linear-gradient(180deg, #1a1a2e, #141425);
+  --input-bg: rgba(255,255,255,0.1);
+  --panel-header-bg: linear-gradient(180deg, rgba(255,215,0,0.15) 0%, rgba(255,215,0,0.05) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(255,215,0,0.25) 0%, rgba(255,215,0,0.1) 100%);
+  --panel-texture: none;
+  --select-option-bg: #1a1a2e;
+}
+
+/* ─── CHERRY BLOSSOM ─── */
+[data-theme="cherry"] {
+  --parchment: #fff0f5;
+  --parchment-light: #fff5f8;
+  --parchment-dark: #f5dde4;
+  --ink: #3d1a2a;
+  --ink-light: #5c2d42;
+  --gold: #c4567a;
+  --gold-bright: #e0728e;
+  --red: #c0392b;
+  --red-bright: #e74c3c;
+  --green: #2d6b4f;
+  --green-bright: #3d9970;
+  --blue: #4a6fa5;
+  --blue-bright: #6b8fc5;
+  --panel-bg: rgba(255, 230, 238, 0.92);
+  --panel-border: rgba(196, 86, 122, 0.35);
+  --panel-shadow: 0 2px 10px rgba(100,20,50,0.1), inset 0 1px 0 rgba(255,255,255,0.4);
+  --text-primary: #3d1a2a;
+  --text-secondary: #5c2d42;
+  --text-muted: #8c6070;
+  --ornament: #c4567a;
+  --bar-bg: linear-gradient(180deg, #6b2d4a 0%, #4a1a32 100%);
+  --bar-text: #ffb3cc;
+  --bar-accent: rgba(255, 179, 204, 0.4);
+  --bar-btn-text: #ffd6e4;
+  --body-bg: #f5dde4;
+  --app-bg:
+    radial-gradient(ellipse at 30% 20%, rgba(255,180,200,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(255,160,190,0.2) 0%, transparent 60%),
+    #f5dde4;
+  --modal-bg: linear-gradient(180deg, #fff0f5 0%, #f5dde4 100%);
+  --tooltip-bg: linear-gradient(180deg, #fff0f5, #f5dde4);
+  --input-bg: rgba(255,255,255,0.6);
+  --panel-header-bg: linear-gradient(180deg, rgba(196,86,122,0.15) 0%, rgba(196,86,122,0.05) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(196,86,122,0.25) 0%, rgba(196,86,122,0.1) 100%);
+  --panel-texture: none;
+  --select-option-bg: #fff0f5;
+}
+
+/* ─── STEAMPUNK ─── */
+[data-theme="steampunk"] {
+  --parchment: #2a2018;
+  --parchment-light: #3a2e22;
+  --parchment-dark: #1e1610;
+  --ink: #e8d0a0;
+  --ink-light: #d4b880;
+  --gold: #cd8032;
+  --gold-bright: #e89840;
+  --red: #b8442a;
+  --red-bright: #d45a3a;
+  --green: #5a8a40;
+  --green-bright: #72a858;
+  --blue: #4a7a8a;
+  --blue-bright: #62a0b0;
+  --panel-bg: rgba(50, 38, 28, 0.95);
+  --panel-border: rgba(205, 128, 50, 0.4);
+  --panel-shadow: 0 2px 10px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,200,120,0.05);
+  --text-primary: #e8d0a0;
+  --text-secondary: #d4b880;
+  --text-muted: #a08860;
+  --ornament: #cd8032;
+  --bar-bg: linear-gradient(180deg, #3a2a18 0%, #2a1c0e 100%);
+  --bar-text: #e89840;
+  --bar-accent: rgba(232, 152, 64, 0.4);
+  --bar-btn-text: #d4b880;
+  --body-bg: #1e1610;
+  --app-bg:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(205,128,50,0.03) 30px, rgba(205,128,50,0.03) 31px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(205,128,50,0.02) 30px, rgba(205,128,50,0.02) 31px),
+    radial-gradient(ellipse at 50% 50%, rgba(60,40,20,0.5) 0%, transparent 80%),
+    #1e1610;
+  --modal-bg: linear-gradient(180deg, #2a2018 0%, #1e1610 100%);
+  --tooltip-bg: linear-gradient(180deg, #2a2018, #1e1610);
+  --input-bg: rgba(255,255,255,0.08);
+  --panel-header-bg: linear-gradient(180deg, rgba(205,128,50,0.15) 0%, rgba(205,128,50,0.05) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(205,128,50,0.25) 0%, rgba(205,128,50,0.1) 100%);
+  --panel-texture: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(205,128,50,0.02) 3px, rgba(205,128,50,0.02) 6px);
+  --select-option-bg: #2a2018;
+}
+
+/* ─── ARCANE TECH ─── */
+[data-theme="arcane"] {
+  --parchment: #0d1117;
+  --parchment-light: #161b22;
+  --parchment-dark: #080c12;
+  --ink: #c9d1d9;
+  --ink-light: #a0aab4;
+  --gold: #00bcd4;
+  --gold-bright: #26c6da;
+  --red: #f44336;
+  --red-bright: #ff5252;
+  --green: #00e676;
+  --green-bright: #69f0ae;
+  --blue: #2196f3;
+  --blue-bright: #42a5f5;
+  --panel-bg: rgba(22, 27, 34, 0.95);
+  --panel-border: rgba(0, 188, 212, 0.3);
+  --panel-shadow: 0 2px 10px rgba(0,188,212,0.1), inset 0 1px 0 rgba(0,188,212,0.05);
+  --text-primary: #c9d1d9;
+  --text-secondary: #a0aab4;
+  --text-muted: #6a7a88;
+  --ornament: #00bcd4;
+  --bar-bg: linear-gradient(180deg, #1a2332 0%, #0d1520 100%);
+  --bar-text: #26c6da;
+  --bar-accent: rgba(0, 188, 212, 0.4);
+  --bar-btn-text: #c9d1d9;
+  --body-bg: #080c12;
+  --app-bg:
+    radial-gradient(ellipse at 20% 80%, rgba(0,188,212,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(33,150,243,0.04) 0%, transparent 50%),
+    #0d1117;
+  --modal-bg: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  --tooltip-bg: linear-gradient(180deg, #161b22, #0d1117);
+  --input-bg: rgba(255,255,255,0.06);
+  --panel-header-bg: linear-gradient(180deg, rgba(0,188,212,0.12) 0%, rgba(0,188,212,0.04) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(0,188,212,0.2) 0%, rgba(0,188,212,0.08) 100%);
+  --panel-texture: none;
+  --select-option-bg: #161b22;
+}
+
+/* ─── INFERNAL ─── */
+[data-theme="infernal"] {
+  --parchment: #1a0a0a;
+  --parchment-light: #2a1212;
+  --parchment-dark: #120606;
+  --ink: #e0c8b8;
+  --ink-light: #c8a898;
+  --gold: #e65100;
+  --gold-bright: #ff6d00;
+  --red: #d32f2f;
+  --red-bright: #ff1744;
+  --green: #558b2f;
+  --green-bright: #76ff03;
+  --blue: #5c6bc0;
+  --blue-bright: #7986cb;
+  --panel-bg: rgba(30, 12, 12, 0.95);
+  --panel-border: rgba(230, 81, 0, 0.35);
+  --panel-shadow: 0 2px 10px rgba(230,81,0,0.1), inset 0 1px 0 rgba(255,100,0,0.05);
+  --text-primary: #e0c8b8;
+  --text-secondary: #c8a898;
+  --text-muted: #8a6a5a;
+  --ornament: #e65100;
+  --bar-bg: linear-gradient(180deg, #2a0808 0%, #1a0404 100%);
+  --bar-text: #ff6d00;
+  --bar-accent: rgba(255, 109, 0, 0.4);
+  --bar-btn-text: #e0c8b8;
+  --body-bg: #120606;
+  --app-bg:
+    radial-gradient(ellipse at 50% 100%, rgba(230,81,0,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 30%, rgba(180,20,20,0.06) 0%, transparent 50%),
+    #1a0a0a;
+  --modal-bg: linear-gradient(180deg, #2a1212 0%, #1a0a0a 100%);
+  --tooltip-bg: linear-gradient(180deg, #2a1212, #1a0a0a);
+  --input-bg: rgba(255,255,255,0.06);
+  --panel-header-bg: linear-gradient(180deg, rgba(230,81,0,0.12) 0%, rgba(230,81,0,0.04) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(230,81,0,0.22) 0%, rgba(230,81,0,0.08) 100%);
+  --panel-texture: none;
+  --select-option-bg: #2a1212;
+}
+
+/* ─── FEYWILD ─── */
+[data-theme="feywild"] {
+  --parchment: #f0f5e8;
+  --parchment-light: #f5faf0;
+  --parchment-dark: #dce8d0;
+  --ink: #1a2e1a;
+  --ink-light: #2d4a2d;
+  --gold: #7b5ea7;
+  --gold-bright: #9b7ec8;
+  --red: #c0392b;
+  --red-bright: #e74c3c;
+  --green: #2e8b57;
+  --green-bright: #3cb371;
+  --blue: #4682b4;
+  --blue-bright: #5b9bd5;
+  --panel-bg: rgba(228, 240, 218, 0.92);
+  --panel-border: rgba(123, 94, 167, 0.35);
+  --panel-shadow: 0 2px 10px rgba(80,50,120,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
+  --text-primary: #1a2e1a;
+  --text-secondary: #2d4a2d;
+  --text-muted: #5a7a5a;
+  --ornament: #7b5ea7;
+  --bar-bg: linear-gradient(180deg, #2d4a3a 0%, #1a3028 100%);
+  --bar-text: #c8a8e8;
+  --bar-accent: rgba(200, 168, 232, 0.4);
+  --bar-btn-text: #dce8d0;
+  --body-bg: #dce8d0;
+  --app-bg:
+    radial-gradient(ellipse at 20% 30%, rgba(123,94,167,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(46,139,87,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(200,168,232,0.05) 0%, transparent 60%),
+    #dce8d0;
+  --modal-bg: linear-gradient(180deg, #f0f5e8 0%, #dce8d0 100%);
+  --tooltip-bg: linear-gradient(180deg, #f0f5e8, #dce8d0);
+  --input-bg: rgba(255,255,255,0.5);
+  --panel-header-bg: linear-gradient(180deg, rgba(123,94,167,0.12) 0%, rgba(123,94,167,0.04) 100%);
+  --panel-header-hover: linear-gradient(180deg, rgba(123,94,167,0.22) 0%, rgba(123,94,167,0.08) 100%);
+  --panel-texture: none;
+  --select-option-bg: #f0f5e8;
+}
