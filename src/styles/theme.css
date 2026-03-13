@@ -130,6 +130,7 @@ body {
 .panel-header-right { margin-left: auto; font-size: 10px; color: var(--text-muted); font-family: 'Inter', sans-serif; letter-spacing: 0; text-transform: none; }
 .panel-collapse-icon { margin-left: auto; font-size: 10px; color: var(--text-muted); line-height: 1; }
 .panel-header-right + .panel-collapse-icon { margin-left: 6px; }
+.panel-collapsed-wrapper { display: flex; flex-direction: column; min-width: 0; }
 .panel-collapsed-h { min-width: 0; transition: all 0.15s ease; }
 .panel-collapsed-h:hover { background: var(--panel-header-hover); }
 /* Desktop: show vertical strip, hide mobile header */

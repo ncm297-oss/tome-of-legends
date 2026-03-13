@@ -49,9 +49,9 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
   // COLLAPSED STATE — icon-only
   if (!expanded) {
     return (
-      <>
+      <div className="panel-collapsed-wrapper summons-collapsed">
         {/* Desktop: narrow vertical strip */}
-        <div className="panel panel-collapsed-h panel-collapsed-desktop summons-collapsed" onClick={() => setExpanded(true)}
+        <div className="panel panel-collapsed-h panel-collapsed-desktop" onClick={() => setExpanded(true)}
           style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", minHeight: 80, flex: 1 }}>
           <div style={{ fontSize: 18 }}>🐾</div>
           {hasSummons && (
@@ -60,14 +60,14 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
           <div style={{ fontSize: 10, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5, marginTop: 2, writingMode: "vertical-rl", textOrientation: "mixed" }}>SUMMONS</div>
         </div>
         {/* Mobile: just the header bar */}
-        <div className="panel panel-collapsed-mobile summons-collapsed" onClick={() => setExpanded(true)} style={{ cursor: "pointer" }}>
+        <div className="panel panel-collapsed-mobile" onClick={() => setExpanded(true)} style={{ cursor: "pointer" }}>
           <div className="panel-header collapsible">
             <span className="ornament">🐾</span> SUMMONS
             {hasSummons && <span className="panel-header-right">{summons.length}</span>}
             <span className="panel-collapse-icon">▼</span>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 

@@ -8,10 +8,10 @@ export default function CollapsiblePanel({ title, ornament, headerRight, childre
 
   if (isCollapsed) {
     return (
-      <>
+      <div className={`panel-collapsed-wrapper ${className}`} style={style}>
         {/* Desktop: narrow vertical strip */}
-        <div className={`panel panel-collapsed-h panel-collapsed-desktop ${className}`} onClick={toggle}
-          style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1, ...style }}>
+        <div className={`panel panel-collapsed-h panel-collapsed-desktop`} onClick={toggle}
+          style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1 }}>
           <div style={{ fontSize: 16 }}>{ornament}</div>
           <div style={{
             fontSize: 10, color: "var(--text-secondary)", fontFamily: "Cinzel, serif",
@@ -19,14 +19,14 @@ export default function CollapsiblePanel({ title, ornament, headerRight, childre
           }}>{title}</div>
         </div>
         {/* Mobile: just the header bar with down arrow */}
-        <div className={`panel panel-collapsed-mobile ${className}`} style={style}>
+        <div className={`panel panel-collapsed-mobile`}>
           <div className="panel-header collapsible" onClick={toggle}>
             <span className="ornament">{ornament}</span> {title}
             {headerRight && <span className="panel-header-right">{headerRight}</span>}
             <span className="panel-collapse-icon">▼</span>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
