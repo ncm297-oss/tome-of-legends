@@ -10,8 +10,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Tome of Legends — D&D 5e Character Manager',
-        short_name: 'Tome of Legends',
+        name: '5e Companion — D&D Character Manager',
+        short_name: '5e Companion',
         description: 'A D&D 5th Edition character sheet manager',
         theme_color: '#4a2e12',
         background_color: '#e8d5a3',

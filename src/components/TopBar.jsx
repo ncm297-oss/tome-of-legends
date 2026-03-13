@@ -37,7 +37,7 @@ export default function TopBar({ setShowWizard, setModal, characters, activeChar
 
   return (
     <div className="top-bar">
-      <div className="top-bar-title">⚔ TOME OF LEGENDS ⚔</div>
+      <div className="top-bar-title">⚔ 5E COMPANION ⚔</div>
       <div className="top-bar-right">
         {/* DICE ROLLER INLINE */}
         <div className="dice-roller" style={{ gap: 3 }}>
