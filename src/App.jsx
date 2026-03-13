@@ -43,13 +43,16 @@ export default function App() {
   });
 
   const topKeys = ["spells", "combat", "skills"];
-  const bottomKeys = ["equipment", "feats", "journal"]; // summons has its own mini mode
+  const bottomKeys = ["equipment", "feats", "summons", "journal"];
 
   const toggle = (key) => setCollapsed(prev => {
     const next = { ...prev, [key]: !prev[key] };
     // Prevent all panels in a row from collapsing
     if (topKeys.includes(key) && topKeys.every(k => next[k])) return prev;
-    if (bottomKeys.includes(key) && bottomKeys.every(k => next[k])) return prev;
+    if (bottomKeys.includes(key) && bottomKeys.every(k => {
+      if (k === "summons") return !summonsExpanded;
+      return next[k];
+    })) return prev;
     return next;
   });
 
@@ -178,7 +181,17 @@ export default function App() {
           updateChar={updateChar}
           setModal={setModal}
           expanded={summonsExpanded}
-          setExpanded={setSummonsExpanded}
+          setExpanded={(val) => {
+            // If collapsing, check at least one bottom panel stays open
+            if (!val) {
+              const othersAllCollapsed = bottomKeys.every(k => {
+                if (k === "summons") return true; // this one is collapsing
+                return collapsed[k];
+              });
+              if (othersAllCollapsed) return;
+            }
+            setSummonsExpanded(val);
+          }}
           collapsed={collapsed.summons}
           onToggle={() => toggle("summons")}
         />

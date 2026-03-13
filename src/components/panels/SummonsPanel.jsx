@@ -52,12 +52,12 @@ export default function SummonsPanel({ activeChar, updateChar, setModal, expande
       <div className="panel-collapsed-wrapper summons-collapsed">
         {/* Desktop: narrow vertical strip */}
         <div className="panel panel-collapsed-h panel-collapsed-desktop" onClick={() => setExpanded(true)}
-          style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", minHeight: 80, flex: 1 }}>
-          <div style={{ fontSize: 18 }}>🐾</div>
+          style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1 }}>
+          <div style={{ fontSize: 16 }}>🐾</div>
           {hasSummons && (
             <div style={{ fontSize: 10, color: "var(--gold-bright)", fontWeight: 700, fontFamily: "Cinzel, serif", marginTop: 2 }}>{summons.length}</div>
           )}
-          <div style={{ fontSize: 10, color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: 0.5, marginTop: 2, writingMode: "vertical-rl", textOrientation: "mixed" }}>SUMMONS</div>
+          <div style={{ fontSize: 10, color: "var(--text-secondary)", fontFamily: "Cinzel, serif", letterSpacing: 0.5, marginTop: 4, writingMode: "vertical-rl", textOrientation: "mixed" }}>SUMMONS</div>
         </div>
         {/* Mobile: just the header bar */}
         <div className="panel panel-collapsed-mobile" onClick={() => setExpanded(true)} style={{ cursor: "pointer" }}>
