@@ -22,7 +22,7 @@ export default function CharacterHeader({ activeChar, updateChar, setModal, dele
         {activeChar.portrait ? <img src={activeChar.portrait} alt="portrait" /> : "🧙"}
       </div>
       <div className="char-name-block">
-        <div className="char-name" onClick={() => setModal({ type: "editname" })} title="Click to edit">{activeChar.name}</div>
+        <div className="char-name"><span onClick={() => setModal({ type: "editname" })} title="Click to edit" style={{ cursor: "pointer" }}>{activeChar.name}</span></div>
         <div className="char-sub">
           <span className="char-info-link" onClick={() => setModal({ type: "inforace" })}>{activeChar.race}</span>
           {" · "}
