@@ -29,11 +29,13 @@ body {
   font-family: 'Crimson Text', Georgia, serif;
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
 }
 
 .app-root {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background:
     radial-gradient(ellipse at 20% 20%, rgba(210,180,130,0.5) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 80%, rgba(190,160,110,0.4) 0%, transparent 60%),
@@ -750,7 +752,7 @@ body {
 @media (max-width: 768px) {
   /* Allow page to scroll */
   body { overflow: auto; height: auto; }
-  .app-root { height: auto; min-height: 100vh; overflow: auto; }
+  .app-root { height: auto; min-height: 100vh; min-height: 100dvh; overflow: auto; }
 
   /* Top bar: compact, hide dice bar */
   .top-bar {
@@ -770,7 +772,7 @@ body {
     overflow-y: auto !important;
     overflow-x: hidden !important;
     flex: none !important;
-    padding: 4px;
+    padding: 4px 4px calc(12px + env(safe-area-inset-bottom, 0px));
     gap: 4px;
   }
 
@@ -835,7 +837,7 @@ body {
     flex-direction: column !important;
     height: auto !important;
     gap: 4px;
-    padding: 0 4px 4px !important;
+    padding: 0 4px calc(16px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   /* Panels: natural height on mobile */
