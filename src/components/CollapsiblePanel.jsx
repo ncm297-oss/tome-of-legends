@@ -8,14 +8,25 @@ export default function CollapsiblePanel({ title, ornament, headerRight, childre
 
   if (isCollapsed) {
     return (
-      <div className={`panel panel-collapsed-h ${className}`} onClick={toggle}
-        style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1, ...style }}>
-        <div style={{ fontSize: 16 }}>{ornament}</div>
-        <div style={{
-          fontSize: 10, color: "var(--text-secondary)", fontFamily: "Cinzel, serif",
-          letterSpacing: 0.5, marginTop: 4, writingMode: "vertical-rl", textOrientation: "mixed"
-        }}>{title}</div>
-      </div>
+      <>
+        {/* Desktop: narrow vertical strip */}
+        <div className={`panel panel-collapsed-h panel-collapsed-desktop ${className}`} onClick={toggle}
+          style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 0", flex: 1, ...style }}>
+          <div style={{ fontSize: 16 }}>{ornament}</div>
+          <div style={{
+            fontSize: 10, color: "var(--text-secondary)", fontFamily: "Cinzel, serif",
+            letterSpacing: 0.5, marginTop: 4, writingMode: "vertical-rl", textOrientation: "mixed"
+          }}>{title}</div>
+        </div>
+        {/* Mobile: just the header bar with down arrow */}
+        <div className={`panel panel-collapsed-mobile ${className}`} style={style}>
+          <div className="panel-header collapsible" onClick={toggle}>
+            <span className="ornament">{ornament}</span> {title}
+            {headerRight && <span className="panel-header-right">{headerRight}</span>}
+            <span className="panel-collapse-icon">▼</span>
+          </div>
+        </div>
+      </>
     );
   }
 
